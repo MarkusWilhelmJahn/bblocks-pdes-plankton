@@ -4,4 +4,4 @@ OGC Blocks implementation which uses the OGC standards SOSA, PROV and STAC combi
 
 
 
-[General information on design and usage of OGC Blocks](https://github.com/opengeospatial/bblock-template/blob/master/USAGE.md
+[General information on design and usage of OGC Blocks](https://github.com/opengeospatial/bblock-template/blob/master/USAGE.md)

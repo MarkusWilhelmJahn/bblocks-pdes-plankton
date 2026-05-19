@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "prov":  "http://www.w3.org/ns/prov#",
+    "dcat":  "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "SimulationRun":       "prov:Activity",
+    "id":                  "@id",
+    "label":               "rdfs:label",
+    "startedAtTime":       "prov:startedAtTime",
+    "endedAtTime":         "prov:endedAtTime",
+    "wasAssociatedWith":   "prov:wasAssociatedWith",
+    "used":                "prov:used",
+    "generated":           { "@reverse": "prov:wasGeneratedBy" },
+    "parameters":          "prov:used",
+    "numericalMethod":     "https://example.org/plankton/sim/numericalMethod",
+    "timeStep_d":          "https://example.org/plankton/sim/timeStep",
+    "duration_d":          "https://example.org/plankton/sim/duration",
+    "stacItem":            "dcat:landingPage"
+  }
+}

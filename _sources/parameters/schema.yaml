@@ -1,0 +1,51 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: PlanktonModelParameters
+description: >
+  Dimensioned parameters for the Scheffer phytoplankton(X1)/zooplankton(X2) model.
+  dX1/dt = α·N/(H_N+N)·X1 − c·X1² − γ·X1/(H1+X1)·X2
+  dX2/dt = e·γ·X1/(H1+X1)·X2 − δ·X2 − F·X2²/(H2²+X2²)
+type: object
+required: [alpha, c, gamma, H1, H2, HN, e, delta, F]
+properties:
+  alpha:
+    type: number
+    description: Maximum phytoplankton growth rate [d⁻¹]
+    minimum: 0
+    x-ogc-unit: "d-1"
+  c:
+    type: number
+    description: Intraspecific competition coefficient of phytoplankton [mg.dw⁻¹·l·d⁻¹]
+    minimum: 0
+  gamma:
+    type: number
+    description: Maximum zooplankton grazing rate [d⁻¹]
+    minimum: 0
+  H1:
+    type: number
+    description: Half-saturation density for zooplankton grazing on phytoplankton [mg.dw·l⁻¹]
+    minimum: 0
+  H2:
+    type: number
+    description: Half-saturation density for fish predation on zooplankton [mg.dw·l⁻¹]
+    minimum: 0
+  HN:
+    type: number
+    description: Half-saturation constant for nutrient-limited phytoplankton growth
+    minimum: 0
+  e:
+    type: number
+    description: Zooplankton assimilation efficiency (dimensionless)
+    minimum: 0
+    maximum: 1
+  delta:
+    type: number
+    description: Zooplankton mortality and respiration rate [d⁻¹]
+    minimum: 0
+  F:
+    type: number
+    description: Fish predation pressure on zooplankton [mg.dw·d⁻¹·l⁻¹]
+    minimum: 0
+  N:
+    type: number
+    description: Nutrient level (external control parameter, relative units)
+    minimum: 0

@@ -1,0 +1,24 @@
+- title: Lake Constance mesocosm, July 2022
+  content: |
+    {
+      "type": "ObservationCollection",
+      "featureOfInterest": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [9.37, 47.65, -5.0]
+        },
+        "properties": {
+          "name": "Mesocosm 3, Lake Constance",
+          "depth_m": 5
+        }
+      },
+      "resultTime": "2022-07-01T08:00:00Z",
+      "phenomenonTime": "2022-06-28/2022-07-01",
+      "observedProperties": {
+        "X1_initial": 0.5,
+        "X2_initial": 1.0,
+        "N_observed": 2.5,
+        "observedBy": "https://example.org/sensor/ctd-003"
+      }
+    }

@@ -1,0 +1,43 @@
+- title: Run R001 — stable focus scenario (δ = 0.219)
+  content: |
+    {
+      "type": "SimulationRun",
+      "id": "https://example.org/runs/R001",
+      "label": "Stable focus — Holling Type II, delta=0.219",
+      "startedAtTime": "2025-03-10T14:22:00Z",
+      "endedAtTime":   "2025-03-10T14:22:04Z",
+      "wasAssociatedWith": {
+        "id":       "https://example.org/software/plankton-ode-v1.2",
+        "label":    "PlanktonODE solver",
+        "version":  "1.2.0",
+        "language": "Python",
+        "repository": "https://github.com/example/plankton-ode"
+      },
+      "numericalMethod": "runge-kutta-4",
+      "timeStep_d": 0.01,
+      "duration_d": 700,
+      "used": {
+        "observation": "https://example.org/obs/LC-2022-07-01",
+        "parametersId": "https://example.org/params/scheffer-default"
+      },
+      "parameters": {
+        "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+        "H1": 0.6,   "H2": 5.0,  "HN": 1.0,
+        "e": 0.6,    "delta": 0.219, "F": 0.4,
+        "N": 2.5
+      },
+      "generated": [
+        {
+          "id":     "results/R001/timeseries.csv",
+          "type":   "timeseries-csv",
+          "format": "text/csv",
+          "description": "X1(t), X2(t) at dt=0.01 d for 700 d"
+        },
+        {
+          "id":     "results/R001/phase_portrait.png",
+          "type":   "phase-portrait-png",
+          "format": "image/png"
+        }
+      ],
+      "stacItem": "https://example.org/stac/items/R001"
+    }

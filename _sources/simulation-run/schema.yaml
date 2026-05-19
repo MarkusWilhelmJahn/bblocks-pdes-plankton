@@ -1,0 +1,80 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: PlanktonSimulationRun
+description: >
+  A PROV Activity representing one model execution of the Scheffer 
+  phytoplankton/zooplankton system. Records the software, parameters used,
+  input observation, numerical method, and references to output assets.
+type: object
+required: [type, startedAtTime, endedAtTime, wasAssociatedWith, used, generated, parameters]
+properties:
+  type:
+    const: SimulationRun
+  id:
+    type: string
+    description: URI identifying this run
+  label:
+    type: string
+    description: Human-readable label for this run
+  startedAtTime:
+    type: string
+    format: date-time
+  endedAtTime:
+    type: string
+    format: date-time
+  wasAssociatedWith:
+    type: object
+    description: Software agent that executed the simulation
+    required: [id, label, version]
+    properties:
+      id:     { type: string }
+      label:  { type: string }
+      version: { type: string }
+      language: { type: string, description: "e.g. Python, FORTRAN77, R" }
+      repository: { type: string, description: "URL to source code" }
+  numericalMethod:
+    type: string
+    description: Integration scheme used (e.g. Runge-Kutta-4, Euler)
+    enum: [euler, runge-kutta-4, runge-kutta-45, implicit-euler]
+  timeStep_d:
+    type: number
+    description: Integration time step in days
+    minimum: 0
+  duration_d:
+    type: number
+    description: Simulation duration in days
+    minimum: 0
+  used:
+    type: object
+    description: Input resources consumed (PROV used)
+    required: [observation]
+    properties:
+      observation:
+        type: string
+        description: URI or inline reference to the PlanktonInitialObservation
+      parametersId:
+        type: string
+        description: URI of the parameter set entity
+  parameters:
+    $ref: "org.example.plankton.parameters#"
+    description: The exact parameter values used in this run
+  generated:
+    type: array
+    description: Output assets generated (PROV wasGeneratedBy)
+    items:
+      type: object
+      required: [id, type, format]
+      properties:
+        id:
+          type: string
+          description: URI or relative path to the output file
+        type:
+          type: string
+          enum: [timeseries-csv, timeseries-netcdf, phase-portrait-png, bifurcation-diagram-png]
+        format:
+          type: string
+          description: MIME type
+        description:
+          type: string
+  stacItem:
+    type: string
+    description: URI of the STAC Item cataloguing this run's outputs

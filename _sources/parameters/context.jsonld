@@ -1,0 +1,18 @@
+{
+  "@context": {
+    "qudt": "http://qudt.org/schema/qudt/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "schema": "https://schema.org/",
+    "alpha": {
+      "@id": "https://example.org/plankton/model/alpha",
+      "@type": "qudt:Quantity"
+    },
+    "gamma": { "@id": "https://example.org/plankton/model/gamma" },
+    "H1":    { "@id": "https://example.org/plankton/model/halfSaturationGrazing" },
+    "e":     { "@id": "https://example.org/plankton/model/assimilationEfficiency" },
+    "delta": { "@id": "https://example.org/plankton/model/mortalityRate" },
+    "F":     { "@id": "https://example.org/plankton/model/fishPredationRate" },
+    "N":     { "@id": "https://example.org/plankton/model/nutrientLevel" }
+  }
+}

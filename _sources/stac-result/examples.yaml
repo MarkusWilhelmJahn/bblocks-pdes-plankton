@@ -1,0 +1,61 @@
+- title: STAC Item for run R001 (stable focus)
+  content: |
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://example.org/plankton-sim/v0.1/schema.json"
+      ],
+      "id": "R001",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.37, 47.65]
+      },
+      "bbox": [9.35, 47.63, 9.39, 47.67],
+      "properties": {
+        "datetime": "2022-07-01T00:00:00Z",
+        "start_datetime": "2022-07-01T00:00:00Z",
+        "end_datetime":   "2024-05-10T00:00:00Z",
+        "plankton-sim:model":       "Scheffer-1991-PhytoZoo",
+        "plankton-sim:scenario":    "stable-focus",
+        "plankton-sim:delta":       0.219,
+        "plankton-sim:duration_d":  700,
+        "plankton-sim:method":      "runge-kutta-4",
+        "plankton-sim:provenance":  "https://example.org/runs/R001",
+        "plankton-sim:observation": "https://example.org/obs/LC-2022-07-01"
+      },
+      "links": [
+        {
+          "href":  "https://example.org/runs/R001",
+          "rel":   "derived_from",
+          "type":  "application/json",
+          "title": "PROV simulation run record"
+        },
+        {
+          "href":  "https://example.org/obs/LC-2022-07-01",
+          "rel":   "related",
+          "type":  "application/json",
+          "title": "SOSA initial observation"
+        }
+      ],
+      "assets": {
+        "timeseries": {
+          "href":  "https://example.org/data/R001/timeseries.csv",
+          "type":  "text/csv",
+          "title": "X1(t), X2(t) time series",
+          "roles": ["data"]
+        },
+        "phase_portrait": {
+          "href":  "https://example.org/data/R001/phase_portrait.png",
+          "type":  "image/png",
+          "title": "Phase portrait X1 vs X2",
+          "roles": ["overview"]
+        },
+        "parameters": {
+          "href":  "https://example.org/params/scheffer-default.json",
+          "type":  "application/json",
+          "title": "Parameter set JSON",
+          "roles": ["metadata"]
+        }
+      }
+    }

@@ -1,0 +1,20 @@
+{
+  "name": "Phytoplankton-Zooplankton Model Parameters",
+  "abstract": "Typed parameter set for the Scheffer (1991) two-component predator-prey model (eqs. 7.17/7.18).",
+  "status": "experimental",
+  "dateTimeAddition": "2025-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "version": "0.1",
+  "tags": ["plankton", "predator-prey", "ODE", "Scheffer"],
+  "sources": [
+    {
+      "title": "Scheffer (1991) Oikos 62:271-282",
+      "link": "https://doi.org/10.2307/3545491"
+    },
+    {
+      "title": "Malchow et al. Gleichungsbasierte Modelle II, Kap. 4.6",
+      "link": "https://www.usf.uos.de/~malchow"
+    }
+  ],
+  "rdfType": ["https://www.w3.org/ns/ssn/systems/SystemProperty"]
+}

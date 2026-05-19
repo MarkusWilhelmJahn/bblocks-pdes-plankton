@@ -1,0 +1,17 @@
+{
+  "name": "Plankton Simulation Run (PROV)",
+  "abstract": "PROV-O description of a single execution of the Scheffer phytoplankton/zooplankton ODE model, linking input observations and parameters to output time series.",
+  "status": "experimental",
+  "dateTimeAddition": "2025-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "version": "0.1",
+  "dependsOn": [
+    "mwj.bbr.plankton.parameters",
+    "mwj.bbr.plankton.observation"
+  ],
+  "tags": ["PROV", "simulation", "lineage", "plankton"],
+  "sources": [
+    { "title": "W3C PROV-O", "link": "https://www.w3.org/TR/prov-o/" }
+  ],
+  "rdfType": ["http://www.w3.org/ns/prov#Activity"]
+}

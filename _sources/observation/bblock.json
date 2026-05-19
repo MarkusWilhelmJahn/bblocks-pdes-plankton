@@ -1,0 +1,19 @@
+{
+  "name": "Plankton Initial Observation",
+  "abstract": "SOSA Observation bundle supplying initial phytoplankton and zooplankton densities, nutrient level, and spatiotemporal context for a model run.",
+  "status": "experimental",
+  "dateTimeAddition": "2025-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "version": "0.1",
+  "dependsOn": ["mwj.bbr.plankton.parameters"],
+  "tags": ["SOSA", "observation", "plankton", "initial-conditions"],
+  "sources": [
+    {
+      "title": "W3C SOSA/SSN Ontology",
+      "link": "https://www.w3.org/TR/vocab-ssn/"
+    }
+  ],
+  "rdfType": [
+    "http://www.w3.org/ns/sosa/ObservationCollection"
+  ]
+}

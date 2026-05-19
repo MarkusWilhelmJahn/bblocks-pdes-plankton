@@ -1,0 +1,19 @@
+{
+  "name": "Plankton Simulation STAC Item",
+  "abstract": "STAC Item cataloguing the spatiotemporal outputs of a plankton model simulation run, with links to PROV provenance and SOSA input observations.",
+  "status": "experimental",
+  "dateTimeAddition": "2025-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "version": "0.1",
+  "dependsOn": [
+    "mwj.bbr.plankton.simulation-run",
+    "mwj.bbr.plankton.observation"
+  ],
+  "isProfileOf": [
+    "https://stacspec.org/en/about/stac-spec/"
+  ],
+  "tags": ["STAC", "catalog", "timeseries", "plankton"],
+  "sources": [
+    { "title": "STAC Specification 1.0.0", "link": "https://stacspec.org/" }
+  ]
+}

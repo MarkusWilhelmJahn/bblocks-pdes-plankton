@@ -28,7 +28,7 @@ description: |
   *   **[OGC Blocks Examples](https://ogcincubator.github.io/bblocks-examples/)**
 
 # Customize the following prefix (will be prepended to the path of the building blocks):
-identifier-prefix: mwj.bbr.plankton.
+identifier-prefix: mwj.bbr.pdes.
 
 # List of imports ("default" is an alias for the main OGC Building Blocks Register)
 imports:

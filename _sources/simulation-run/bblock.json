@@ -6,8 +6,8 @@
   "itemClass": "schema",
   "version": "0.1",
   "dependsOn": [
-    "mwj.bbr.plankton.parameters",
-    "mwj.bbr.plankton.observation"
+    "mwj.bbr.pdes.parameters",
+    "mwj.bbr.pdes.observation"
   ],
   "tags": ["PROV", "simulation", "lineage", "plankton"],
   "sources": [

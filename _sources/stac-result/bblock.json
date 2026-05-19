@@ -6,8 +6,8 @@
   "itemClass": "schema",
   "version": "0.1",
   "dependsOn": [
-    "mwj.bbr.plankton.simulation-run",
-    "mwj.bbr.plankton.observation"
+    "mwj.bbr.pdes.simulation-run",
+    "mwj.bbr.pdes.observation"
   ],
   "isProfileOf": [
     "https://stacspec.org/en/about/stac-spec/"

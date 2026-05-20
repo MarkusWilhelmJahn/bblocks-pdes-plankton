@@ -1,32 +1,12 @@
 {
   "@context": {
-    "prov":    "http://www.w3.org/ns/prov#",
-    "sosa":    "http://www.w3.org/ns/sosa/",
-    "dcat":    "http://www.w3.org/ns/dcat#",
-    "plkstac": "https://mwj.example.org/plankton/stac/",
+    "prov":  "http://www.w3.org/ns/prov#",
+    "sosa":  "http://www.w3.org/ns/sosa/",
+    "dcat":  "http://www.w3.org/ns/dcat#",
 
-    "plankton-rda:model":             "plkstac:model",
-    "plankton-rda:scenario":          "plkstac:scenario",
-    "plankton-rda:spatial_dimensions":"plkstac:spatialDimensions",
-    "plankton-rda:D1":                "plkstac:D1",
-    "plankton-rda:D2":                "plkstac:D2",
-    "plankton-rda:D_ratio":           "plkstac:diffusivityRatio",
-    "plankton-rda:v_rel":             "plkstac:differentialAdvection",
-    "plankton-rda:delta":             "plkstac:mortalityRate",
-    "plankton-rda:boundary_condition":"plkstac:boundaryCondition",
-    "plankton-rda:t_end_d":           "plkstac:simulationEndTime",
-    "plankton-rda:numerical_scheme":  "plkstac:numericalScheme",
+    "plankton-rda": "https://mwj.example.org/plankton/stac/",
 
-    "plankton-rda:provenance": {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "@id",
-      "@comment": "URI of the prov:Activity (SimulationRun) that produced these outputs"
-    },
-
-    "plankton-rda:observation": {
-      "@id": "prov:used",
-      "@type": "@id",
-      "@comment": "URI of the sosa:ObservationCollection consumed by the SimulationRun. Uses prov:used (not sosa:usedProcedure) because the SimulationRun is a prov:Activity, not a sosa:Observation, and the ObservationCollection is not a sosa:Procedure. SSN PROV alignment §6.5."
-    }
+    "plankton-rda:provenance":  { "@type": "@id" },
+    "plankton-rda:observation": { "@type": "@id" }
   }
 }

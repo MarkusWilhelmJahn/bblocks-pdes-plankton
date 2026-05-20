@@ -3,7 +3,7 @@ name: Partial Differential Equation Systems OGC Blocks
 
 # Short abstract for this collection (optional)
 abstract: |
-  OGC Blocks for publishing Partial Differential Equation Systems Simulations using SOSA, PROV and STAC.
+  OGC Blocks implementation which uses the OGC standards SOSA, PROV and STAC combined to generate an interface for publishing the simulation results from a pytho-plankton and zoo-plankton interaction described by partial differential equations and numerically solved by using the Runge-Kutta method.
 
 # Description for this collection (optional)
 description: |

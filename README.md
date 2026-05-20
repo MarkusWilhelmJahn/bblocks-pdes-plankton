@@ -54,4 +54,4 @@ bblocks-SOSAPROVSTAC/
         └── examples.yaml
 ```
 
-[General information on design and usage of OGC Blocks](https://github.com/opengeospatial/bblock-template/blob/master/USAGE.md)
+[More information on design and usage](https://ogcincubator.github.io/bblocks-docs/)

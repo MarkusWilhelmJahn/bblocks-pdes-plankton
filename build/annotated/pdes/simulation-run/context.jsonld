@@ -1,0 +1,33 @@
+{
+  "@context": {
+    "SimulationRun": "prov:Activity",
+    "id": "@id",
+    "label": "rdfs:label",
+    "startedAtTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "endedAtTime": {
+      "@id": "prov:endedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "wasAssociatedWith": "prov:wasAssociatedWith",
+    "numericalScheme": "plksim:numericalScheme",
+    "spatialDiscretisation": "plksim:spatialDiscretisation",
+    "used": "prov:used",
+    "parameters": "prov:used",
+    "generated": {
+      "@reverse": "prov:wasGeneratedBy"
+    },
+    "scenario": "plksim:scenario",
+    "stacItem": "dcat:landingPage",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "plksim": "https://mwj.example.org/plankton/sim/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "@version": 1.1
+  }
+}

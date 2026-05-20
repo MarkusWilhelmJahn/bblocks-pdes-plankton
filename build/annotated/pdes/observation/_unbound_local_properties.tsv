@@ -1,0 +1,10 @@
+path
+/type
+/featureOfInterest/type
+/featureOfInterest/geometry
+/featureOfInterest/properties
+/featureOfInterest/properties/name
+/featureOfInterest/properties/depth_m
+/featureOfInterest/properties/water_body_type
+/perturbation/amplitude
+/perturbation/type

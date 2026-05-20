@@ -1,0 +1,48 @@
+path	@id	schema
+/type		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/id	@id	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/label	http://www.w3.org/2000/01/rdf-schema#label	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/startedAtTime	http://www.w3.org/ns/prov#startedAtTime	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/endedAtTime	http://www.w3.org/ns/prov#endedAtTime	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/wasAssociatedWith	http://www.w3.org/ns/prov#wasAssociatedWith	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/wasAssociatedWith/id	@id	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/wasAssociatedWith/label	http://www.w3.org/2000/01/rdf-schema#label	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/wasAssociatedWith/version		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/wasAssociatedWith/localPath		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/numericalScheme	https://mwj.example.org/plankton/sim/numericalScheme	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialDiscretisation	https://mwj.example.org/plankton/sim/spatialDiscretisation	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/used	http://www.w3.org/ns/prov#used	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/used/observation		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/used/parametersId		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters	http://www.w3.org/ns/prov#used	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/alpha		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/c		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/gamma		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/H1		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/H2		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/HN		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/e		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/delta		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/F		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/N		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/D1		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/D2		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/v1x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/v2x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/v1y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/v2y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/dt		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/t_end		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/domain_length_x_cm		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/domain_length_y_cm		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/grid_points_x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/grid_points_y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/boundary_condition		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/spatial_dimensions		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/generated	prov:wasGeneratedBy	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/generated/id	@id	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/generated/type		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/generated/format		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/generated/description		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/scenario	https://mwj.example.org/plankton/sim/scenario	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/stacItem	http://www.w3.org/ns/dcat#landingPage	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml

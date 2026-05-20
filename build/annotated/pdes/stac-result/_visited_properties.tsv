@@ -1,0 +1,36 @@
+path	@id	schema
+/type		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/stac_version		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/stac_extensions		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/id		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/geometry		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/bbox		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/datetime		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/start_datetime		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/end_datetime		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:model	https://mwj.example.org/plankton/stac/model	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:scenario	https://mwj.example.org/plankton/stac/scenario	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:spatial_dimensions	https://mwj.example.org/plankton/stac/spatial_dimensions	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:D1	https://mwj.example.org/plankton/stac/D1	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:D2	https://mwj.example.org/plankton/stac/D2	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:D_ratio	https://mwj.example.org/plankton/stac/D_ratio	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:v_rel	https://mwj.example.org/plankton/stac/v_rel	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:delta	https://mwj.example.org/plankton/stac/delta	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:boundary_condition	https://mwj.example.org/plankton/stac/boundary_condition	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:domain_length_x_cm	https://mwj.example.org/plankton/stac/domain_length_x_cm	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:domain_length_y_cm	https://mwj.example.org/plankton/stac/domain_length_y_cm	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:t_end_d	https://mwj.example.org/plankton/stac/t_end_d	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:numerical_scheme	https://mwj.example.org/plankton/stac/numerical_scheme	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:provenance	https://mwj.example.org/plankton/stac/provenance	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/properties/plankton-rda:observation	https://mwj.example.org/plankton/stac/observation	/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/links		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/links/href		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/links/rel		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/links/type		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/links/title		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/assets		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/assets/href		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/assets/type		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/assets/title		/github/workspace/build/annotated/pdes/stac-result/schema.yaml
+/assets/roles		/github/workspace/build/annotated/pdes/stac-result/schema.yaml

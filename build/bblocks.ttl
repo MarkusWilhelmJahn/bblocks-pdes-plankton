@@ -10,151 +10,262 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix role: <http://www.w3.org/ns/dx/prof/role/> .
 @prefix schema: <https://schema.org/> .
-@prefix shacl: <https://www.w3.org/TR/shacl/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<bblocks://ogc.bbr.template.myFeature> a skos:Concept,
+<bblocks://mwj.pdes.stac-result> a skos:Concept,
         dcat:Dataset,
         bblocks:BBlock,
         bblocks:Schema ;
-    rdfs:label "Custom Feature" ;
-    dct:abstract "This examples shows a simple customisation for OGC API Feature schemas"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
+    rdfs:label "Plankton RDA Simulation STAC Item" ;
+    dct:abstract "STAC 1.0 Item cataloguing spatial field outputs of a plankton RDA simulation run, filterable by scenario, diffusion ratio and advection velocity."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
+    dct:created "2025-01-01T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://opengeospatial.github.io/bblocks-template/bblock/ogc.bbr.template.myFeature> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://opengeospatial.github.io/bblocks-template/build/generateddocs/markdown/bbr/template/myFeature/index.md> ],
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.stac-result> ],
         [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://opengeospatial.github.io/bblocks-template/build/generateddocs/json-full/bbr/template/myFeature/index.json> ] ;
-    dct:hasVersion "1.0" ;
-    dct:modified "2023-05-19"^^xsd:date ;
-    dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
-    skos:inScheme <https://opengeospatial.github.io/bblocks-template/> ;
-    skos:prefLabel "Custom Feature" ;
-    skos:topConceptOf <https://opengeospatial.github.io/bblocks-template/> ;
-    dcat:keyword "examples",
-        "feature" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/stac-result/index.json> ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/stac-result/index.md> ] ;
+    dct:hasVersion "0.1" ;
+    dct:modified "2025-01-01"^^xsd:date ;
+    dct:source <https://stacspec.org/> ;
+    skos:inScheme <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    skos:prefLabel "Plankton RDA Simulation STAC Item" ;
+    skos:topConceptOf <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    dcat:keyword "DIFICI",
+        "STAC",
+        "Turing",
+        "catalog",
+        "plankton",
+        "spatial-field" ;
     prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/build/annotated/bbr/template/myFeature/schema.yaml> ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/stac-result/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/stac-result/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/build/annotated/bbr/template/myFeature/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/build/annotated/bbr/template/myFeature/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.bbr.template.mySchema> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/_sources/mySchema/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
-    bblocks:dependsOn <bblocks://ogc.bbr.template.mySchema>,
-        <bblocks://ogc.geo.features.feature> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/stac-result/context.jsonld> ;
+            prof:hasRole role:mapping ] ;
+    bblocks:dependsOn <bblocks://mwj.pdes.observation>,
+        <bblocks://mwj.pdes.simulation-run> ;
+    bblocks:hasSourceJsonLdContext <https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/stac-result/context.jsonld> ;
+    bblocks:status <http://www.opengis.net/def/status/experimental> ;
     bblocks:validationPassed true .
 
-<https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> rdfs:label "OGC API - Features, Part 1, 7.16.2: Feature Response" .
+<https://doi.org/10.2307/3545491> rdfs:label "Scheffer (1991) Oikos 62:271-282" .
 
-<https://example.com/sources/1> rdfs:label "Sample source document" .
-
-<https://opengeospatial.github.io/bblocks-template/build/bblocks.ttl> a prov:Entity ;
+<https://markuswilhelmjahn.github.io/bblocks-pdes/build/bblocks.ttl> a prov:Entity ;
     dct:format "text/turtle" ;
-    prov:wasAttributedTo _:N9e9ccc65c76441ceaeed171c5748f805 ;
+    prov:wasAttributedTo _:Nd08e62d6b06f40a0b27dcdf7e56abfa3 ;
     prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-05-07T11:37:22.848261"^^xsd:dateTime ;
-            prov:startedAtTime "2026-05-07T11:37:22.650139"^^xsd:dateTime ;
+            prov:endedAtTime "2026-05-20T12:34:32.026804"^^xsd:dateTime ;
+            prov:startedAtTime "2026-05-20T12:34:31.877594"^^xsd:dateTime ;
             prov:used [ a prov:Entity ;
-                    dct:format "application/yaml" ;
-                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
-                [ a prov:Entity ;
                     dct:format "application/json" ;
-                    dct:hasVersion "git:9b7d95390a30fead2bf9fc1d55d5e6a660580737" ;
-                    rdfs:seeAlso <https://opengeospatial.github.io/bblocks-template/build/register.json> ] ;
-            prov:wasAssociatedWith _:N9e9ccc65c76441ceaeed171c5748f805 ] .
+                    dct:hasVersion "git:950ce8f92949e944f136f646d8073ba9cc5cf0c8" ;
+                    rdfs:seeAlso <https://markuswilhelmjahn.github.io/bblocks-pdes/build/register.json> ],
+                [ a prov:Entity ;
+                    dct:format "application/yaml" ;
+                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ] ;
+            prov:wasAssociatedWith _:Nd08e62d6b06f40a0b27dcdf7e56abfa3 ] .
 
-<bblocks://ogc.bbr.template.mySchema> a skos:Concept,
+<https://stacspec.org/> rdfs:label "STAC Specification 1.0.0" .
+
+<https://www.usf.uos.de/~malchow> rdfs:label "Malchow — Gleichungsbasierte Modelle II, Kap. 4.6 (WS 2010/11)" .
+
+<https://www.w3.org/TR/prov-o/> rdfs:label "W3C PROV-O" .
+
+<https://www.w3.org/TR/vocab-ssn/> rdfs:label "W3C SOSA/SSN Ontology" .
+
+<bblocks://mwj.pdes.simulation-run> a skos:Concept,
         dcat:Dataset,
         bblocks:BBlock,
         bblocks:Schema ;
-    rdfs:label "My Schema" ;
-    dct:abstract "An example schema defining the set of properties of any type of object."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2023-04-05T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://opengeospatial.github.io/bblocks-template/build/generateddocs/json-full/bbr/template/mySchema/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://opengeospatial.github.io/bblocks-template/build/generateddocs/markdown/bbr/template/mySchema/index.md> ],
+    rdfs:label "Plankton RDA Simulation Run (PROV)" ;
+    dct:abstract "PROV-O Activity capturing a single FDM simulation of the Scheffer phytoplankton/zooplankton RDA model, linking SOSA initial observations and parameters to output spatial fields and time series."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
+    dct:created "2025-01-01T00:00:00+00:00"^^xsd:dateTime ;
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/simulation-run/index.md> ],
         [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://opengeospatial.github.io/bblocks-template/bblock/ogc.bbr.template.mySchema> ] ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.simulation-run> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/simulation-run/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2023-04-05"^^xsd:date ;
-    dct:source <https://example.com/sources/1> ;
-    skos:inScheme <https://opengeospatial.github.io/bblocks-template/> ;
-    skos:prefLabel "My Schema" ;
-    skos:topConceptOf <https://opengeospatial.github.io/bblocks-template/> ;
-    dcat:keyword "templates" ;
+    dct:modified "2025-01-01"^^xsd:date ;
+    dct:source <https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES>,
+        <https://www.w3.org/TR/prov-o/> ;
+    rdfs:subClassOf prov:Activity ;
+    skos:inScheme <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    skos:prefLabel "Plankton RDA Simulation Run (PROV)" ;
+    skos:topConceptOf <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    dcat:keyword "FDM",
+        "PROV",
+        "lineage",
+        "plankton",
+        "simulation" ;
     prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/build/annotated/bbr/template/mySchema/schema.json> ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/simulation-run/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/build/annotated/bbr/template/mySchema/context.jsonld> ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/simulation-run/context.jsonld> ;
             prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/build/annotated/bbr/template/mySchema/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.bbr.template.mySchema> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks-template/_sources/mySchema/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
-    bblocks:hasSourceJsonLdContext <https://opengeospatial.github.io/bblocks-template/_sources/mySchema/context.jsonld> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/simulation-run/schema.yaml> ;
+            prof:hasRole role:schema ] ;
+    bblocks:dependsOn <bblocks://mwj.pdes.observation>,
+        <bblocks://mwj.pdes.parameters> ;
+    bblocks:hasSourceJsonLdContext <https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/simulation-run/context.jsonld> ;
+    bblocks:status <http://www.opengis.net/def/status/experimental> ;
     bblocks:validationPassed true .
 
-<https://opengeospatial.github.io/bblocks-template/> a skos:ConceptScheme,
+<https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES> rdfs:label "Simulation software — FiniteDifferenceMethod4PDES" .
+
+<bblocks://mwj.pdes.observation> a skos:Concept,
+        dcat:Dataset,
+        bblocks:BBlock,
+        bblocks:Schema ;
+    rdfs:label "Plankton Initial Observation (SOSA)" ;
+    dct:abstract "SOSA ObservationCollection providing initial phytoplankton density X1(x,0), zooplankton density X2(x,0), nutrient level N and fish predation rate F for a RDA simulation run."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
+    dct:created "2025-01-01T00:00:00+00:00"^^xsd:dateTime ;
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/observation/index.md> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.observation> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/observation/index.json> ] ;
+    dct:hasVersion "0.1" ;
+    dct:modified "2025-01-01"^^xsd:date ;
+    dct:source <https://www.w3.org/TR/vocab-ssn/> ;
+    rdfs:subClassOf sosa:ObservationCollection ;
+    skos:inScheme <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    skos:prefLabel "Plankton Initial Observation (SOSA)" ;
+    skos:topConceptOf <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    dcat:keyword "SOSA",
+        "initial-conditions",
+        "observation",
+        "plankton" ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/observation/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/observation/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/observation/schema.json> ;
+            prof:hasRole role:schema ] ;
+    bblocks:dependsOn <bblocks://mwj.pdes.parameters> ;
+    bblocks:hasSourceJsonLdContext <https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/observation/context.jsonld> ;
+    bblocks:status <http://www.opengis.net/def/status/experimental> ;
+    bblocks:validationPassed true .
+
+<bblocks://mwj.pdes.parameters> a skos:Concept,
+        dcat:Dataset,
+        bblocks:BBlock,
+        bblocks:Schema ;
+    rdfs:label "Scheffer Phytoplankton-Zooplankton RDA Parameters" ;
+    dct:abstract "Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model (Malchow, GlgbasModII WS2010, eqs. 4.64/4.65). Covers reaction parameters, diffusion coefficients and advection velocities."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
+    dct:created "2025-01-01T00:00:00+00:00"^^xsd:dateTime ;
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/parameters/index.md> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/parameters/index.json> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.parameters> ] ;
+    dct:hasVersion "0.1" ;
+    dct:modified "2025-01-01"^^xsd:date ;
+    dct:source <https://doi.org/10.2307/3545491>,
+        <https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES>,
+        <https://www.usf.uos.de/~malchow> ;
+    rdfs:subClassOf <http://www.w3.org/ns/ssn/systems/SystemProperty> ;
+    skos:inScheme <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    skos:prefLabel "Scheffer Phytoplankton-Zooplankton RDA Parameters" ;
+    skos:topConceptOf <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    dcat:keyword "DIFICI",
+        "RDA",
+        "Scheffer",
+        "Turing",
+        "plankton",
+        "predator-prey" ;
+    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/parameters/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/parameters/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/parameters/context.jsonld> ;
+            prof:hasRole role:mapping ] ;
+    bblocks:hasSourceJsonLdContext <https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/parameters/context.jsonld> ;
+    bblocks:status <http://www.opengis.net/def/status/experimental> ;
+    bblocks:validationPassed true .
+
+<https://markuswilhelmjahn.github.io/bblocks-pdes/> a skos:ConceptScheme,
         dcat:Catalog,
         bblocks:BBlocksRegister ;
-    rdfs:label "Building Blocks - My OGC Building Blocks repository" ;
-    dct:abstract """This is an example text for the abstract. It should be short and to the point.
-A "Tell me more" link will appear if there is an additional description with a longer explanation.
+    rdfs:label "Building Blocks - Partial Differential Equation Systems OGC Blocks" ;
+    dct:abstract """OGC Blocks implementation which uses the OGC standards SOSA, PROV and STAC combined to generate an interface for publishing the simulation results from a pytho-plankton and zoo-plankton interaction described by partial differential equations and numerically solved by using the Runge-Kutta method.
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:description """The description can be longer. Both **the abstract** *and the description* support Markdown,
-including [links](https://google.es).
+    dct:description """## About this Register:
+
+### **Who is this register for?**
+
+### **What does this register contain?**
+
+### **When should this register be used?**
+
+### **Where does this register fit?**
+
+### **Why does this register exist?**
+
+### **How is this register structured and implemented?**
+
+### **For Developers**
+*   **[GitHub Repository](https://github.com/ogcincubator/bblocks-SOSAPROVSTAC)**
+*   **[OGC Blocks Documentation](https://ogcincubator.github.io/bblocks-docs/)**
+*   **[OGC Blocks Tutorials](https://ogcincubator.github.io/bblocks-tutorial/)**
+*   **[OGC Blocks Examples](https://ogcincubator.github.io/bblocks-examples/)**
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:modified "2026-05-07T11:37:21.546445"^^xsd:dateTime ;
+    dct:modified "2026-05-20T12:34:30.558415"^^xsd:dateTime ;
+    void:sparqlEndpoint <http://defs-hosted.opengis.net/fuseki-hosted/query> ;
     owl:imports <https://opengeospatial.github.io/bblocks/register.json> ;
-    skos:hasTopConcept <bblocks://ogc.bbr.template.myFeature>,
-        <bblocks://ogc.bbr.template.mySchema> ;
-    skos:prefLabel "Building Blocks - My OGC Building Blocks repository" ;
-    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON format" ;
+    skos:hasTopConcept <bblocks://mwj.pdes.observation>,
+        <bblocks://mwj.pdes.parameters>,
+        <bblocks://mwj.pdes.simulation-run>,
+        <bblocks://mwj.pdes.stac-result> ;
+    skos:prefLabel "Building Blocks - Partial Differential Equation Systems OGC Blocks" ;
+    prof:hasResource [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
+            dct:type "text/turtle" ;
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            ns2:hasTarget <https://markuswilhelmjahn.github.io/bblocks-pdes/build/bblocks.ttl> ],
+        [ rdfs:label "This Building Blocks Register in JSON format" ;
             dct:type "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://opengeospatial.github.io/bblocks-template/build/register.json> ],
+            ns2:hasTarget <https://markuswilhelmjahn.github.io/bblocks-pdes/build/register.json> ],
         [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
             dct:type "application/ld+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://opengeospatial.github.io/bblocks-template/build/bblocks.jsonld> ],
-        [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
-            dct:type "text/turtle" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://opengeospatial.github.io/bblocks-template/build/bblocks.ttl> ] ;
-    foaf:homepage <https://opengeospatial.github.io/bblocks-template/> ;
-    bblocks:hasValidationReport <https://opengeospatial.github.io/bblocks-template/build/tests/report.html> .
+            ns2:hasTarget <https://markuswilhelmjahn.github.io/bblocks-pdes/build/bblocks.jsonld> ] ;
+    foaf:homepage <https://markuswilhelmjahn.github.io/bblocks-pdes/> ;
+    bblocks:hasValidationReport <https://markuswilhelmjahn.github.io/bblocks-pdes/build/tests/report.html> .
 
-_:N9e9ccc65c76441ceaeed171c5748f805 a prov:Agent,
+_:Nd08e62d6b06f40a0b27dcdf7e56abfa3 a prov:Agent,
         schema:SoftwareApplication ;
     rdfs:label "OGC-NA tools" ;
-    dct:hasVersion "0.5.28" ;
+    dct:hasVersion "0.5.29" ;
     rdfs:seeAlso <https://github.com/opengeospatial/ogc-na-tools> .
 

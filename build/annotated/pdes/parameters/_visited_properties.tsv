@@ -1,0 +1,25 @@
+path	@id	schema
+/alpha	https://mwj.example.org/plankton/model/maxPhytoplanktonGrowthRate	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/c	https://mwj.example.org/plankton/model/competitionCoefficient	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/gamma	https://mwj.example.org/plankton/model/maxGrazingRate	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/H1	https://mwj.example.org/plankton/model/halfSatGrazing	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/H2	https://mwj.example.org/plankton/model/halfSatFishPredation	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/HN	https://mwj.example.org/plankton/model/halfSatNutrient	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/e	https://mwj.example.org/plankton/model/assimilationEfficiency	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/delta	https://mwj.example.org/plankton/model/zooplanktonMortalityRate	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/N	https://mwj.example.org/plankton/model/nutrientLevel	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/F	https://mwj.example.org/plankton/model/fishPredationRate	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/D1	https://mwj.example.org/plankton/model/phytoplanktonDiffusivity	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/D2	https://mwj.example.org/plankton/model/zooplanktonDiffusivity	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/v1x	https://mwj.example.org/plankton/model/phytoplanktonAdvectionX	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/v2x	https://mwj.example.org/plankton/model/zooplanktonAdvectionX	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/v1y	https://mwj.example.org/plankton/model/phytoplanktonAdvectionY	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/v2y	https://mwj.example.org/plankton/model/zooplanktonAdvectionY	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/domain_length_x_cm		/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/domain_length_y_cm		/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/grid_points_x		/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/grid_points_y		/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/dt	https://mwj.example.org/plankton/model/numericalTimeStep	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/t_end	https://mwj.example.org/plankton/model/simulationEndTime	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/boundary_condition	https://mwj.example.org/plankton/model/boundaryConditionType	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/spatial_dimensions	https://mwj.example.org/plankton/model/spatialDimensions	/github/workspace/build/annotated/pdes/parameters/schema.yaml

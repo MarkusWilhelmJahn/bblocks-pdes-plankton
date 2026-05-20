@@ -1,0 +1,41 @@
+{
+  "@context": {
+    "ObservationCollection": "sosa:ObservationCollection",
+    "perturbation_amplitude": "https://mwj.example.org/plankton/sim/perturbationAmplitude",
+    "perturbation_type": "https://mwj.example.org/plankton/sim/perturbationType",
+    "featureOfInterest": "sosa:hasFeatureOfInterest",
+    "phenomenonTime": "sosa:phenomenonTime",
+    "madeBySensor": "sosa:madeBySensor",
+    "hasMember": {
+      "@context": {
+        "observedProperty": {
+          "@id": "sosa:observedProperty",
+          "@type": "@id"
+        },
+        "hasResult": {
+          "@context": {
+            "value": "sosa:hasSimpleResult",
+            "unit": "http://qudt.org/schema/qudt/unit"
+          },
+          "@id": "sosa:hasResult"
+        },
+        "resultTime": {
+          "@id": "sosa:resultTime",
+          "@type": "xsd:dateTime"
+        },
+        "usedProcedure": {
+          "@id": "sosa:usedProcedure",
+          "@type": "@id"
+        }
+      },
+      "@id": "sosa:hasMember"
+    },
+    "perturbation": "https://mwj.example.org/plankton/sim/perturbation",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "plkobs": "https://mwj.example.org/plankton/obs/",
+    "@version": 1.1
+  }
+}

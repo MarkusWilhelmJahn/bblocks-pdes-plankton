@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for mwj.pdes.simulation-run - Plankton RDA Simulation Run (PROV)",
+  "bblockName": "Plankton RDA Simulation Run (PROV)",
+  "bblockId": "mwj.pdes.simulation-run",
+  "generated": "2026-05-20T12:34:31.847945+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

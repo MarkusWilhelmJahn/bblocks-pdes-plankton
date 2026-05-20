@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "plankton-rda:provenance": {
+      "@type": "@id"
+    },
+    "plankton-rda:observation": {
+      "@type": "@id"
+    },
+    "prov": "http://www.w3.org/ns/prov#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "plankton-rda": "https://mwj.example.org/plankton/stac/",
+    "@version": 1.1
+  }
+}

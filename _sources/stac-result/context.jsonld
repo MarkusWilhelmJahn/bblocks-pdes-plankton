@@ -16,7 +16,17 @@
     "plankton-rda:boundary_condition":"plkstac:boundaryCondition",
     "plankton-rda:t_end_d":           "plkstac:simulationEndTime",
     "plankton-rda:numerical_scheme":  "plkstac:numericalScheme",
-    "plankton-rda:provenance":        "prov:wasDerivedFrom",
-    "plankton-rda:observation":       "sosa:usedProcedure"
+
+    "plankton-rda:provenance": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id",
+      "@comment": "URI of the prov:Activity (SimulationRun) that produced these outputs"
+    },
+
+    "plankton-rda:observation": {
+      "@id": "prov:used",
+      "@type": "@id",
+      "@comment": "URI of the sosa:ObservationCollection consumed by the SimulationRun. Uses prov:used (not sosa:usedProcedure) because the SimulationRun is a prov:Activity, not a sosa:Observation, and the ObservationCollection is not a sosa:Procedure. SSN PROV alignment §6.5."
+    }
   }
 }

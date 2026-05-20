@@ -1,33 +1,41 @@
-# Plankton Initial Observation (SOSA)
+# Plankton Initial Observation (SOSA — PROV aligned)
 
 A **SOSA `ObservationCollection`** providing the initial state of a water body
-for a phytoplankton/zooplankton RDA simulation run.
+or mesocosm, aligned to the SSN PROV module (W3C SSN §6.5).
 
-## Observable properties
+## PROV alignment
 
-| Field | Unit | Notes |
-|-------|------|-------|
-| `X1_initial` | mg.dw l⁻¹ | Phytoplankton density at t=0, typically the ODE steady state |
-| `X2_initial` | mg.dw l⁻¹ | Zooplankton density at t=0 |
-| `N_observed` | relative | Nutrient level → control parameter N |
-| `F_observed` | mg.dw d⁻¹ l⁻¹ | Fish predation → control parameter F |
-| `perturbation_amplitude` | — | Small noise amplitude added to seed patterns |
-| `perturbation_type` | enum | random / symmetric / asymmetric / none |
+| SOSA concept | PROV equivalent | Role in this block |
+|---|---|---|
+| `ObservationCollection` | container of `prov:Activity` instances | the collection itself |
+| each member `Observation` | `prov:Activity` | one measured variable |
+| `madeBySensor` (CTD sensor) | `prov:wasAssociatedWith` → `prov:Agent` | the field sensor |
+| `featureOfInterest` (lake) | `prov:Entity` | the thing being measured |
+| each `hasResult` | generates a `prov:Entity` | the numeric measurement |
+| `usedProcedure` | `prov:used` | measurement protocol (optional) |
 
-## Initial condition convention
+## Structure
 
-The model is initialised at the spatially homogeneous steady state
-(X1ˢ, X2ˢ) of the ODE system plus a small perturbation
-to trigger spatial pattern formation:
+Each of the four observable properties (X1, X2, N, F) is represented as a
+separate `sosa:Observation` member of the collection, with its own
+`observedProperty` URI, `hasResult` (value + unit), and `resultTime`.
 
 ```
-X1(x, 0) = X1_initial + ε · ξ(x)
-X2(x, 0) = X2_initial + ε · ξ(x)
+ObservationCollection
+  madeBySensor → ctd-003          (sosa:Sensor ⊑ prov:Agent)
+  featureOfInterest → Lake        (sosa:FeatureOfInterest ⊑ prov:Entity)
+  hasMember →
+    Observation₁  observedProperty: phytoplanktonDensity
+                  hasResult: { value: 2.15, unit: mg.dw/l }   (prov:Entity)
+    Observation₂  observedProperty: zooplanktonDensity
+                  hasResult: { value: 2.92, unit: mg.dw/l }
+    Observation₃  observedProperty: nutrientLevel
+                  hasResult: { value: 2.5,  unit: relative }
+    Observation₄  observedProperty: fishPredationPressure
+                  hasResult: { value: 0.4,  unit: mg.dw/d/l }
 ```
 
-where ξ is the perturbation field and ε = `perturbation_amplitude`.
+## Linking to the simulation
 
-## Linking to simulation
-
-`resultTime` becomes **t = 0** and is referenced from the `SimulationRun`
-via `prov:used`.
+The `resultTime` of the first member Observation becomes **t = 0** of the
+linked `SimulationRun`, which references this collection via `prov:used`.

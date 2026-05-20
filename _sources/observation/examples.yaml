@@ -1,4 +1,4 @@
-- title: "Homogeneous steady state IC with random perturbation (Turing run)"
+- title: "Lake Constance mesocosm — four individual Observations, random IC perturbation"
   content: |
     {
       "type": "ObservationCollection",
@@ -11,20 +11,37 @@
           "water_body_type": "lake"
         }
       },
-      "resultTime": "2022-07-01T08:00:00Z",
       "phenomenonTime": "2022-06-28/2022-07-01",
-      "madeBySensor": "https://example.org/sensor/ctd-003",
-      "observedProperties": {
-        "X1_initial": 2.15,
-        "X2_initial": 2.92,
-        "N_observed": 2.5,
-        "F_observed": 0.4,
-        "perturbation_amplitude": 0.01,
-        "perturbation_type": "random"
+      "madeBySensor": "https://mwj.example.org/sensor/ctd-003",
+      "hasMember": [
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/phytoplanktonDensity",
+          "hasResult": { "value": 2.15, "unit": "mg.dw/l" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        },
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/zooplanktonDensity",
+          "hasResult": { "value": 2.92, "unit": "mg.dw/l" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        },
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/nutrientLevel",
+          "hasResult": { "value": 2.5, "unit": "relative" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        },
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/fishPredationPressure",
+          "hasResult": { "value": 0.4, "unit": "mg.dw/d/l" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        }
+      ],
+      "perturbation": {
+        "amplitude": 0.01,
+        "type": "random"
       }
     }
 
-- title: "Symmetric perturbation IC (Fig. 4.7 left panel)"
+- title: "Lake Constance mesocosm — symmetric IC perturbation (Fig. 4.7 left panel)"
   content: |
     {
       "type": "ObservationCollection",
@@ -37,15 +54,32 @@
           "water_body_type": "lake"
         }
       },
-      "resultTime": "2022-07-01T08:00:00Z",
       "phenomenonTime": "2022-06-28/2022-07-01",
-      "madeBySensor": "https://example.org/sensor/ctd-003",
-      "observedProperties": {
-        "X1_initial": 2.15,
-        "X2_initial": 2.92,
-        "N_observed": 2.5,
-        "F_observed": 0.4,
-        "perturbation_amplitude": 0.01,
-        "perturbation_type": "symmetric"
+      "madeBySensor": "https://mwj.example.org/sensor/ctd-003",
+      "hasMember": [
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/phytoplanktonDensity",
+          "hasResult": { "value": 2.15, "unit": "mg.dw/l" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        },
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/zooplanktonDensity",
+          "hasResult": { "value": 2.92, "unit": "mg.dw/l" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        },
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/nutrientLevel",
+          "hasResult": { "value": 2.5, "unit": "relative" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        },
+        {
+          "observedProperty": "https://mwj.example.org/plankton/obs/fishPredationPressure",
+          "hasResult": { "value": 0.4, "unit": "mg.dw/d/l" },
+          "resultTime": "2022-07-01T08:00:00Z"
+        }
+      ],
+      "perturbation": {
+        "amplitude": 0.01,
+        "type": "symmetric"
       }
     }

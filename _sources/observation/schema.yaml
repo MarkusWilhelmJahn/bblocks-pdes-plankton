@@ -2,11 +2,15 @@ $schema: https://json-schema.org/draft/2020-12/schema
 title: PlanktonInitialObservation
 description: >
   A SOSA ObservationCollection providing the initial state of a water body
-  or mesocosm. resultTime becomes t=0 of the simulation. observedProperties
-  supplies the spatially homogeneous or heterogeneous initial densities and
-  the two external control parameters N and F.
+  or mesocosm. Per the SSN/SOSA PROV alignment (W3C SSN 2017, §6.5):
+    - sosa:ObservationCollection is a container of sosa:Observation instances
+    - each sosa:Observation ⊑ prov:Activity
+    - each sosa:Sensor ⊑ prov:Agent  → sosa:madeBySensor ⊑ prov:wasAssociatedWith
+    - each sosa:Result ⊑ prov:Entity → sosa:hasResult    ⊑ prov:wasGeneratedBy
+    - sosa:FeatureOfInterest ⊑ prov:Entity
+  resultTime of the collection becomes t=0 of the simulation run.
 type: object
-required: [type, featureOfInterest, resultTime, observedProperties]
+required: [type, featureOfInterest, phenomenonTime, madeBySensor, hasMember]
 properties:
 
   type:
@@ -14,7 +18,9 @@ properties:
 
   featureOfInterest:
     type: object
-    description: The sampled water body or mesocosm (GeoJSON Feature)
+    description: >
+      The sampled water body or mesocosm (sosa:FeatureOfInterest ⊑ prov:Entity).
+      Represented as a GeoJSON Feature.
     required: [type, geometry]
     properties:
       type:     { const: Feature }
@@ -22,62 +28,90 @@ properties:
       properties:
         type: object
         properties:
-          name:             { type: string }
-          depth_m:          { type: number, minimum: 0, description: "Sampling depth [m]" }
-          water_body_type:  { type: string, description: "e.g. lake, mesocosm, coastal_shelf" }
-
-  resultTime:
-    type: string
-    format: date-time
-    description: "ISO 8601 timestamp of the field observation. Becomes t=0 of the simulation."
+          name:            { type: string }
+          depth_m:         { type: number, minimum: 0 }
+          water_body_type: { type: string, description: "e.g. lake, mesocosm, coastal_shelf" }
 
   phenomenonTime:
     type: string
-    description: "ISO 8601 interval of the sampling campaign (e.g. '2022-06-28/2022-07-01')"
+    description: >
+      ISO 8601 time interval of the sampling campaign (e.g. '2022-06-28/2022-07-01').
+      The sosa:phenomenonTime is the time the observed property values apply to the
+      featureOfInterest — not necessarily when the observation was recorded.
 
   madeBySensor:
     type: string
-    description: "URI or name of the sensor / observer"
+    description: >
+      URI or name of the sensor / observer.
+      sosa:madeBySensor ⊑ prov:wasAssociatedWith.
+      The sensor is a sosa:Sensor ⊑ prov:Agent.
 
-  observedProperties:
+  hasMember:
+    type: array
+    description: >
+      The individual sosa:Observation instances that form this collection.
+      Each member is itself a prov:Activity that generates one sosa:Result
+      (prov:Entity) for one sosa:ObservableProperty of the featureOfInterest.
+      Per the spec each Observation must have exactly one observedProperty
+      and at least one hasResult.
+    minItems: 1
+    items:
+      type: object
+      required: [observedProperty, hasResult, resultTime]
+      properties:
+
+        observedProperty:
+          type: string
+          description: >
+            URI of the sosa:ObservableProperty being measured.
+            Use one of:
+              https://mwj.example.org/plankton/obs/phytoplanktonDensity
+              https://mwj.example.org/plankton/obs/zooplanktonDensity
+              https://mwj.example.org/plankton/obs/nutrientLevel
+              https://mwj.example.org/plankton/obs/fishPredationPressure
+
+        hasResult:
+          type: object
+          description: >
+            The sosa:Result of this individual Observation (prov:Entity
+            wasGeneratedBy this Observation prov:Activity).
+          required: [value, unit]
+          properties:
+            value:
+              type: number
+              description: "Numeric measurement value"
+            unit:
+              type: string
+              description: >
+                Unit of measure. Expected values:
+                  'mg.dw/l'     for X1, X2
+                  'relative'    for N
+                  'mg.dw/d/l'   for F
+
+        resultTime:
+          type: string
+          format: date-time
+          description: >
+            ISO 8601 timestamp when this individual observation was completed
+            (sosa:resultTime). The resultTime of the first member becomes t=0
+            of the linked SimulationRun.
+
+        usedProcedure:
+          type: string
+          description: >
+            URI of the sosa:Procedure (measurement protocol) used for this
+            individual observation. sosa:usedProcedure ⊑ prov:used.
+            Optional; omit if using a generic field sampling protocol.
+
+  perturbation:
     type: object
-    required: [X1_initial, X2_initial, N_observed, F_observed]
+    description: >
+      Optional spatial perturbation applied to the homogeneous initial condition
+      to seed pattern formation in the PDE simulation.
     properties:
-
-      X1_initial:
+      amplitude:
         type: number
-        minimum: 0
-        description: >
-          Initial phytoplankton density at t=0 [mg.dw l^-1].
-          Used as spatially homogeneous IC: X1(x,0) = X1_initial.
-          Script default: X1^S ≈ 2.15 (stable fixed point at delta=0.175).
-
-      X2_initial:
-        type: number
-        minimum: 0
-        description: >
-          Initial zooplankton density at t=0 [mg.dw l^-1].
-          Used as spatially homogeneous IC: X2(x,0) = X2_initial.
-          Script default: X2^S ≈ 2.92 (stable fixed point).
-
-      N_observed:
-        type: number
-        minimum: 0
-        description: "Observed nutrient level (relative units). Passed directly as control parameter N."
-
-      F_observed:
-        type: number
-        minimum: 0
-        description: "Observed fish predation pressure [mg.dw d^-1 l^-1]. Passed directly as control parameter F."
-
-      perturbation_amplitude:
-        type: number
-        description: >
-          Optional small perturbation added to the homogeneous IC to seed
-          spatial pattern formation. Script uses random or symmetric noise
-          around the homogeneous steady state.
-
-      perturbation_type:
+        description: "Perturbation amplitude (fraction of steady-state value)"
+      type:
         type: string
         enum: [random, symmetric, asymmetric, none]
-        description: "Type of initial spatial perturbation applied (see Figs. 4.6, 4.7)"

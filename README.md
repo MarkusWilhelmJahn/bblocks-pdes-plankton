@@ -13,4 +13,8 @@ bblocks-pdes/
     ├── simulation-run/   bblock.json  schema.yaml  context.jsonld  description.md  examples.yaml  shapes.ttl
     └── stac-result/      bblock.json  schema.yaml  context.jsonld  description.md  examples.yaml
 
+<<<<<<< HEAD
 [General information on design and usage of OGC Blocks](https://github.com/opengeospatial/bblock-template/blob/master/USAGE.md)
+=======
+[General information on design and usage of OGC Blocks](https://github.com/opengeospatial/bblock-template/blob/master/USAGE.md)
+>>>>>>> 4399f68efc5914c350f7e2cbd0e2acd70ed2d8d0

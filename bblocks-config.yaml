@@ -1,13 +1,13 @@
 # A short, descriptive name of this building block collection
-name: Plankton Model OGC Blocks
+name: Partial Differential Equation Systems OGC Blocks
 
 # Short abstract for this collection (optional)
 abstract: |
-  OGC Blocks for the Scheffer phytoplankton/zooplankton predator-prey simulation model, using SOSA, PROV and STAC.
+  OGC Blocks for publishing Partial Differential Equation Systems Simulations using SOSA, PROV and STAC.
 
 # Description for this collection (optional)
 description: |
-  ## About this Register: Plankton Model OGC Blocks
+  ## About this Register:
 
   ### **Who is this register for?**
 
@@ -28,7 +28,7 @@ description: |
   *   **[OGC Blocks Examples](https://ogcincubator.github.io/bblocks-examples/)**
 
 # Customize the following prefix (will be prepended to the path of the building blocks):
-identifier-prefix: mwj.bbr.pdes.
+identifier-prefix: mwj.pdes.
 
 # List of imports ("default" is an alias for the main OGC Building Blocks Register)
 imports:

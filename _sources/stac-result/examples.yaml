@@ -1,61 +1,140 @@
-- title: STAC Item for run R001 (stable focus)
+- title: "STAC Item S001 — 1D Turing standing pattern"
   content: |
     {
       "type": "Feature",
       "stac_version": "1.0.0",
-      "stac_extensions": [
-        "https://example.org/plankton-sim/v0.1/schema.json"
-      ],
-      "id": "R001",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [9.37, 47.65]
-      },
+      "stac_extensions": ["https://mwj.example.org/plankton-rda/v0.1/schema.json"],
+      "id": "S001",
+      "geometry": { "type": "Point", "coordinates": [9.37, 47.65] },
       "bbox": [9.35, 47.63, 9.39, 47.67],
       "properties": {
-        "datetime": "2022-07-01T00:00:00Z",
-        "start_datetime": "2022-07-01T00:00:00Z",
-        "end_datetime":   "2024-05-10T00:00:00Z",
-        "plankton-sim:model":       "Scheffer-1991-PhytoZoo",
-        "plankton-sim:scenario":    "stable-focus",
-        "plankton-sim:delta":       0.219,
-        "plankton-sim:duration_d":  700,
-        "plankton-sim:method":      "runge-kutta-4",
-        "plankton-sim:provenance":  "https://example.org/runs/R001",
-        "plankton-sim:observation": "https://example.org/obs/LC-2022-07-01"
+        "datetime":                          "2022-07-01T00:00:00Z",
+        "start_datetime":                    "2022-07-01T00:00:00Z",
+        "end_datetime":                      "2027-01-06T00:00:00Z",
+        "plankton-rda:model":                "Scheffer1991-RDA",
+        "plankton-rda:scenario":             "1D-Turing-standing-pattern",
+        "plankton-rda:spatial_dimensions":   1,
+        "plankton-rda:D1":                   1.0e-5,
+        "plankton-rda:D2":                   2.0e-3,
+        "plankton-rda:D_ratio":              200,
+        "plankton-rda:v_rel":                0.0,
+        "plankton-rda:delta":                0.175,
+        "plankton-rda:boundary_condition":   "zero-flux",
+        "plankton-rda:domain_length_x_cm":   100,
+        "plankton-rda:t_end_d":              1600,
+        "plankton-rda:numerical_scheme":     "explicit-euler",
+        "plankton-rda:provenance":           "https://mwj.example.org/runs/S001",
+        "plankton-rda:observation":          "https://mwj.example.org/obs/LC-2022-07-01-random"
       },
       "links": [
         {
-          "href":  "https://example.org/runs/R001",
+          "href":  "https://mwj.example.org/runs/S001",
           "rel":   "derived_from",
           "type":  "application/json",
-          "title": "PROV simulation run record"
+          "title": "PROV simulation run"
         },
         {
-          "href":  "https://example.org/obs/LC-2022-07-01",
+          "href":  "https://mwj.example.org/obs/LC-2022-07-01-random",
           "rel":   "related",
           "type":  "application/json",
           "title": "SOSA initial observation"
+        },
+        {
+          "href":  "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+          "rel":   "software",
+          "type":  "text/html",
+          "title": "FiniteDifferenceMethod4PDES"
         }
       ],
       "assets": {
-        "timeseries": {
-          "href":  "https://example.org/data/R001/timeseries.csv",
+        "X1_field": {
+          "href":  "https://mwj.example.org/data/S001/X1_field.csv",
           "type":  "text/csv",
-          "title": "X1(t), X2(t) time series",
+          "title": "Phytoplankton spatial field X1(x,t)",
           "roles": ["data"]
         },
-        "phase_portrait": {
-          "href":  "https://example.org/data/R001/phase_portrait.png",
+        "X2_field": {
+          "href":  "https://mwj.example.org/data/S001/X2_field.csv",
+          "type":  "text/csv",
+          "title": "Zooplankton spatial field X2(x,t)",
+          "roles": ["data"]
+        },
+        "PHY_profile": {
+          "href":  "https://mwj.example.org/data/S001/PHY_profile_t1600.png",
           "type":  "image/png",
-          "title": "Phase portrait X1 vs X2",
+          "title": "Phytoplankton 1D profile at t=1600d (cf. Fig. 4.4 right)",
           "roles": ["overview"]
         },
-        "parameters": {
-          "href":  "https://example.org/params/scheffer-default.json",
+        "wave_number": {
+          "href":  "https://mwj.example.org/data/S001/wave_number_analysis.png",
+          "type":  "image/png",
+          "title": "G(k²) polynomial — critical wave numbers",
+          "roles": ["overview"]
+        }
+      }
+    }
+
+- title: "STAC Item S003 — 2D DIFICI travelling wave"
+  content: |
+    {
+      "type": "Feature",
+      "stac_version": "1.0.0",
+      "stac_extensions": ["https://mwj.example.org/plankton-rda/v0.1/schema.json"],
+      "id": "S003",
+      "geometry": { "type": "Point", "coordinates": [9.37, 47.65] },
+      "bbox": [9.35, 47.63, 9.39, 47.67],
+      "properties": {
+        "datetime":                          "2022-07-01T00:00:00Z",
+        "start_datetime":                    "2022-07-01T00:00:00Z",
+        "end_datetime":                      "2027-01-06T00:00:00Z",
+        "plankton-rda:model":                "Scheffer1991-RDA",
+        "plankton-rda:scenario":             "2D-DIFICI-travelling-wave",
+        "plankton-rda:spatial_dimensions":   2,
+        "plankton-rda:D1":                   1.0e-5,
+        "plankton-rda:D2":                   1.0e-5,
+        "plankton-rda:D_ratio":              1,
+        "plankton-rda:v_rel":                0.01,
+        "plankton-rda:delta":                0.175,
+        "plankton-rda:boundary_condition":   "periodic",
+        "plankton-rda:domain_length_x_cm":   100,
+        "plankton-rda:domain_length_y_cm":   100,
+        "plankton-rda:t_end_d":              1600,
+        "plankton-rda:numerical_scheme":     "explicit-euler",
+        "plankton-rda:provenance":           "https://mwj.example.org/runs/S003",
+        "plankton-rda:observation":          "https://mwj.example.org/obs/LC-2022-07-01-random"
+      },
+      "links": [
+        {
+          "href":  "https://mwj.example.org/runs/S003",
+          "rel":   "derived_from",
           "type":  "application/json",
-          "title": "Parameter set JSON",
-          "roles": ["metadata"]
+          "title": "PROV simulation run"
+        },
+        {
+          "href":  "https://mwj.example.org/obs/LC-2022-07-01-random",
+          "rel":   "related",
+          "type":  "application/json",
+          "title": "SOSA initial observation"
+        },
+        {
+          "href":  "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+          "rel":   "software",
+          "type":  "text/html",
+          "title": "FiniteDifferenceMethod4PDES"
+        }
+      ],
+      "assets": {
+        "PHY_t1500": {
+          "href":  "https://mwj.example.org/data/S003/PHY_surface_t1500.png",
+          "type":  "image/png",
+          "title": "Phytoplankton 2D wave front at t=1500d (cf. Fig. 4.8)",
+          "roles": ["overview"]
+        },
+        "PHY_t1600": {
+          "href":  "https://mwj.example.org/data/S003/PHY_surface_t1600.png",
+          "type":  "image/png",
+          "title": "Phytoplankton 2D wave front at t=1600d",
+          "roles": ["overview"]
         }
       }
     }

@@ -1,0 +1,78 @@
+- title: "ODE only — Turing scenario reaction parameters (delta=0.175, no space)"
+  content: |
+    {
+      "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+      "H1": 0.6, "H2": 5.0, "HN": 1.0,
+      "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+      "D1": 0.0, "D2": 0.0,
+      "v1x": 0.0, "v2x": 0.0, "v1y": 0.0, "v2y": 0.0,
+      "spatial_dimensions": 1,
+      "domain_length_x_cm": 100,
+      "grid_points_x": 200,
+      "dt": 0.01, "t_end": 700,
+      "boundary_condition": "zero-flux"
+    }
+
+- title: "1D Turing structures — D1=1e-5, D2=2e-3, zero-flux (Fig. 4.4)"
+  content: |
+    {
+      "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+      "H1": 0.6, "H2": 5.0, "HN": 1.0,
+      "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+      "D1": 1.0e-5, "D2": 2.0e-3,
+      "v1x": 0.0, "v2x": 0.0, "v1y": 0.0, "v2y": 0.0,
+      "spatial_dimensions": 1,
+      "domain_length_x_cm": 100,
+      "grid_points_x": 200,
+      "dt": 0.1, "t_end": 1600,
+      "boundary_condition": "zero-flux"
+    }
+
+- title: "1D Travelling waves (DIFICI) — equal diffusion, differential advection (Fig. 4.5)"
+  content: |
+    {
+      "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+      "H1": 0.6, "H2": 5.0, "HN": 1.0,
+      "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+      "D1": 1.0e-5, "D2": 1.0e-5,
+      "v1x": 0.01, "v2x": 0.0, "v1y": 0.0, "v2y": 0.0,
+      "spatial_dimensions": 1,
+      "domain_length_x_cm": 100,
+      "grid_points_x": 200,
+      "dt": 0.1, "t_end": 1600,
+      "boundary_condition": "zero-flux"
+    }
+
+- title: "2D Turing structures — 1m² domain, zero-flux all sides (Fig. 4.6)"
+  content: |
+    {
+      "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+      "H1": 0.6, "H2": 5.0, "HN": 1.0,
+      "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+      "D1": 1.0e-5, "D2": 2.0e-3,
+      "v1x": 0.0, "v2x": 0.0, "v1y": 0.0, "v2y": 0.0,
+      "spatial_dimensions": 2,
+      "domain_length_x_cm": 100,
+      "domain_length_y_cm": 100,
+      "grid_points_x": 100,
+      "grid_points_y": 100,
+      "dt": 0.1, "t_end": 1600,
+      "boundary_condition": "zero-flux"
+    }
+
+- title: "2D Travelling waves — diagonal differential advection, periodic L/R (Fig. 4.8)"
+  content: |
+    {
+      "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+      "H1": 0.6, "H2": 5.0, "HN": 1.0,
+      "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+      "D1": 1.0e-5, "D2": 1.0e-5,
+      "v1x": 0.01, "v2x": 0.0, "v1y": 0.01, "v2y": 0.0,
+      "spatial_dimensions": 2,
+      "domain_length_x_cm": 100,
+      "domain_length_y_cm": 100,
+      "grid_points_x": 100,
+      "grid_points_y": 100,
+      "dt": 0.1, "t_end": 1600,
+      "boundary_condition": "periodic"
+    }

@@ -1,17 +1,21 @@
 {
-  "name": "Plankton Simulation Run (PROV)",
-  "abstract": "PROV-O description of a single execution of the Scheffer phytoplankton/zooplankton ODE model, linking input observations and parameters to output time series.",
+  "name": "Plankton RDA Simulation Run (PROV)",
+  "abstract": "PROV-O Activity capturing a single FDM simulation of the Scheffer phytoplankton/zooplankton RDA model, linking SOSA initial observations and parameters to output spatial fields and time series.",
   "status": "experimental",
   "dateTimeAddition": "2025-01-01T00:00:00Z",
   "itemClass": "schema",
   "version": "0.1",
   "dependsOn": [
-    "mwj.bbr.pdes.parameters",
-    "mwj.bbr.pdes.observation"
+    "mwj.pdes.parameters",
+    "mwj.pdes.observation"
   ],
-  "tags": ["PROV", "simulation", "lineage", "plankton"],
+  "tags": ["PROV", "simulation", "FDM", "plankton", "lineage"],
   "sources": [
-    { "title": "W3C PROV-O", "link": "https://www.w3.org/TR/prov-o/" }
+    { "title": "W3C PROV-O", "link": "https://www.w3.org/TR/prov-o/" },
+    {
+      "title": "Simulation software — FiniteDifferenceMethod4PDES",
+      "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES"
+    }
   ],
   "rdfType": ["http://www.w3.org/ns/prov#Activity"]
 }

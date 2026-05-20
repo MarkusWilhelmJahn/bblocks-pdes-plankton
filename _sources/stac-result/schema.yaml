@@ -1,87 +1,136 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: PlanktonSTACItem
+title: PlanktonRDASTACItem
 description: >
-  A STAC Item representing the outputs of one plankton model simulation run.
-  Extends the core STAC Item with a 'plankton-sim' extension block.
-allOf:
-  - description: Core STAC Item fields
+  A STAC 1.0 Item cataloguing the spatial field outputs of one plankton
+  RDA simulation run. Uses the 'plankton-rda' extension namespace for
+  model-specific searchable properties.
+type: object
+required: [type, stac_version, id, geometry, bbox, properties, links, assets]
+properties:
+
+  type:          { const: Feature }
+  stac_version:  { const: "1.0.0" }
+  stac_extensions:
+    type: array
+    items: { type: string }
+
+  id:
+    type: string
+    description: "Unique run identifier matching SimulationRun.id suffix"
+
+  geometry:
     type: object
-    required: [type, stac_version, id, geometry, bbox, properties, links, assets]
+    description: "GeoJSON geometry of the simulation spatial domain or observation site"
+
+  bbox:
+    type: array
+    items: { type: number }
+    minItems: 4
+
+  properties:
+    type: object
+    required:
+      - datetime
+      - "plankton-rda:model"
+      - "plankton-rda:scenario"
+      - "plankton-rda:spatial_dimensions"
     properties:
-      type:           { const: Feature }
-      stac_version:   { const: "1.0.0" }
-      stac_extensions:
-        type: array
-        contains:
-          const: "https://example.org/plankton-sim/v0.1/schema.json"
-      id:
+      datetime:       { type: string, format: date-time }
+      start_datetime: { type: string, format: date-time }
+      end_datetime:   { type: string, format: date-time }
+
+      "plankton-rda:model":
         type: string
-        description: Unique run identifier (matches SimulationRun.id)
-      geometry:
-        type: object
-        description: GeoJSON geometry of the simulation domain
-      bbox:
-        type: array
-        items: { type: number }
-        minItems: 4
+        const: "Scheffer1991-RDA"
+
+      "plankton-rda:scenario":
+        type: string
+        enum:
+          - ODE-stable-node
+          - ODE-stable-focus
+          - ODE-limit-cycle
+          - 1D-Turing-standing-pattern
+          - 2D-Turing-standing-pattern
+          - 1D-DIFICI-travelling-wave
+          - 2D-DIFICI-travelling-wave
+
+      "plankton-rda:spatial_dimensions":
+        type: integer
+        enum: [1, 2]
+
+      "plankton-rda:D1":
+        type: number
+        description: "Phytoplankton diffusivity [cm^2 d^-1]"
+
+      "plankton-rda:D2":
+        type: number
+        description: "Zooplankton diffusivity [cm^2 d^-1]"
+
+      "plankton-rda:D_ratio":
+        type: number
+        description: "D2/D1 ratio — >~100 triggers Turing instability"
+
+      "plankton-rda:v_rel":
+        type: number
+        description: "Differential advection speed |v1x - v2x| [cm d^-1] — >0 triggers DIFICI"
+
+      "plankton-rda:delta":
+        type: number
+        description: "Zooplankton mortality rate [d^-1] — bifurcation parameter"
+
+      "plankton-rda:boundary_condition":
+        type: string
+        enum: [zero-flux, periodic, dirichlet]
+
+      "plankton-rda:domain_length_x_cm":
+        type: number
+
+      "plankton-rda:domain_length_y_cm":
+        type: number
+
+      "plankton-rda:t_end_d":
+        type: number
+        description: "Simulation end time [d]"
+
+      "plankton-rda:numerical_scheme":
+        type: string
+
+      "plankton-rda:provenance":
+        type: string
+        description: "URI of the PROV SimulationRun Activity"
+
+      "plankton-rda:observation":
+        type: string
+        description: "URI of the SOSA ObservationCollection used as IC"
+
+  links:
+    type: array
+    items:
+      type: object
+      required: [href, rel]
       properties:
-        type: object
-        required: [datetime, "plankton-sim:model", "plankton-sim:scenario"]
-        properties:
-          datetime:
+        href:  { type: string }
+        rel:
+          type: string
+          description: >
+            'derived_from' → PROV SimulationRun;
+            'related'      → SOSA ObservationCollection;
+            'software'     → FiniteDifferenceMethod4PDES repo.
+        type:  { type: string }
+        title: { type: string }
+
+  assets:
+    type: object
+    description: "Named output files"
+    additionalProperties:
+      type: object
+      required: [href, type]
+      properties:
+        href:  { type: string }
+        type:  { type: string }
+        title: { type: string }
+        roles:
+          type: array
+          items:
             type: string
-            format: date-time
-            description: Start time of the simulated period
-          start_datetime: { type: string, format: date-time }
-          end_datetime:   { type: string, format: date-time }
-          "plankton-sim:model":
-            type: string
-            description: Model name
-            const: "Scheffer-1991-PhytoZoo"
-          "plankton-sim:scenario":
-            type: string
-            description: Qualitative scenario label
-            enum:
-              [stable-focus, stable-node, limit-cycle, excitable, chaos]
-          "plankton-sim:delta":
-            type: number
-            description: Zooplankton mortality rate used (bifurcation parameter)
-          "plankton-sim:duration_d":
-            type: number
-          "plankton-sim:method":
-            type: string
-          "plankton-sim:provenance":
-            type: string
-            description: URI of the PROV SimulationRun entity
-          "plankton-sim:observation":
-            type: string
-            description: URI of the SOSA ObservationCollection used as IC
-      links:
-        type: array
-        items:
-          type: object
-          required: [href, rel]
-          properties:
-            href: { type: string }
-            rel:
-              type: string
-              description: >
-                Use 'derived_from' for the PROV run,
-                'related' for SOSA observation
-            type: { type: string }
-            title: { type: string }
-      assets:
-        type: object
-        description: Named output files
-        additionalProperties:
-          type: object
-          required: [href, type]
-          properties:
-            href:  { type: string }
-            type:  { type: string }
-            title: { type: string }
-            roles:
-              type: array
-              items:
-                type: string
-                enum: [data, overview, thumbnail, metadata]
+            enum: [data, overview, thumbnail, metadata]

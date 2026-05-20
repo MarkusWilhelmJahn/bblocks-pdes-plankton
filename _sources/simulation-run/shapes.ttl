@@ -1,21 +1,37 @@
 @prefix sh:   <http://www.w3.org/ns/shacl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix sosa: <http://www.w3.org/ns/sosa/> .
-@prefix plk:  <https://example.org/plankton/sim/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix plk:  <https://mwj.example.org/plankton/sim/> .
 
 plk:SimulationRunShape
   a sh:NodeShape ;
   sh:targetClass prov:Activity ;
+
   sh:property [
     sh:path prov:used ;
     sh:minCount 2 ;
-    sh:message "A simulation run must use at least one observation and one parameter set."
+    sh:message "A simulation run must reference at least one SOSA observation and one parameter set via prov:used."
   ] ;
+
   sh:property [
     sh:path prov:startedAtTime ;
     sh:minCount 1 ;
+    sh:datatype xsd:dateTime ;
+    sh:message "startedAtTime must be an xsd:dateTime."
+  ] ;
+
+  sh:property [
+    sh:path prov:endedAtTime ;
+    sh:minCount 1 ;
     sh:datatype xsd:dateTime
   ] ;
+
+  sh:property [
+    sh:path prov:wasAssociatedWith ;
+    sh:minCount 1 ;
+    sh:message "A simulation run must name the software agent via prov:wasAssociatedWith."
+  ] ;
+
   sh:property [
     sh:path [ sh:inversePath prov:wasGeneratedBy ] ;
     sh:minCount 1 ;

@@ -1,19 +1,14 @@
 {
-  "name": "Plankton Initial Observation",
-  "abstract": "SOSA Observation bundle supplying initial phytoplankton and zooplankton densities, nutrient level, and spatiotemporal context for a model run.",
+  "name": "Plankton Initial Observation (SOSA)",
+  "abstract": "SOSA ObservationCollection providing initial phytoplankton density X1(x,0), zooplankton density X2(x,0), nutrient level N and fish predation rate F for a RDA simulation run.",
   "status": "experimental",
   "dateTimeAddition": "2025-01-01T00:00:00Z",
   "itemClass": "schema",
   "version": "0.1",
-  "dependsOn": ["mwj.bbr.pdes.parameters"],
-  "tags": ["SOSA", "observation", "plankton", "initial-conditions"],
+  "dependsOn": ["mwj.pdes.parameters"],
+  "tags": ["SOSA", "observation", "initial-conditions", "plankton"],
   "sources": [
-    {
-      "title": "W3C SOSA/SSN Ontology",
-      "link": "https://www.w3.org/TR/vocab-ssn/"
-    }
+    { "title": "W3C SOSA/SSN Ontology", "link": "https://www.w3.org/TR/vocab-ssn/" }
   ],
-  "rdfType": [
-    "http://www.w3.org/ns/sosa/ObservationCollection"
-  ]
+  "rdfType": ["http://www.w3.org/ns/sosa/ObservationCollection"]
 }

@@ -1,43 +1,156 @@
-- title: Run R001 — stable focus scenario (δ = 0.219)
+- title: "Run S001 — 1D Turing standing pattern (D1=1e-5, D2=2e-3)"
   content: |
     {
       "type": "SimulationRun",
-      "id": "https://example.org/runs/R001",
-      "label": "Stable focus — Holling Type II, delta=0.219",
-      "startedAtTime": "2025-03-10T14:22:00Z",
-      "endedAtTime":   "2025-03-10T14:22:04Z",
+      "id":    "https://mwj.example.org/runs/S001",
+      "label": "1D Turing structures — D1=1e-5, D2=2e-3, zero-flux",
+      "startedAtTime": "2025-04-01T09:00:00Z",
+      "endedAtTime":   "2025-04-01T09:12:34Z",
       "wasAssociatedWith": {
-        "id":       "https://example.org/software/plankton-ode-v1.2",
-        "label":    "PlanktonODE solver",
-        "version":  "1.2.0",
-        "language": "Python",
-        "repository": "https://github.com/example/plankton-ode"
+        "id":        "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+        "label":     "FiniteDifferenceMethod4PDES",
+        "version":   "main@abc1234",
+        "localPath": "/Users/markusjahn/Documents/GitHub/FiniteDifferenceMethod4PDES"
       },
-      "numericalMethod": "runge-kutta-4",
-      "timeStep_d": 0.01,
-      "duration_d": 700,
+      "numericalScheme":       "explicit-euler",
+      "spatialDiscretisation": "central-difference",
+      "scenario": "1D-Turing-standing-pattern",
       "used": {
-        "observation": "https://example.org/obs/LC-2022-07-01",
-        "parametersId": "https://example.org/params/scheffer-default"
+        "observation":  "https://mwj.example.org/obs/LC-2022-07-01-random",
+        "parametersId": "https://mwj.example.org/params/turing-1D-default"
       },
       "parameters": {
         "alpha": 0.5, "c": 0.05, "gamma": 0.4,
-        "H1": 0.6,   "H2": 5.0,  "HN": 1.0,
-        "e": 0.6,    "delta": 0.219, "F": 0.4,
-        "N": 2.5
+        "H1": 0.6, "H2": 5.0, "HN": 1.0,
+        "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+        "D1": 1.0e-5, "D2": 2.0e-3,
+        "v1x": 0.0, "v2x": 0.0, "v1y": 0.0, "v2y": 0.0,
+        "dt": 0.1, "t_end": 1600,
+        "domain_length_x_cm": 100, "grid_points_x": 200,
+        "boundary_condition": "zero-flux", "spatial_dimensions": 1
       },
       "generated": [
         {
-          "id":     "results/R001/timeseries.csv",
-          "type":   "timeseries-csv",
+          "id":     "results/S001/X1_field.csv",
+          "type":   "spatial-field-csv",
           "format": "text/csv",
-          "description": "X1(t), X2(t) at dt=0.01 d for 700 d"
+          "description": "Phytoplankton density X1(x,t) — columns: x[cm], t[d], X1[mg.dw/l]"
         },
         {
-          "id":     "results/R001/phase_portrait.png",
-          "type":   "phase-portrait-png",
+          "id":     "results/S001/X2_field.csv",
+          "type":   "spatial-field-csv",
+          "format": "text/csv",
+          "description": "Zooplankton density X2(x,t)"
+        },
+        {
+          "id":     "results/S001/PHY_profile_t1600.png",
+          "type":   "phytoplankton-surface-png",
+          "format": "image/png",
+          "description": "Phytoplankton spatial profile at t=1600d (cf. Fig. 4.4 right)"
+        },
+        {
+          "id":     "results/S001/wave_number_analysis.png",
+          "type":   "wave-number-plot-png",
+          "format": "image/png",
+          "description": "G(k^2) polynomial (eq. 4.61) showing critical wave numbers"
+        }
+      ],
+      "stacItem": "https://mwj.example.org/stac/items/S001"
+    }
+
+- title: "Run S002 — 2D Turing structures, 1m² domain (Fig. 4.6 centre)"
+  content: |
+    {
+      "type": "SimulationRun",
+      "id":    "https://mwj.example.org/runs/S002",
+      "label": "2D Turing structures — 100x100 cm, random IC",
+      "startedAtTime": "2025-04-01T10:00:00Z",
+      "endedAtTime":   "2025-04-01T11:47:22Z",
+      "wasAssociatedWith": {
+        "id":        "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+        "label":     "FiniteDifferenceMethod4PDES",
+        "version":   "main@abc1234",
+        "localPath": "/Users/markusjahn/Documents/GitHub/FiniteDifferenceMethod4PDES"
+      },
+      "numericalScheme":       "explicit-euler",
+      "spatialDiscretisation": "central-difference",
+      "scenario": "2D-Turing-standing-pattern",
+      "used": {
+        "observation":  "https://mwj.example.org/obs/LC-2022-07-01-random",
+        "parametersId": "https://mwj.example.org/params/turing-2D-100x100"
+      },
+      "parameters": {
+        "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+        "H1": 0.6, "H2": 5.0, "HN": 1.0,
+        "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+        "D1": 1.0e-5, "D2": 2.0e-3,
+        "v1x": 0.0, "v2x": 0.0, "v1y": 0.0, "v2y": 0.0,
+        "dt": 0.1, "t_end": 1600,
+        "domain_length_x_cm": 100, "domain_length_y_cm": 100,
+        "grid_points_x": 100, "grid_points_y": 100,
+        "boundary_condition": "zero-flux", "spatial_dimensions": 2
+      },
+      "generated": [
+        {
+          "id":     "results/S002/PHY_surface_t1600.png",
+          "type":   "phytoplankton-surface-png",
+          "format": "image/png",
+          "description": "2D phytoplankton density surface at t=1600d"
+        },
+        {
+          "id":     "results/S002/ZOO_surface_t1600.png",
+          "type":   "zooplankton-surface-png",
           "format": "image/png"
         }
       ],
-      "stacItem": "https://example.org/stac/items/R001"
+      "stacItem": "https://mwj.example.org/stac/items/S002"
+    }
+
+- title: "Run S003 — 2D DIFICI travelling wave, diagonal advection (Fig. 4.8)"
+  content: |
+    {
+      "type": "SimulationRun",
+      "id":    "https://mwj.example.org/runs/S003",
+      "label": "2D DIFICI travelling wave — v1x=v1y=0.01, periodic L/R",
+      "startedAtTime": "2025-04-01T13:00:00Z",
+      "endedAtTime":   "2025-04-01T14:22:10Z",
+      "wasAssociatedWith": {
+        "id":        "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+        "label":     "FiniteDifferenceMethod4PDES",
+        "version":   "main@abc1234",
+        "localPath": "/Users/markusjahn/Documents/GitHub/FiniteDifferenceMethod4PDES"
+      },
+      "numericalScheme":       "explicit-euler",
+      "spatialDiscretisation": "upwind",
+      "scenario": "2D-DIFICI-travelling-wave",
+      "used": {
+        "observation":  "https://mwj.example.org/obs/LC-2022-07-01-random",
+        "parametersId": "https://mwj.example.org/params/difici-2D-diagonal"
+      },
+      "parameters": {
+        "alpha": 0.5, "c": 0.05, "gamma": 0.4,
+        "H1": 0.6, "H2": 5.0, "HN": 1.0,
+        "e": 0.6, "delta": 0.175, "N": 2.5, "F": 0.4,
+        "D1": 1.0e-5, "D2": 1.0e-5,
+        "v1x": 0.01, "v2x": 0.0, "v1y": 0.01, "v2y": 0.0,
+        "dt": 0.1, "t_end": 1600,
+        "domain_length_x_cm": 100, "domain_length_y_cm": 100,
+        "grid_points_x": 100, "grid_points_y": 100,
+        "boundary_condition": "periodic", "spatial_dimensions": 2
+      },
+      "generated": [
+        {
+          "id":     "results/S003/PHY_surface_t1500.png",
+          "type":   "phytoplankton-surface-png",
+          "format": "image/png",
+          "description": "Travelling wave front at t=1500d (cf. Fig. 4.8)"
+        },
+        {
+          "id":     "results/S003/PHY_surface_t1600.png",
+          "type":   "phytoplankton-surface-png",
+          "format": "image/png",
+          "description": "Travelling wave front at t=1600d"
+        }
+      ],
+      "stacItem": "https://mwj.example.org/stac/items/S003"
     }

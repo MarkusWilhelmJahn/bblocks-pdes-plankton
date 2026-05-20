@@ -1,25 +1,22 @@
 {
   "@context": {
-    "sosa": "http://www.w3.org/ns/sosa/",
-    "ssn":  "http://www.w3.org/ns/ssn/",
-    "geo":  "http://www.opengis.net/ont/geosparql#",
-    "type": "@type",
-    "ObservationCollection": "sosa:ObservationCollection",
-    "featureOfInterest": "sosa:hasFeatureOfInterest",
-    "resultTime":         "sosa:resultTime",
-    "phenomenonTime":     "sosa:phenomenonTime",
-    "observedProperties": "sosa:hasResult",
-    "X1_initial": {
-      "@id": "https://example.org/plankton/obs/phytoplanktonDensity",
-      "@type": "sosa:ObservableProperty"
-    },
-    "X2_initial": {
-      "@id": "https://example.org/plankton/obs/zooplanktonDensity",
-      "@type": "sosa:ObservableProperty"
-    },
-    "N_observed": {
-      "@id": "https://example.org/plankton/obs/nutrientLevel",
-      "@type": "sosa:ObservableProperty"
-    }
+    "prov":    "http://www.w3.org/ns/prov#",
+    "sosa":    "http://www.w3.org/ns/sosa/",
+    "dcat":    "http://www.w3.org/ns/dcat#",
+    "plkstac": "https://mwj.example.org/plankton/stac/",
+
+    "plankton-rda:model":             "plkstac:model",
+    "plankton-rda:scenario":          "plkstac:scenario",
+    "plankton-rda:spatial_dimensions":"plkstac:spatialDimensions",
+    "plankton-rda:D1":                "plkstac:D1",
+    "plankton-rda:D2":                "plkstac:D2",
+    "plankton-rda:D_ratio":           "plkstac:diffusivityRatio",
+    "plankton-rda:v_rel":             "plkstac:differentialAdvection",
+    "plankton-rda:delta":             "plkstac:mortalityRate",
+    "plankton-rda:boundary_condition":"plkstac:boundaryCondition",
+    "plankton-rda:t_end_d":           "plkstac:simulationEndTime",
+    "plankton-rda:numerical_scheme":  "plkstac:numericalScheme",
+    "plankton-rda:provenance":        "prov:wasDerivedFrom",
+    "plankton-rda:observation":       "sosa:usedProcedure"
   }
 }

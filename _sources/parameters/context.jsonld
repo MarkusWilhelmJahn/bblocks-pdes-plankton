@@ -1,18 +1,27 @@
 {
   "@context": {
-    "qudt": "http://qudt.org/schema/qudt/",
-    "sosa": "http://www.w3.org/ns/sosa/",
-    "ssn": "http://www.w3.org/ns/ssn/",
-    "schema": "https://schema.org/",
-    "alpha": {
-      "@id": "https://example.org/plankton/model/alpha",
-      "@type": "qudt:Quantity"
-    },
-    "gamma": { "@id": "https://example.org/plankton/model/gamma" },
-    "H1":    { "@id": "https://example.org/plankton/model/halfSaturationGrazing" },
-    "e":     { "@id": "https://example.org/plankton/model/assimilationEfficiency" },
-    "delta": { "@id": "https://example.org/plankton/model/mortalityRate" },
-    "F":     { "@id": "https://example.org/plankton/model/fishPredationRate" },
-    "N":     { "@id": "https://example.org/plankton/model/nutrientLevel" }
+    "qudt":  "http://qudt.org/schema/qudt/",
+    "plk":   "https://mwj.example.org/plankton/model/",
+
+    "alpha":  { "@id": "plk:maxPhytoplanktonGrowthRate",  "@type": "qudt:Quantity" },
+    "c":      { "@id": "plk:competitionCoefficient",      "@type": "qudt:Quantity" },
+    "gamma":  { "@id": "plk:maxGrazingRate",              "@type": "qudt:Quantity" },
+    "H1":     { "@id": "plk:halfSatGrazing",              "@type": "qudt:Quantity" },
+    "H2":     { "@id": "plk:halfSatFishPredation",        "@type": "qudt:Quantity" },
+    "HN":     { "@id": "plk:halfSatNutrient",             "@type": "qudt:Quantity" },
+    "e":      { "@id": "plk:assimilationEfficiency",      "@type": "qudt:Quantity" },
+    "delta":  { "@id": "plk:zooplanktonMortalityRate",    "@type": "qudt:Quantity" },
+    "N":      { "@id": "plk:nutrientLevel",               "@type": "qudt:Quantity" },
+    "F":      { "@id": "plk:fishPredationRate",           "@type": "qudt:Quantity" },
+    "D1":     { "@id": "plk:phytoplanktonDiffusivity",    "@type": "qudt:Quantity" },
+    "D2":     { "@id": "plk:zooplanktonDiffusivity",      "@type": "qudt:Quantity" },
+    "v1x":    { "@id": "plk:phytoplanktonAdvectionX",     "@type": "qudt:Quantity" },
+    "v2x":    { "@id": "plk:zooplanktonAdvectionX",       "@type": "qudt:Quantity" },
+    "v1y":    { "@id": "plk:phytoplanktonAdvectionY",     "@type": "qudt:Quantity" },
+    "v2y":    { "@id": "plk:zooplanktonAdvectionY",       "@type": "qudt:Quantity" },
+    "dt":     { "@id": "plk:numericalTimeStep",           "@type": "qudt:Quantity" },
+    "t_end":  { "@id": "plk:simulationEndTime",           "@type": "qudt:Quantity" },
+    "boundary_condition": { "@id": "plk:boundaryConditionType" },
+    "spatial_dimensions": { "@id": "plk:spatialDimensions" }
   }
 }

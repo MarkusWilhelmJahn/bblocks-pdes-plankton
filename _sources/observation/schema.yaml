@@ -1,54 +1,83 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: PlanktonInitialObservation
 description: >
-  An SOSA ObservationCollection providing the initial state observed in a 
-  water body. The hasFeatureOfInterest is the lake/mesocosm. Each member
-  Observation supplies one state variable.
-allOf:
-  - $ref: "https://ogcincubator.github.io/ogc-utils/build/annotated/utils/iri-or-curie/schema.yaml"
+  A SOSA ObservationCollection providing the initial state of a water body
+  or mesocosm. resultTime becomes t=0 of the simulation. observedProperties
+  supplies the spatially homogeneous or heterogeneous initial densities and
+  the two external control parameters N and F.
 type: object
 required: [type, featureOfInterest, resultTime, observedProperties]
 properties:
+
   type:
     const: ObservationCollection
+
   featureOfInterest:
     type: object
-    description: The sampled water body or mesocosm
+    description: The sampled water body or mesocosm (GeoJSON Feature)
     required: [type, geometry]
     properties:
-      type:
-        const: Feature
-      geometry:
-        type: object
-        description: GeoJSON geometry of the sampling location
+      type:     { const: Feature }
+      geometry: { type: object, description: "GeoJSON geometry of the sampling location" }
       properties:
         type: object
         properties:
-          name: { type: string }
-          depth_m: { type: number }
+          name:             { type: string }
+          depth_m:          { type: number, minimum: 0, description: "Sampling depth [m]" }
+          water_body_type:  { type: string, description: "e.g. lake, mesocosm, coastal_shelf" }
+
   resultTime:
     type: string
     format: date-time
-    description: ISO 8601 timestamp of the observation (= t=0 of the simulation)
+    description: "ISO 8601 timestamp of the field observation. Becomes t=0 of the simulation."
+
   phenomenonTime:
     type: string
-    description: ISO 8601 interval (e.g. "2022-07-01/2022-07-07")
+    description: "ISO 8601 interval of the sampling campaign (e.g. '2022-06-28/2022-07-01')"
+
+  madeBySensor:
+    type: string
+    description: "URI or name of the sensor / observer"
+
   observedProperties:
     type: object
-    required: [X1_initial, X2_initial, N_observed]
+    required: [X1_initial, X2_initial, N_observed, F_observed]
     properties:
+
       X1_initial:
         type: number
-        description: Initial phytoplankton density [mg.dw·l⁻¹]
         minimum: 0
+        description: >
+          Initial phytoplankton density at t=0 [mg.dw l^-1].
+          Used as spatially homogeneous IC: X1(x,0) = X1_initial.
+          Script default: X1^S ≈ 2.15 (stable fixed point at delta=0.175).
+
       X2_initial:
         type: number
-        description: Initial zooplankton density [mg.dw·l⁻¹]
         minimum: 0
+        description: >
+          Initial zooplankton density at t=0 [mg.dw l^-1].
+          Used as spatially homogeneous IC: X2(x,0) = X2_initial.
+          Script default: X2^S ≈ 2.92 (stable fixed point).
+
       N_observed:
         type: number
-        description: Observed nutrient level (relative)
         minimum: 0
-      observedBy:
+        description: "Observed nutrient level (relative units). Passed directly as control parameter N."
+
+      F_observed:
+        type: number
+        minimum: 0
+        description: "Observed fish predation pressure [mg.dw d^-1 l^-1]. Passed directly as control parameter F."
+
+      perturbation_amplitude:
+        type: number
+        description: >
+          Optional small perturbation added to the homogeneous IC to seed
+          spatial pattern formation. Script uses random or symmetric noise
+          around the homogeneous steady state.
+
+      perturbation_type:
         type: string
-        description: URI or name of the sensor/observer
+        enum: [random, symmetric, asymmetric, none]
+        description: "Type of initial spatial perturbation applied (see Figs. 4.6, 4.7)"

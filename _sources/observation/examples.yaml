@@ -1,24 +1,51 @@
-- title: Lake Constance mesocosm, July 2022
+- title: "Homogeneous steady state IC with random perturbation (Turing run)"
   content: |
     {
       "type": "ObservationCollection",
       "featureOfInterest": {
         "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [9.37, 47.65, -5.0]
-        },
+        "geometry": { "type": "Point", "coordinates": [9.37, 47.65, -5.0] },
         "properties": {
-          "name": "Mesocosm 3, Lake Constance",
-          "depth_m": 5
+          "name": "Mesocosm 3 — Lake Constance",
+          "depth_m": 5,
+          "water_body_type": "lake"
         }
       },
       "resultTime": "2022-07-01T08:00:00Z",
       "phenomenonTime": "2022-06-28/2022-07-01",
+      "madeBySensor": "https://example.org/sensor/ctd-003",
       "observedProperties": {
-        "X1_initial": 0.5,
-        "X2_initial": 1.0,
+        "X1_initial": 2.15,
+        "X2_initial": 2.92,
         "N_observed": 2.5,
-        "observedBy": "https://example.org/sensor/ctd-003"
+        "F_observed": 0.4,
+        "perturbation_amplitude": 0.01,
+        "perturbation_type": "random"
+      }
+    }
+
+- title: "Symmetric perturbation IC (Fig. 4.7 left panel)"
+  content: |
+    {
+      "type": "ObservationCollection",
+      "featureOfInterest": {
+        "type": "Feature",
+        "geometry": { "type": "Point", "coordinates": [9.37, 47.65, -5.0] },
+        "properties": {
+          "name": "Mesocosm 3 — Lake Constance",
+          "depth_m": 5,
+          "water_body_type": "lake"
+        }
+      },
+      "resultTime": "2022-07-01T08:00:00Z",
+      "phenomenonTime": "2022-06-28/2022-07-01",
+      "madeBySensor": "https://example.org/sensor/ctd-003",
+      "observedProperties": {
+        "X1_initial": 2.15,
+        "X2_initial": 2.92,
+        "N_observed": 2.5,
+        "F_observed": 0.4,
+        "perturbation_amplitude": 0.01,
+        "perturbation_type": "symmetric"
       }
     }

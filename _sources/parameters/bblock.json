@@ -1,20 +1,24 @@
 {
-  "name": "Phytoplankton-Zooplankton Model Parameters",
-  "abstract": "Typed parameter set for the Scheffer (1991) two-component predator-prey model (eqs. 7.17/7.18).",
+  "name": "Scheffer Phytoplankton-Zooplankton RDA Parameters",
+  "abstract": "Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model (Malchow, GlgbasModII WS2010, eqs. 4.64/4.65). Covers reaction parameters, diffusion coefficients and advection velocities.",
   "status": "experimental",
   "dateTimeAddition": "2025-01-01T00:00:00Z",
   "itemClass": "schema",
   "version": "0.1",
-  "tags": ["plankton", "predator-prey", "ODE", "Scheffer"],
+  "tags": ["plankton", "predator-prey", "RDA", "Scheffer", "Turing", "DIFICI"],
   "sources": [
     {
       "title": "Scheffer (1991) Oikos 62:271-282",
       "link": "https://doi.org/10.2307/3545491"
     },
     {
-      "title": "Malchow et al. Gleichungsbasierte Modelle II, Kap. 4.6",
+      "title": "Malchow — Gleichungsbasierte Modelle II, Kap. 4.6 (WS 2010/11)",
       "link": "https://www.usf.uos.de/~malchow"
+    },
+    {
+      "title": "Simulation software — FiniteDifferenceMethod4PDES",
+      "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES"
     }
   ],
-  "rdfType": ["https://www.w3.org/ns/ssn/systems/SystemProperty"]
+  "rdfType": ["http://www.w3.org/ns/ssn/systems/SystemProperty"]
 }

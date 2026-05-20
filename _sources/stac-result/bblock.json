@@ -1,18 +1,15 @@
 {
-  "name": "Plankton Simulation STAC Item",
-  "abstract": "STAC Item cataloguing the spatiotemporal outputs of a plankton model simulation run, with links to PROV provenance and SOSA input observations.",
+  "name": "Plankton RDA Simulation STAC Item",
+  "abstract": "STAC 1.0 Item cataloguing spatial field outputs of a plankton RDA simulation run, filterable by scenario, diffusion ratio and advection velocity.",
   "status": "experimental",
   "dateTimeAddition": "2025-01-01T00:00:00Z",
   "itemClass": "schema",
   "version": "0.1",
   "dependsOn": [
-    "mwj.bbr.pdes.simulation-run",
-    "mwj.bbr.pdes.observation"
+    "mwj.pdes.simulation-run",
+    "mwj.pdes.observation"
   ],
-  "isProfileOf": [
-    "https://stacspec.org/en/about/stac-spec/"
-  ],
-  "tags": ["STAC", "catalog", "timeseries", "plankton"],
+  "tags": ["STAC", "catalog", "spatial-field", "plankton", "Turing", "DIFICI"],
   "sources": [
     { "title": "STAC Specification 1.0.0", "link": "https://stacspec.org/" }
   ]

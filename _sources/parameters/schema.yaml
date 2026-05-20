@@ -1,51 +1,168 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: PlanktonModelParameters
+title: PlanktonRDAParameters
 description: >
-  Dimensioned parameters for the Scheffer phytoplankton(X1)/zooplankton(X2) model.
-  dX1/dt = α·N/(H_N+N)·X1 − c·X1² − γ·X1/(H1+X1)·X2
-  dX2/dt = e·γ·X1/(H1+X1)·X2 − δ·X2 − F·X2²/(H2²+X2²)
+  Parameters for the Scheffer phytoplankton (X1) / zooplankton (X2)
+  reaction-diffusion-advection model (Malchow GlgbasModII WS2010, eqs. 4.64/4.65):
+
+    dX1/dt = alpha * N/(HN+N) * X1  -  c*X1^2  -  gamma * X1/(H1+X1) * X2
+             - v1 · grad(X1)  +  D1 · lap(X1)
+
+    dX2/dt = e*gamma * X1/(H1+X1) * X2  -  delta*X2
+             - F * X2^2/(H2^2+X2^2)
+             - v2 · grad(X2)  +  D2 · lap(X2)
+
+  N (nutrients) and F (fish predation) are external control parameters.
+  Default values from Malchow (2000) / Scheffer (1991): p. 4275 of script.
 type: object
-required: [alpha, c, gamma, H1, H2, HN, e, delta, F]
+required: [alpha, c, gamma, H1, H2, HN, e, delta, F, N, D1, D2]
 properties:
+
+  # ── Reaction parameters ───────────────────────────────────────────────────
   alpha:
     type: number
-    description: Maximum phytoplankton growth rate [d⁻¹]
     minimum: 0
-    x-ogc-unit: "d-1"
+    description: "Maximum phytoplankton growth rate [d^-1]. Default: 0.5"
+    default: 0.5
+
   c:
     type: number
-    description: Intraspecific competition coefficient of phytoplankton [mg.dw⁻¹·l·d⁻¹]
     minimum: 0
+    description: "Phytoplankton intraspecific competition coefficient [mg.dw^-1 l d^-1]. Default: 0.05"
+    default: 0.05
+
   gamma:
     type: number
-    description: Maximum zooplankton grazing rate [d⁻¹]
     minimum: 0
+    description: "Maximum zooplankton grazing rate on phytoplankton (Holling Type II) [d^-1]. Default: 0.4"
+    default: 0.4
+
   H1:
     type: number
-    description: Half-saturation density for zooplankton grazing on phytoplankton [mg.dw·l⁻¹]
     minimum: 0
+    description: "Half-saturation constant for zooplankton grazing [mg.dw l^-1]. Default: 0.6"
+    default: 0.6
+
   H2:
     type: number
-    description: Half-saturation density for fish predation on zooplankton [mg.dw·l⁻¹]
     minimum: 0
+    description: "Half-saturation constant for fish predation on zooplankton (Holling Type III) [mg.dw l^-1]. Default: 5.0"
+    default: 5.0
+
   HN:
     type: number
-    description: Half-saturation constant for nutrient-limited phytoplankton growth
     minimum: 0
+    description: "Half-saturation constant for nutrient-limited phytoplankton growth (Michaelis-Menten) [relative units]. Default: 1.0"
+    default: 1.0
+
   e:
     type: number
-    description: Zooplankton assimilation efficiency (dimensionless)
     minimum: 0
     maximum: 1
+    description: "Zooplankton assimilation efficiency (dimensionless). Default: 0.6"
+    default: 0.6
+
   delta:
     type: number
-    description: Zooplankton mortality and respiration rate [d⁻¹]
     minimum: 0
-  F:
-    type: number
-    description: Fish predation pressure on zooplankton [mg.dw·d⁻¹·l⁻¹]
-    minimum: 0
+    description: "Zooplankton mortality and respiration rate [d^-1]. Default: 0.175. Primary bifurcation parameter for ODE attractor type."
+    default: 0.175
+
+  # ── External control parameters ───────────────────────────────────────────
   N:
     type: number
-    description: Nutrient level (external control parameter, relative units)
     minimum: 0
+    description: "Nutrient level — external control parameter (relative units). Default: 2.5"
+    default: 2.5
+
+  F:
+    type: number
+    minimum: 0
+    description: "Fish predation rate on zooplankton [mg.dw d^-1 l^-1]. Default: 0.4"
+    default: 0.4
+
+  # ── Spatial (PDE) parameters ──────────────────────────────────────────────
+  D1:
+    type: number
+    minimum: 0
+    description: >
+      Phytoplankton diffusion coefficient [cm^2 d^-1].
+      Turing scenario: D1=1e-5, D2=2e-3 (ratio 200).
+      Travelling wave (DIFICI) scenario: D1=D2=1e-5.
+    default: 1.0e-5
+
+  D2:
+    type: number
+    minimum: 0
+    description: >
+      Zooplankton diffusion coefficient [cm^2 d^-1].
+      Turing scenario: D1=1e-5, D2=2e-3.
+      Travelling wave scenario: D1=D2=1e-5.
+    default: 1.0e-5
+
+  v1x:
+    type: number
+    description: "Phytoplankton advection velocity in x-direction [cm d^-1]. Default: 0.0"
+    default: 0.0
+
+  v2x:
+    type: number
+    description: >
+      Zooplankton advection velocity in x-direction [cm d^-1].
+      DIFICI (travelling waves) requires v1x - v2x != 0, e.g. 0.01.
+      Default: 0.0
+    default: 0.0
+
+  v1y:
+    type: number
+    description: "Phytoplankton advection velocity in y-direction [cm d^-1]. Default: 0.0"
+    default: 0.0
+
+  v2y:
+    type: number
+    description: "Zooplankton advection velocity in y-direction [cm d^-1]. Default: 0.0"
+    default: 0.0
+
+  # ── Numerical parameters ──────────────────────────────────────────────────
+  domain_length_x_cm:
+    type: number
+    minimum: 0
+    description: "Spatial domain length in x [cm]. Script examples: 100 cm (1D), 50/100/150 cm (2D)."
+
+  domain_length_y_cm:
+    type: number
+    minimum: 0
+    description: "Spatial domain length in y [cm]. Only for 2D runs."
+
+  grid_points_x:
+    type: integer
+    minimum: 2
+    description: "Number of grid points in x-direction (FDM spatial discretisation)."
+
+  grid_points_y:
+    type: integer
+    minimum: 2
+    description: "Number of grid points in y-direction. Only for 2D runs."
+
+  dt:
+    type: number
+    minimum: 0
+    exclusiveMinimum: 0
+    description: "Time step [d]. Must satisfy CFL condition for explicit FDM schemes."
+
+  t_end:
+    type: number
+    minimum: 0
+    description: "Simulation end time [d]."
+
+  boundary_condition:
+    type: string
+    enum: [zero-flux, periodic, dirichlet]
+    description: >
+      Spatial boundary condition type.
+      zero-flux (Neumann, zero-gradient): used in Turing-structure runs.
+      periodic: used on left/right boundary in travelling-wave run (Fig. 4.8).
+
+  spatial_dimensions:
+    type: integer
+    enum: [1, 2]
+    description: "Number of spatial dimensions (1D or 2D)."

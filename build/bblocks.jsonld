@@ -1,7 +1,7 @@
 {
   "@context": [
     {
-      "@base": "https://markuswilhelmjahn.github.io/bblocks-pdes"
+      "@base": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton"
     },
     {
       "bblocks": "https://www.opengis.net/def/bblocks/",
@@ -195,7 +195,7 @@
   "abstract": "OGC Blocks implementation which uses the OGC standards SOSA, PROV and STAC combined to generate an interface for publishing the simulation results from a pytho-plankton and zoo-plankton interaction described by partial differential equations and numerically solved by using the Runge-Kutta method.\n",
   "description": "## About this Register:\n\n### **Who is this register for?**\n\n### **What does this register contain?**\n\n### **When should this register be used?**\n\n### **Where does this register fit?**\n\n### **Why does this register exist?**\n\n### **How is this register structured and implemented?**\n\n### **For Developers**\n*   **[GitHub Repository](https://github.com/ogcincubator/bblocks-SOSAPROVSTAC)**\n*   **[OGC Blocks Documentation](https://ogcincubator.github.io/bblocks-docs/)**\n*   **[OGC Blocks Tutorials](https://ogcincubator.github.io/bblocks-tutorial/)**\n*   **[OGC Blocks Examples](https://ogcincubator.github.io/bblocks-examples/)**\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-20T12:34:30.558415",
+  "modified": "2026-05-20T14:20:17.828007",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"1c38e230d79a22d5b242ea63ec3c6d6a95af173d",
@@ -203,32 +203,32 @@
       "date": "2026-05-20T11:46:31+00:00\""
     }
   },
-  "gitRepository": "https://github.com/MarkusWilhelmJahn/bblocks-pdes",
-  "gitHubRepository": "https://github.com/MarkusWilhelmJahn/bblocks-pdes/blob/master/",
-  "baseURL": "https://markuswilhelmjahn.github.io/bblocks-pdes/",
-  "viewerURL": "https://markuswilhelmjahn.github.io/bblocks-pdes/",
-  "validationReport": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/tests/report.html",
-  "validationReportJson": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/tests/report.json",
+  "gitRepository": "https://github.com/MarkusWilhelmJahn/bblocks-pdes-plankton",
+  "gitHubRepository": "https://github.com/MarkusWilhelmJahn/bblocks-pdes-plankton/blob/master/",
+  "baseURL": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/",
+  "viewerURL": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/",
+  "validationReport": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/tests/report.html",
+  "validationReportJson": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/tests/report.json",
   "imports": [
     "https://opengeospatial.github.io/bblocks/register.json"
   ],
-  "remoteCacheDir": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/_cache",
+  "remoteCacheDir": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/_cache",
   "links": [
     {
       "rel": "self",
-      "href": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/register.json",
+      "href": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/register.json",
       "type": "application/json",
       "title": "This Building Blocks Register in JSON format"
     },
     {
       "rel": "self",
-      "href": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/bblocks.ttl",
+      "href": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/bblocks.ttl",
       "type": "text/turtle",
       "title": "This Building Blocks Register in RDF Turtle format"
     },
     {
       "rel": "self",
-      "href": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/bblocks.jsonld",
+      "href": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/bblocks.jsonld",
       "type": "application/ld+json",
       "title": "This Building Blocks Register in JSON-LD format"
     }
@@ -275,7 +275,7 @@
       ],
       "shaclShapes": null,
       "ldContext": {
-        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/parameters/context.jsonld",
+        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -283,35 +283,35 @@
       "dateOfLastChange": "2025-01-01",
       "schema": [
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/parameters/schema.yaml",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/parameters/schema.json",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/parameters/schema.yaml",
-      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/parameters/context.jsonld",
-      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/parameters/resolvedProperties.json",
-      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/parameters/",
+      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/parameters/schema.yaml",
+      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/parameters/context.jsonld",
+      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/resolvedProperties.json",
+      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/parameters/",
       "validationPassed": true,
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/parameters/index.json"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/parameters/index.json"
         },
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/parameters/index.md"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/parameters/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.parameters"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/bblock/mwj.pdes.parameters"
         }
       },
       "@id": "bblocks://mwj.pdes.parameters",
@@ -328,7 +328,7 @@
       "dependsOn": null,
       "isProfileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes/"
+        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/"
       }
     },
     {
@@ -359,7 +359,7 @@
       ],
       "shaclShapes": null,
       "ldContext": {
-        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/observation/context.jsonld",
+        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/observation/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -367,35 +367,35 @@
       "dateOfLastChange": "2025-01-01",
       "schema": [
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/observation/schema.yaml",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/observation/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/observation/schema.json",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/observation/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/observation/schema.yaml",
-      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/observation/context.jsonld",
-      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/observation/resolvedProperties.json",
-      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/observation/",
+      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/observation/schema.yaml",
+      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/observation/context.jsonld",
+      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/observation/resolvedProperties.json",
+      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/observation/",
       "validationPassed": true,
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/observation/index.json"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/observation/index.json"
         },
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/observation/index.md"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/observation/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.observation"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/bblock/mwj.pdes.observation"
         }
       },
       "@id": "bblocks://mwj.pdes.observation",
@@ -411,7 +411,7 @@
       "rdfData": [],
       "isProfileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes/"
+        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/"
       }
     },
     {
@@ -448,7 +448,7 @@
       ],
       "shaclShapes": null,
       "ldContext": {
-        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/simulation-run/context.jsonld",
+        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-run/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -456,35 +456,35 @@
       "dateOfLastChange": "2025-01-01",
       "schema": [
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/simulation-run/schema.yaml",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-run/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/simulation-run/schema.json",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-run/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/simulation-run/schema.yaml",
-      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/simulation-run/context.jsonld",
-      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/simulation-run/resolvedProperties.json",
-      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/simulation-run/",
+      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-run/schema.yaml",
+      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-run/context.jsonld",
+      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-run/resolvedProperties.json",
+      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-run/",
       "validationPassed": true,
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/simulation-run/index.json"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/simulation-run/index.json"
         },
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/simulation-run/index.md"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/simulation-run/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.simulation-run"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/bblock/mwj.pdes.simulation-run"
         }
       },
       "@id": "bblocks://mwj.pdes.simulation-run",
@@ -500,7 +500,7 @@
       "rdfData": [],
       "isProfileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes/"
+        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/"
       }
     },
     {
@@ -512,8 +512,8 @@
       "itemClass": "schema",
       "version": "0.1",
       "dependsOn": [
-        "bblocks://mwj.pdes.simulation-run",
-        "bblocks://mwj.pdes.observation"
+        "bblocks://mwj.pdes.observation",
+        "bblocks://mwj.pdes.simulation-run"
       ],
       "tags": [
         "STAC",
@@ -531,7 +531,7 @@
       ],
       "shaclShapes": null,
       "ldContext": {
-        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/stac-result/context.jsonld",
+        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/stac-result/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -539,35 +539,35 @@
       "dateOfLastChange": "2025-01-01",
       "schema": [
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/stac-result/schema.yaml",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/stac-result/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/stac-result/schema.json",
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/stac-result/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/stac-result/schema.yaml",
-      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/stac-result/context.jsonld",
-      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/annotated/pdes/stac-result/resolvedProperties.json",
-      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes/_sources/stac-result/",
+      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/stac-result/schema.yaml",
+      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/stac-result/context.jsonld",
+      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/stac-result/resolvedProperties.json",
+      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/stac-result/",
       "validationPassed": true,
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/json-full/pdes/stac-result/index.json"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/stac-result/index.json"
         },
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/build/generateddocs/markdown/pdes/stac-result/index.md"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/stac-result/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes/bblock/mwj.pdes.stac-result"
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/bblock/mwj.pdes.stac-result"
         }
       },
       "@id": "bblocks://mwj.pdes.stac-result",
@@ -583,7 +583,7 @@
       "rdfData": [],
       "isProfileOf": null,
       "skos:topConceptOf": {
-        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes/"
+        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/"
       }
     }
   ],

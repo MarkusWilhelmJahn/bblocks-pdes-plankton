@@ -1,40 +1,39 @@
-- title: "STAC Item S001 — 1D Turing standing pattern"
+- title: "STAC Item — 1D Turing standing pattern (run S001)"
   content: |
     {
       "type": "Feature",
       "stac_version": "1.0.0",
       "stac_extensions": ["https://mwj.example.org/plankton-rda/v0.1/schema.json"],
       "id": "S001",
-      "geometry": { "type": "Point", "coordinates": [9.37, 47.65] },
-      "bbox": [9.35, 47.63, 9.39, 47.67],
+      "geometry": { "type": "LineString", "coordinates": [[0.0, 0.0], [100.0, 0.0]] },
+      "bbox": [0.0, 0.0, 100.0, 0.0],
       "properties": {
-        "datetime":                          "2022-07-01T00:00:00Z",
-        "start_datetime":                    "2022-07-01T00:00:00Z",
-        "end_datetime":                      "2027-01-06T00:00:00Z",
-        "plankton-rda:model":                "Scheffer1991-RDA",
+        "datetime":                          "2025-01-01T00:00:00Z",
+        "mwj-pdes:model":                    "Scheffer1991-RDA",
+        "mwj-pdes:modelClass":               "model.lokal.o2.Plankton",
+        "mwj-pdes:solver":                   "jEuler",
+        "mwj-pdes:dimensions":               1,
+        "mwj-pdes:scenario":                 "1D-Turing-standing-pattern",
+        "mwj-pdes:provenance":               "https://mwj.example.org/pdes/procedure/plankton-euler-1d-turing",
+        "mwj-pdes:observation":              "https://mwj.example.org/pdes/obs/plankton-1d-random",
         "plankton-rda:scenario":             "1D-Turing-standing-pattern",
-        "plankton-rda:spatial_dimensions":   1,
         "plankton-rda:D1":                   1.0e-5,
         "plankton-rda:D2":                   2.0e-3,
         "plankton-rda:D_ratio":              200,
         "plankton-rda:v_rel":                0.0,
         "plankton-rda:delta":                0.175,
         "plankton-rda:boundary_condition":   "zero-flux",
-        "plankton-rda:domain_length_x_cm":   100,
-        "plankton-rda:t_end_d":              1600,
-        "plankton-rda:numerical_scheme":     "explicit-euler",
-        "plankton-rda:provenance":           "https://mwj.example.org/runs/S001",
-        "plankton-rda:observation":          "https://mwj.example.org/obs/LC-2022-07-01-random"
+        "plankton-rda:domain_length_x_cm":   100
       },
       "links": [
         {
-          "href":  "https://mwj.example.org/runs/S001",
+          "href":  "https://mwj.example.org/pdes/procedure/plankton-euler-1d-turing",
           "rel":   "derived_from",
           "type":  "application/json",
-          "title": "PROV simulation run"
+          "title": "SOSA SimulationProcedure"
         },
         {
-          "href":  "https://mwj.example.org/obs/LC-2022-07-01-random",
+          "href":  "https://mwj.example.org/pdes/obs/plankton-1d-random",
           "rel":   "related",
           "type":  "application/json",
           "title": "SOSA initial observation"
@@ -47,49 +46,34 @@
         }
       ],
       "assets": {
-        "X1_field": {
-          "href":  "https://mwj.example.org/data/S001/X1_field.csv",
-          "type":  "text/csv",
-          "title": "Phytoplankton spatial field X1(x,t)",
+        "vti_series": {
+          "href":  "data/Plankton_1.vti",
+          "type":  "application/vnd.vtk+xml",
+          "title": "VTK Image Data time series (Plankton_1.vti … Plankton_N.vti)",
           "roles": ["data"]
-        },
-        "X2_field": {
-          "href":  "https://mwj.example.org/data/S001/X2_field.csv",
-          "type":  "text/csv",
-          "title": "Zooplankton spatial field X2(x,t)",
-          "roles": ["data"]
-        },
-        "PHY_profile": {
-          "href":  "https://mwj.example.org/data/S001/PHY_profile_t1600.png",
-          "type":  "image/png",
-          "title": "Phytoplankton 1D profile at t=1600d (cf. Fig. 4.4 right)",
-          "roles": ["overview"]
-        },
-        "wave_number": {
-          "href":  "https://mwj.example.org/data/S001/wave_number_analysis.png",
-          "type":  "image/png",
-          "title": "G(k²) polynomial — critical wave numbers",
-          "roles": ["overview"]
         }
       }
     }
 
-- title: "STAC Item S003 — 2D DIFICI travelling wave"
+- title: "STAC Item — 2D DIFICI travelling wave (run S003)"
   content: |
     {
       "type": "Feature",
       "stac_version": "1.0.0",
       "stac_extensions": ["https://mwj.example.org/plankton-rda/v0.1/schema.json"],
       "id": "S003",
-      "geometry": { "type": "Point", "coordinates": [9.37, 47.65] },
-      "bbox": [9.35, 47.63, 9.39, 47.67],
+      "geometry": { "type": "Polygon", "coordinates": [[[0,0],[100,0],[100,100],[0,100],[0,0]]] },
+      "bbox": [0.0, 0.0, 100.0, 100.0],
       "properties": {
-        "datetime":                          "2022-07-01T00:00:00Z",
-        "start_datetime":                    "2022-07-01T00:00:00Z",
-        "end_datetime":                      "2027-01-06T00:00:00Z",
-        "plankton-rda:model":                "Scheffer1991-RDA",
+        "datetime":                          "2025-01-01T00:00:00Z",
+        "mwj-pdes:model":                    "Scheffer1991-RDA",
+        "mwj-pdes:modelClass":               "model.lokal.o2.Plankton",
+        "mwj-pdes:solver":                   "jEuler",
+        "mwj-pdes:dimensions":               2,
+        "mwj-pdes:scenario":                 "2D-DIFICI-travelling-wave",
+        "mwj-pdes:provenance":               "https://mwj.example.org/pdes/procedure/plankton-euler-2d-difici",
+        "mwj-pdes:observation":              "https://mwj.example.org/pdes/obs/plankton-2d-random",
         "plankton-rda:scenario":             "2D-DIFICI-travelling-wave",
-        "plankton-rda:spatial_dimensions":   2,
         "plankton-rda:D1":                   1.0e-5,
         "plankton-rda:D2":                   1.0e-5,
         "plankton-rda:D_ratio":              1,
@@ -97,44 +81,22 @@
         "plankton-rda:delta":                0.175,
         "plankton-rda:boundary_condition":   "periodic",
         "plankton-rda:domain_length_x_cm":   100,
-        "plankton-rda:domain_length_y_cm":   100,
-        "plankton-rda:t_end_d":              1600,
-        "plankton-rda:numerical_scheme":     "explicit-euler",
-        "plankton-rda:provenance":           "https://mwj.example.org/runs/S003",
-        "plankton-rda:observation":          "https://mwj.example.org/obs/LC-2022-07-01-random"
+        "plankton-rda:domain_length_y_cm":   100
       },
       "links": [
         {
-          "href":  "https://mwj.example.org/runs/S003",
+          "href":  "https://mwj.example.org/pdes/procedure/plankton-euler-2d-difici",
           "rel":   "derived_from",
           "type":  "application/json",
-          "title": "PROV simulation run"
-        },
-        {
-          "href":  "https://mwj.example.org/obs/LC-2022-07-01-random",
-          "rel":   "related",
-          "type":  "application/json",
-          "title": "SOSA initial observation"
-        },
-        {
-          "href":  "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
-          "rel":   "software",
-          "type":  "text/html",
-          "title": "FiniteDifferenceMethod4PDES"
+          "title": "SOSA SimulationProcedure"
         }
       ],
       "assets": {
-        "PHY_t1500": {
-          "href":  "https://mwj.example.org/data/S003/PHY_surface_t1500.png",
-          "type":  "image/png",
-          "title": "Phytoplankton 2D wave front at t=1500d (cf. Fig. 4.8)",
-          "roles": ["overview"]
-        },
-        "PHY_t1600": {
-          "href":  "https://mwj.example.org/data/S003/PHY_surface_t1600.png",
-          "type":  "image/png",
-          "title": "Phytoplankton 2D wave front at t=1600d",
-          "roles": ["overview"]
+        "vti_series": {
+          "href":  "data/Plankton_1.vti",
+          "type":  "application/vnd.vtk+xml",
+          "title": "VTK Image Data time series",
+          "roles": ["data"]
         }
       }
     }

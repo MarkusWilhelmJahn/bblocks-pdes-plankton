@@ -1,21 +1,20 @@
 {
-  "name": "Plankton RDA Simulation Run (PROV)",
-  "abstract": "PROV-O Activity capturing a single FDM simulation of the Scheffer phytoplankton/zooplankton RDA model, linking SOSA initial observations and parameters to output spatial fields and time series.",
+  "name": "Plankton Simulation Procedure (SOSA)",
+  "abstract": "A sosa:Procedure describing how to execute the Scheffer (1991) phytoplankton/zooplankton RDA model in FiniteDifferenceMethod4PDES, specifying the model class, numerical solver, spatial domain and time discretisation.",
   "status": "experimental",
   "dateTimeAddition": "2025-01-01T00:00:00Z",
   "itemClass": "schema",
   "version": "0.1",
   "dependsOn": [
-    "mwj.pdes.parameters",
-    "mwj.pdes.observation"
+    "mwj.pdes.simulation-domain",
+    "mwj.pdes.observation",
+    "mwj.pdes.parameters"
   ],
-  "tags": ["PROV", "simulation", "FDM", "plankton", "lineage"],
+  "tags": ["SOSA", "procedure", "simulation", "FDM", "plankton", "Turing", "DIFICI"],
   "sources": [
-    { "title": "W3C PROV-O", "link": "https://www.w3.org/TR/prov-o/" },
-    {
-      "title": "Simulation software — FiniteDifferenceMethod4PDES",
-      "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES"
-    }
+    { "title": "W3C SOSA/SSN Ontology", "link": "https://www.w3.org/TR/vocab-ssn/" },
+    { "title": "Scheffer (1991) Oikos 62:271-282", "link": "https://doi.org/10.2307/3545491" },
+    { "title": "FiniteDifferenceMethod4PDES", "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES" }
   ],
-  "rdfType": ["http://www.w3.org/ns/prov#Activity"]
+  "rdfType": ["http://www.w3.org/ns/sosa/Procedure"]
 }

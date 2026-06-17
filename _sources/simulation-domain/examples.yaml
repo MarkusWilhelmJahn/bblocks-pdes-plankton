@@ -1,0 +1,81 @@
+- title: Plankton 1D PDE spatial domain (Plankton_1.vti initial conditions)
+  content: |
+    {
+      "type": "SimulationDomain",
+      "id": "https://mwj.example.org/pdes/domain/plankton-1d-100cm",
+      "label": "Plankton-1D-100cm",
+      "domainType": "spatial-pde",
+      "dimensions": { "nx": 200, "ny": 1, "nz": 1 },
+      "spacing":    { "dx": 0.5, "dy": 1.0, "dz": 1.0 },
+      "origin":     { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "arrayNames": [
+        "phase Phytoplankton", "phase Zooplankton",
+        "local Phytoplankton", "local Zooplankton",
+        "global Phytoplankton", "global Zooplankton"
+      ],
+      "vtiSeries": {
+        "runName":    "set_01_Plankton",
+        "stepCount":  210,
+        "initFile":   "data/set_01_Plankton_1.vti",
+        "dataFolder": "data/"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[0.0, 0.0], [100.0, 0.0]]
+      },
+      "crs": "model-units",
+      "boundingBox": {
+        "min": [0.0, 0.0, 0.0],
+        "max": [100.0, 0.0, 0.0]
+      }
+    }
+
+- title: Plankton 2D PDE spatial domain (100x100 cm)
+  content: |
+    {
+      "type": "SimulationDomain",
+      "id": "https://mwj.example.org/pdes/domain/plankton-2d-100x100cm",
+      "label": "Plankton-2D-100x100cm",
+      "domainType": "spatial-pde",
+      "dimensions": { "nx": 100, "ny": 100, "nz": 1 },
+      "spacing":    { "dx": 1.0, "dy": 1.0, "dz": 1.0 },
+      "origin":     { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "arrayNames": [
+        "phase Phytoplankton", "phase Zooplankton",
+        "local Phytoplankton", "local Zooplankton",
+        "global Phytoplankton", "global Zooplankton"
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0.0,0.0],[100.0,0.0],[100.0,100.0],[0.0,100.0],[0.0,0.0]]]
+      },
+      "crs": "model-units",
+      "boundingBox": {
+        "min": [0.0, 0.0, 0.0],
+        "max": [100.0, 100.0, 0.0]
+      }
+    }
+
+- title: Plankton ODE phase-portrait domain
+  content: |
+    {
+      "type": "SimulationDomain",
+      "id": "https://mwj.example.org/pdes/domain/plankton-phase-portrait",
+      "label": "Plankton-PhasePortrait",
+      "domainType": "phase-portrait-ode",
+      "dimensions": { "nx": 52, "ny": 26, "nz": 13 },
+      "spacing":    { "dx": 1.0, "dy": 1.0, "dz": 1.0 },
+      "origin":     { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "arrayNames": [
+        "phase Phytoplankton", "phase Zooplankton"
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0.0, 0.0]
+      },
+      "crs": "model-units",
+      "boundingBox": {
+        "min": [0.0, 0.0, 0.0],
+        "max": [1.0, 1.0, 1.0]
+      }
+    }

@@ -1,48 +1,74 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: PlanktonRDASTACItem
 description: >
-  A STAC 1.0 Item cataloguing the spatial field outputs of one plankton
-  RDA simulation run. Uses the 'plankton-rda' extension namespace for
-  model-specific searchable properties.
+  A STAC 1.0 Item cataloguing outputs of a plankton RDA simulation run,
+  with plankton-rda extension properties for scenario, diffusion ratio
+  and advection velocity.
 type: object
 required: [type, stac_version, id, geometry, bbox, properties, links, assets]
 properties:
 
-  type:          { const: Feature }
-  stac_version:  { const: "1.0.0" }
+  type:
+    const: Feature
+
+  stac_version:
+    type: string
+    const: "1.0.0"
+
   stac_extensions:
     type: array
-    items: { type: string }
+    items:
+      type: string
 
   id:
     type: string
-    description: "Unique run identifier matching SimulationRun.id suffix"
+    description: "Unique run identifier, e.g. 'S001'"
 
   geometry:
     type: object
-    description: "GeoJSON geometry of the simulation spatial domain or observation site"
+    description: >
+      GeoJSON geometry of the simulation domain.
+      Point for ODE, LineString for 1D PDE, Polygon for 2D PDE.
+    required: [type, coordinates]
+    properties:
+      type:
+        type: string
+        enum: [Point, LineString, Polygon]
+      coordinates: {}
 
   bbox:
     type: array
-    items: { type: number }
     minItems: 4
+    items:
+      type: number
 
   properties:
     type: object
-    required:
-      - datetime
-      - "plankton-rda:model"
-      - "plankton-rda:scenario"
-      - "plankton-rda:spatial_dimensions"
+    required: [datetime, "mwj-pdes:model", "plankton-rda:scenario"]
     properties:
-      datetime:       { type: string, format: date-time }
-      start_datetime: { type: string, format: date-time }
-      end_datetime:   { type: string, format: date-time }
-
-      "plankton-rda:model":
+      datetime:
+        type: string
+        format: date-time
+        description: "Simulation start time (ISO 8601)"
+      "mwj-pdes:model":
         type: string
         const: "Scheffer1991-RDA"
-
+      "mwj-pdes:modelClass":
+        type: string
+        const: "model.lokal.o2.Plankton"
+      "mwj-pdes:solver":
+        type: string
+        enum: [jEuler, jRungeKutta, jButcher]
+      "mwj-pdes:dimensions":
+        type: integer
+        enum: [0, 1, 2]
+        description: "0 = ODE only, 1 = 1D PDE, 2 = 2D PDE"
+      "mwj-pdes:provenance":
+        type: string
+        description: "URI of the PlanktonSimulationProcedure"
+      "mwj-pdes:observation":
+        type: string
+        description: "URI of the initial ObservationCollection"
       "plankton-rda:scenario":
         type: string
         enum:
@@ -53,55 +79,30 @@ properties:
           - 2D-Turing-standing-pattern
           - 1D-DIFICI-travelling-wave
           - 2D-DIFICI-travelling-wave
-
-      "plankton-rda:spatial_dimensions":
-        type: integer
-        enum: [1, 2]
-
       "plankton-rda:D1":
         type: number
-        description: "Phytoplankton diffusivity [cm^2 d^-1]"
-
+        description: "Phytoplankton diffusivity D1 [cm^2 d^-1]"
       "plankton-rda:D2":
         type: number
-        description: "Zooplankton diffusivity [cm^2 d^-1]"
-
+        description: "Zooplankton diffusivity D2 [cm^2 d^-1]"
       "plankton-rda:D_ratio":
         type: number
-        description: "D2/D1 ratio — >~100 triggers Turing instability"
-
+        description: "D2/D1 ratio — ratio > ~100 triggers Turing instability"
       "plankton-rda:v_rel":
         type: number
-        description: "Differential advection speed |v1x - v2x| [cm d^-1] — >0 triggers DIFICI"
-
+        description: "|v1x - v2x| [cm d^-1] — > 0 triggers DIFICI travelling waves"
       "plankton-rda:delta":
         type: number
-        description: "Zooplankton mortality rate [d^-1] — bifurcation parameter"
-
+        description: "Zooplankton mortality rate delta [d^-1] — primary bifurcation parameter"
       "plankton-rda:boundary_condition":
         type: string
         enum: [zero-flux, periodic, dirichlet]
-
       "plankton-rda:domain_length_x_cm":
         type: number
-
+        description: "Domain length in x [cm]"
       "plankton-rda:domain_length_y_cm":
         type: number
-
-      "plankton-rda:t_end_d":
-        type: number
-        description: "Simulation end time [d]"
-
-      "plankton-rda:numerical_scheme":
-        type: string
-
-      "plankton-rda:provenance":
-        type: string
-        description: "URI of the PROV SimulationRun Activity"
-
-      "plankton-rda:observation":
-        type: string
-        description: "URI of the SOSA ObservationCollection used as IC"
+        description: "Domain length in y [cm] — 2D only"
 
   links:
     type: array
@@ -109,28 +110,19 @@ properties:
       type: object
       required: [href, rel]
       properties:
-        href:  { type: string }
-        rel:
-          type: string
-          description: >
-            'derived_from' → PROV SimulationRun;
-            'related'      → SOSA ObservationCollection;
-            'software'     → FiniteDifferenceMethod4PDES repo.
-        type:  { type: string }
-        title: { type: string }
+        href:   { type: string }
+        rel:    { type: string }
+        type:   { type: string }
+        title:  { type: string }
 
   assets:
     type: object
-    description: "Named output files"
-    additionalProperties:
-      type: object
-      required: [href, type]
-      properties:
-        href:  { type: string }
-        type:  { type: string }
-        title: { type: string }
-        roles:
-          type: array
-          items:
-            type: string
-            enum: [data, overview, thumbnail, metadata]
+    description: "STAC assets — at minimum the VTI time-series"
+    properties:
+      vti_series:
+        type: object
+        properties:
+          href:   { type: string }
+          type:   { type: string }
+          title:  { type: string }
+          roles:  { type: array, items: { type: string } }

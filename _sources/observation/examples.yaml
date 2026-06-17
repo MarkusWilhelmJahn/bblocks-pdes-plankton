@@ -1,38 +1,36 @@
-- title: "Lake Constance mesocosm — four individual Observations, random IC perturbation"
+- title: "Plankton 1D domain — initial observation from Plankton_1.vti"
   content: |
     {
       "type": "ObservationCollection",
       "featureOfInterest": {
         "type": "Feature",
-        "geometry": { "type": "Point", "coordinates": [9.37, 47.65, -5.0] },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [[0.0, 0.0], [100.0, 0.0]]
+        },
         "properties": {
-          "name": "Mesocosm 3 — Lake Constance",
-          "depth_m": 5,
-          "water_body_type": "lake"
+          "name": "Plankton 1D spatial domain",
+          "simulationDomain": "https://mwj.example.org/pdes/domain/plankton-1d-100cm",
+          "initVtiFile": "data/Plankton_1.vti",
+          "crs": "model-units",
+          "domainType": "spatial-pde",
+          "gridDimensions": { "nx": 200, "ny": 1, "nz": 1 },
+          "gridSpacing":    { "dx": 0.5, "dy": 1.0, "dz": 1.0 }
         }
       },
-      "phenomenonTime": "2022-06-28/2022-07-01",
-      "madeBySensor": "https://mwj.example.org/sensor/ctd-003",
+      "phenomenonTime": "2025-01-01T00:00:00Z",
+      "madeBySensor": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+      "usedProcedure": "https://mwj.example.org/pdes/procedure/plankton-euler-1d-turing",
       "hasMember": [
         {
-          "observedProperty": "https://mwj.example.org/plankton/obs/phytoplanktonDensity",
-          "hasResult": { "value": 2.15, "unit": "mg.dw/l" },
-          "resultTime": "2022-07-01T08:00:00Z"
+          "observedProperty": "https://mwj.example.org/pdes/obs/plankton/phytoplankton",
+          "hasResult": { "value": 3.116, "unit": "mg.dw/l" },
+          "resultTime": "2025-01-01T00:00:00Z"
         },
         {
-          "observedProperty": "https://mwj.example.org/plankton/obs/zooplanktonDensity",
-          "hasResult": { "value": 2.92, "unit": "mg.dw/l" },
-          "resultTime": "2022-07-01T08:00:00Z"
-        },
-        {
-          "observedProperty": "https://mwj.example.org/plankton/obs/nutrientLevel",
-          "hasResult": { "value": 2.5, "unit": "relative" },
-          "resultTime": "2022-07-01T08:00:00Z"
-        },
-        {
-          "observedProperty": "https://mwj.example.org/plankton/obs/fishPredationPressure",
-          "hasResult": { "value": 0.4, "unit": "mg.dw/d/l" },
-          "resultTime": "2022-07-01T08:00:00Z"
+          "observedProperty": "https://mwj.example.org/pdes/obs/plankton/zooplankton",
+          "hasResult": { "value": 1.870, "unit": "mg.dw/l" },
+          "resultTime": "2025-01-01T00:00:00Z"
         }
       ],
       "perturbation": {
@@ -41,45 +39,36 @@
       }
     }
 
-- title: "Lake Constance mesocosm — symmetric IC perturbation (Fig. 4.7 left panel)"
+- title: "Plankton ODE phase-portrait — initial observation (no spatial domain)"
   content: |
     {
       "type": "ObservationCollection",
       "featureOfInterest": {
         "type": "Feature",
-        "geometry": { "type": "Point", "coordinates": [9.37, 47.65, -5.0] },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [0.0, 0.0]
+        },
         "properties": {
-          "name": "Mesocosm 3 — Lake Constance",
-          "depth_m": 5,
-          "water_body_type": "lake"
+          "name": "Plankton ODE phase portrait",
+          "simulationDomain": "https://mwj.example.org/pdes/domain/plankton-phase-portrait",
+          "crs": "model-units",
+          "domainType": "phase-portrait-ode"
         }
       },
-      "phenomenonTime": "2022-06-28/2022-07-01",
-      "madeBySensor": "https://mwj.example.org/sensor/ctd-003",
+      "phenomenonTime": "2025-01-01T00:00:00Z",
+      "madeBySensor": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+      "usedProcedure": "https://mwj.example.org/pdes/procedure/plankton-ode-stable-focus",
       "hasMember": [
         {
-          "observedProperty": "https://mwj.example.org/plankton/obs/phytoplanktonDensity",
-          "hasResult": { "value": 2.15, "unit": "mg.dw/l" },
-          "resultTime": "2022-07-01T08:00:00Z"
+          "observedProperty": "https://mwj.example.org/pdes/obs/plankton/phytoplankton",
+          "hasResult": { "value": 3.116, "unit": "mg.dw/l" },
+          "resultTime": "2025-01-01T00:00:00Z"
         },
         {
-          "observedProperty": "https://mwj.example.org/plankton/obs/zooplanktonDensity",
-          "hasResult": { "value": 2.92, "unit": "mg.dw/l" },
-          "resultTime": "2022-07-01T08:00:00Z"
-        },
-        {
-          "observedProperty": "https://mwj.example.org/plankton/obs/nutrientLevel",
-          "hasResult": { "value": 2.5, "unit": "relative" },
-          "resultTime": "2022-07-01T08:00:00Z"
-        },
-        {
-          "observedProperty": "https://mwj.example.org/plankton/obs/fishPredationPressure",
-          "hasResult": { "value": 0.4, "unit": "mg.dw/d/l" },
-          "resultTime": "2022-07-01T08:00:00Z"
+          "observedProperty": "https://mwj.example.org/pdes/obs/plankton/zooplankton",
+          "hasResult": { "value": 1.870, "unit": "mg.dw/l" },
+          "resultTime": "2025-01-01T00:00:00Z"
         }
-      ],
-      "perturbation": {
-        "amplitude": 0.01,
-        "type": "symmetric"
-      }
+      ]
     }

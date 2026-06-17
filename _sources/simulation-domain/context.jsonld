@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "geo":  "http://www.opengis.net/ont/geosparql#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd":  "http://www.w3.org/2001/XMLSchema#",
+    "mwj":  "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#",
+
+    "SimulationDomain": "geo:SpatialObject",
+    "id":           "@id",
+    "label":        "rdfs:label",
+    "domainType":   "mwj:domainType",
+    "dimensions":   "mwj:gridDimensions",
+    "spacing":      "mwj:gridSpacing",
+    "origin":       "mwj:gridOrigin",
+    "arrayNames":   "mwj:stateVariableArrays",
+    "vtiSeries":    "mwj:vtiSeries",
+    "geometry":     "geo:hasGeometry",
+    "crs":          "mwj:coordinateReferenceSystem",
+    "boundingBox":  "mwj:boundingBox"
+  }
+}

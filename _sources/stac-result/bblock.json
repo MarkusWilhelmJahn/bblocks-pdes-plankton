@@ -7,7 +7,8 @@
   "version": "0.1",
   "dependsOn": [
     "mwj.pdes.simulation-run",
-    "mwj.pdes.observation"
+    "mwj.pdes.observation",
+    "mwj.pdes.simulation-domain"
   ],
   "tags": ["STAC", "catalog", "spatial-field", "plankton", "Turing", "DIFICI"],
   "sources": [

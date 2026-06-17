@@ -2,7 +2,7 @@ $schema: https://json-schema.org/draft/2020-12/schema
 title: PlanktonRDAParameters
 description: >
   Parameters for the Scheffer phytoplankton (X1) / zooplankton (X2)
-  reaction-diffusion-advection model (Malchow GlgbasModII WS2010, eqs. 4.64/4.65):
+  reaction-diffusion-advection model (Malchow, Equation-Based Models II WS2010, eqs. 4.64/4.65):
 
     dX1/dt = alpha * N/(HN+N) * X1  -  c*X1^2  -  gamma * X1/(H1+X1) * X2
              - v1 · grad(X1)  +  D1 · lap(X1)
@@ -14,7 +14,7 @@ description: >
   N (nutrients) and F (fish predation) are external control parameters.
   Default values from Malchow (2000) / Scheffer (1991): p. 4275 of script.
 type: object
-required: [alpha, c, gamma, H1, H2, HN, e, delta, F, N, D1, D2]
+required: [alpha, c, gamma, H1, H2, HN, e, delta, F, N, D1, D2, X1_0, X2_0]
 properties:
 
   # ── Reaction parameters ───────────────────────────────────────────────────
@@ -166,3 +166,15 @@ properties:
     type: integer
     enum: [1, 2]
     description: "Number of spatial dimensions (1D or 2D)."
+
+  X1_0:
+    type: number
+    minimum: 0
+    description: "Initial phytoplankton density [mg.dw/l]. Default: 3.116"
+    default: 3.116
+
+  X2_0:
+    type: number
+    minimum: 0
+    description: "Initial zooplankton density [mg.dw/l]. Default: 1.870"
+    default: 1.870

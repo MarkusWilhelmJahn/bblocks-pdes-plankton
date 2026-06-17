@@ -6,6 +6,10 @@
     "featureOfInterest": "sosa:hasFeatureOfInterest",
     "phenomenonTime": "sosa:phenomenonTime",
     "madeBySensor": "sosa:madeBySensor",
+    "usedProcedure": {
+      "@id": "sosa:usedProcedure",
+      "@type": "@id"
+    },
     "hasMember": {
       "@context": {
         "observedProperty": {
@@ -22,10 +26,6 @@
         "resultTime": {
           "@id": "sosa:resultTime",
           "@type": "xsd:dateTime"
-        },
-        "usedProcedure": {
-          "@id": "sosa:usedProcedure",
-          "@type": "@id"
         }
       },
       "@id": "sosa:hasMember"

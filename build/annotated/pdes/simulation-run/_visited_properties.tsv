@@ -2,47 +2,49 @@ path	@id	schema
 /type		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
 /id	@id	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
 /label	http://www.w3.org/2000/01/rdf-schema#label	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/startedAtTime	http://www.w3.org/ns/prov#startedAtTime	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/endedAtTime	http://www.w3.org/ns/prov#endedAtTime	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/wasAssociatedWith	http://www.w3.org/ns/prov#wasAssociatedWith	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/wasAssociatedWith/id	@id	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/wasAssociatedWith/label	http://www.w3.org/2000/01/rdf-schema#label	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/wasAssociatedWith/version		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/wasAssociatedWith/localPath		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/numericalScheme	https://mwj.example.org/plankton/sim/numericalScheme	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/spatialDiscretisation	https://mwj.example.org/plankton/sim/spatialDiscretisation	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/used	http://www.w3.org/ns/prov#used	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/used/observation		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/used/parametersId		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters	http://www.w3.org/ns/prov#used	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/alpha		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/c		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/gamma		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/H1		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/H2		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/HN		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/e		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/delta		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/F		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/N		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/D1		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/D2		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/v1x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/v2x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/v1y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/v2y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/dt		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/t_end		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/domain_length_x_cm		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/domain_length_y_cm		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/grid_points_x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/grid_points_y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/boundary_condition		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/parameters/spatial_dimensions		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/generated	prov:wasGeneratedBy	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/generated/id	@id	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/generated/type		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/generated/format		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/generated/description		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/modelClass	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#modelClass	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/software	http://www.w3.org/ns/sosa/implementedBy	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/software/id	@id	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/software/label	http://www.w3.org/2000/01/rdf-schema#label	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/software/version		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/numericalSolver	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#numericalSolver	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/dt	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#timeStep	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/t_end	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#endTime	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/simulationDomain	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#simulationDomain	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#parameters	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/parameters/alpha	https://mwj.example.org/plankton/model/maxPhytoplanktonGrowthRate	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/c	https://mwj.example.org/plankton/model/competitionCoefficient	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/gamma	https://mwj.example.org/plankton/model/maxGrazingRate	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/H1	https://mwj.example.org/plankton/model/halfSatGrazing	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/H2	https://mwj.example.org/plankton/model/halfSatFishPredation	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/HN	https://mwj.example.org/plankton/model/halfSatNutrient	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/e	https://mwj.example.org/plankton/model/assimilationEfficiency	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/delta	https://mwj.example.org/plankton/model/zooplanktonMortalityRate	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/N	https://mwj.example.org/plankton/model/nutrientLevel	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/F	https://mwj.example.org/plankton/model/fishPredationRate	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/D1	https://mwj.example.org/plankton/model/phytoplanktonDiffusivity	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/D2	https://mwj.example.org/plankton/model/zooplanktonDiffusivity	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/v1x	https://mwj.example.org/plankton/model/phytoplanktonAdvectionX	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/v2x	https://mwj.example.org/plankton/model/zooplanktonAdvectionX	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/v1y	https://mwj.example.org/plankton/model/phytoplanktonAdvectionY	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/v2y	https://mwj.example.org/plankton/model/zooplanktonAdvectionY	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/domain_length_x_cm		https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/domain_length_y_cm		https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/grid_points_x		https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/grid_points_y		https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/dt	https://mwj.example.org/plankton/model/numericalTimeStep	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/t_end	https://mwj.example.org/plankton/model/simulationEndTime	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/boundary_condition	https://mwj.example.org/plankton/model/boundaryConditionType	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/spatial_dimensions	https://mwj.example.org/plankton/model/spatialDimensions	https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/X1_0		https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+/parameters/X2_0		https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
 /scenario	https://mwj.example.org/plankton/sim/scenario	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
-/stacItem	http://www.w3.org/ns/dcat#landingPage	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#spatialSetup	/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/dimensions		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/domain_length_x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/domain_length_y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/grid_points_x		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/grid_points_y		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/boundary_condition		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/diffusion		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml
+/spatialSetup/advection		/github/workspace/build/annotated/pdes/simulation-run/schema.yaml

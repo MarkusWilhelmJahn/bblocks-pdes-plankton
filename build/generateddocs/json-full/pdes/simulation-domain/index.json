@@ -1,0 +1,63 @@
+
+
+{
+  "itemIdentifier": "mwj.pdes.simulation-domain",
+  "name": "Plankton Simulation Domain (VTK Image Data Grid)",
+  "abstract": "OGC spatial description of the VTK Image Data (vtkImageData) grid used as the plankton RDA simulation domain in FiniteDifferenceMethod4PDES. The first VTI timestep file (Plankton_1.vti) provides initial conditions for the sosa:ObservationCollection.",
+  "status": "experimental",
+  "dateTimeAddition": "2025-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "version": "0.1",
+  "tags": [
+    "spatial",
+    "grid",
+    "VTK",
+    "coverage",
+    "domain",
+    "FDM",
+    "plankton"
+  ],
+  "sources": [
+    {
+      "title": "VTK Image Data format",
+      "link": "https://vtk.org/wp-content/uploads/2015/04/file-formats.pdf"
+    },
+    {
+      "title": "FiniteDifferenceMethod4PDES",
+      "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES"
+    }
+  ],
+  "rdfType": [
+    "http://www.opengis.net/ont/geosparql#SpatialObject"
+  ],
+  "shaclShapes": {},
+  "ldContext": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/context.jsonld",
+  "dateOfLastChange": "2025-01-01",
+  "schema": {
+    "application/yaml": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/schema.yaml",
+    "application/json": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/schema.json"
+  },
+  "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-domain/schema.yaml",
+  "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-domain/context.jsonld",
+  "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/resolvedProperties.json",
+  "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-domain/",
+  "validationPassed": true,
+  "description": "# Plankton Simulation Domain (VTK Image Data Grid)\n\nOGC spatial description of the **VTK Image Data** (`vtkImageData`) structured grid used as the plankton RDA simulation domain in FiniteDifferenceMethod4PDES.\n\n## Two domain types\n\n### 1. PDE spatial domain (`domainType: spatial-pde`)\nThe physical space over which the phytoplankton/zooplankton reaction-diffusion-advection PDE is solved. Grid cells hold X1 (phytoplankton) and X2 (zooplankton) values at each timestep. Geometry is a LineString (1D) or Polygon (2D).\n\n### 2. ODE phase-portrait domain (`domainType: phase-portrait-ode`)\nFor pure ODE runs, `Room.getDGL()` maps the plankton state-space onto a 3D voxel grid. The two axes represent X1 and X2 values, not physical space.\n\n## VTK grid structure\n\n```\nfile: <runName>_<step>.vti\n\nVTK Image Data:\n  WholeExtent: 0 nx 0 ny 0 nz\n  Origin:      0 0 0\n  Spacing:     dx dy dz\n\nPointData arrays:\n  \"phase Phytoplankton\"   \u2190 X1 at each grid point\n  \"phase Zooplankton\"     \u2190 X2 at each grid point\n  \"local Phytoplankton\"   \u2190 local spatial statistics\n  \"local Zooplankton\"\n  \"global Phytoplankton\"  \u2190 global spatial statistics\n  \"global Zooplankton\"\n\nCell index: j = x + y\u00b7nx + z\u00b7nx\u00b7ny\nPosition:   p = origin + [x\u00b7dx, y\u00b7dy, z\u00b7dz]\n```\n\n## Initial conditions\n\n**Step 1 (`<runName>_1.vti`) is the initial condition** \u2014 its point-data arrays contain the initial spatial distribution of phytoplankton and zooplankton. This file is referenced by `vtiSeries.initFile` and linked to the `mwj.pdes.observation` block.\n",
+  "examples": [
+    {
+      "title": "Plankton 1D PDE spatial domain (Plankton_1.vti initial conditions)",
+      "content": "{\n  \"type\": \"SimulationDomain\",\n  \"id\": \"https://mwj.example.org/pdes/domain/plankton-1d-100cm\",\n  \"label\": \"Plankton-1D-100cm\",\n  \"domainType\": \"spatial-pde\",\n  \"dimensions\": { \"nx\": 200, \"ny\": 1, \"nz\": 1 },\n  \"spacing\":    { \"dx\": 0.5, \"dy\": 1.0, \"dz\": 1.0 },\n  \"origin\":     { \"x\": 0.0, \"y\": 0.0, \"z\": 0.0 },\n  \"arrayNames\": [\n    \"phase Phytoplankton\", \"phase Zooplankton\",\n    \"local Phytoplankton\", \"local Zooplankton\",\n    \"global Phytoplankton\", \"global Zooplankton\"\n  ],\n  \"vtiSeries\": {\n    \"runName\":    \"set_01_Plankton\",\n    \"stepCount\":  210,\n    \"initFile\":   \"data/set_01_Plankton_1.vti\",\n    \"dataFolder\": \"data/\"\n  },\n  \"geometry\": {\n    \"type\": \"LineString\",\n    \"coordinates\": [[0.0, 0.0], [100.0, 0.0]]\n  },\n  \"crs\": \"model-units\",\n  \"boundingBox\": {\n    \"min\": [0.0, 0.0, 0.0],\n    \"max\": [100.0, 0.0, 0.0]\n  }\n}\n"
+    },
+    {
+      "title": "Plankton 2D PDE spatial domain (100x100 cm)",
+      "content": "{\n  \"type\": \"SimulationDomain\",\n  \"id\": \"https://mwj.example.org/pdes/domain/plankton-2d-100x100cm\",\n  \"label\": \"Plankton-2D-100x100cm\",\n  \"domainType\": \"spatial-pde\",\n  \"dimensions\": { \"nx\": 100, \"ny\": 100, \"nz\": 1 },\n  \"spacing\":    { \"dx\": 1.0, \"dy\": 1.0, \"dz\": 1.0 },\n  \"origin\":     { \"x\": 0.0, \"y\": 0.0, \"z\": 0.0 },\n  \"arrayNames\": [\n    \"phase Phytoplankton\", \"phase Zooplankton\",\n    \"local Phytoplankton\", \"local Zooplankton\",\n    \"global Phytoplankton\", \"global Zooplankton\"\n  ],\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [[[0.0,0.0],[100.0,0.0],[100.0,100.0],[0.0,100.0],[0.0,0.0]]]\n  },\n  \"crs\": \"model-units\",\n  \"boundingBox\": {\n    \"min\": [0.0, 0.0, 0.0],\n    \"max\": [100.0, 100.0, 0.0]\n  }\n}\n"
+    },
+    {
+      "title": "Plankton ODE phase-portrait domain",
+      "content": "{\n  \"type\": \"SimulationDomain\",\n  \"id\": \"https://mwj.example.org/pdes/domain/plankton-phase-portrait\",\n  \"label\": \"Plankton-PhasePortrait\",\n  \"domainType\": \"phase-portrait-ode\",\n  \"dimensions\": { \"nx\": 52, \"ny\": 26, \"nz\": 13 },\n  \"spacing\":    { \"dx\": 1.0, \"dy\": 1.0, \"dz\": 1.0 },\n  \"origin\":     { \"x\": 0.0, \"y\": 0.0, \"z\": 0.0 },\n  \"arrayNames\": [\n    \"phase Phytoplankton\", \"phase Zooplankton\"\n  ],\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [0.0, 0.0]\n  },\n  \"crs\": \"model-units\",\n  \"boundingBox\": {\n    \"min\": [0.0, 0.0, 0.0],\n    \"max\": [1.0, 1.0, 1.0]\n  }\n}\n"
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: PlanktonSimulationDomain\ndescription: \"Spatial description of the VTK Image Data (vtkImageData) grid used as\n  the plankton RDA simulation domain in FiniteDifferenceMethod4PDES.\\nTwo domain types\n  are supported:\\n1. **PDE spatial domain** (`domainType: spatial-pde`) \\u2014 the\n  physical space\\n   over which the reaction-diffusion-advection PDE is solved. Each\n  grid cell\\n   holds phytoplankton (X1) and zooplankton (X2) values at one timestep.\\n\n  \\  Geometry is a LineString (1D) or Polygon (2D).\\n\\n2. **ODE phase-portrait domain**\n  (`domainType: phase-portrait-ode`) \\u2014 for\\n   pure ODE runs, the VTK grid maps\n  state-space onto a 3D voxel grid via\\n   Room.getDGL(). The geometry is abstract\n  (no real-world CRS).\\n\\nVTK Image Data grid structure (from Room.java):\\n  j = x\n  + y * dim[0] + z * dim[0] * dim[1]\\n  position[x,y,z] = origin + [x * spacing[0],\n  y * spacing[1], z * spacing[2]]\\n\\nVTI point-data array names follow the convention:\\n\n  \\ \\\"phase Phytoplankton\\\", \\\"phase Zooplankton\\\"   (phase-space arrays)\\n  \\\"local\n  Phytoplankton\\\", \\\"local Zooplankton\\\"   (local statistics)\\n  \\\"global Phytoplankton\\\",\n  \\\"global Zooplankton\\\" (global statistics)\\n\"\ntype: object\nrequired:\n- type\n- domainType\n- dimensions\n- spacing\n- origin\n- arrayNames\nproperties:\n  type:\n    const: SimulationDomain\n  id:\n    type: string\n    description: URI identifying this domain\n    x-jsonld-id: '@id'\n  label:\n    type: string\n    description: Human-readable label, e.g. 'Plankton-1D-100cm'\n    x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#label\n  domainType:\n    type: string\n    enum:\n    - spatial-pde\n    - phase-portrait-ode\n    description: '''spatial-pde'': real spatial domain of a PDE simulation. ''phase-portrait-ode'':\n      abstract state-space grid for ODE visualisation.\n\n      '\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#domainType\n  dimensions:\n    type: object\n    required:\n    - nx\n    - ny\n    - nz\n    description: Number of grid points in each direction (vtkImageData WholeExtent)\n    properties:\n      nx:\n        type: integer\n        minimum: 1\n      ny:\n        type: integer\n        minimum: 1\n      nz:\n        type: integer\n        minimum: 1\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#gridDimensions\n  spacing:\n    type: object\n    required:\n    - dx\n    - dy\n    - dz\n    description: Grid cell spacing in each direction (VTK Spacing attribute)\n    properties:\n      dx:\n        type: number\n        minimum: 0\n      dy:\n        type: number\n        minimum: 0\n      dz:\n        type: number\n        minimum: 0\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#gridSpacing\n  origin:\n    type: object\n    required:\n    - x\n    - y\n    - z\n    description: Grid origin coordinates (VTK Origin attribute)\n    properties:\n      x:\n        type: number\n      y:\n        type: number\n      z:\n        type: number\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#gridOrigin\n  arrayNames:\n    type: array\n    minItems: 1\n    items:\n      type: string\n    description: 'Names of the VTK point-data arrays in the VTI files. For the plankton\n      model: ''phase Phytoplankton'', ''phase Zooplankton'', ''local Phytoplankton'',\n      ''local Zooplankton'', etc.\n\n      '\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#stateVariableArrays\n  vtiSeries:\n    type: object\n    description: References to the VTI time-series files.\n    required:\n    - runName\n    - stepCount\n    - initFile\n    properties:\n      runName:\n        type: string\n        description: 'Run name prefix: <runName>_<step>.vti'\n      stepCount:\n        type: integer\n        minimum: 1\n        description: Total number of timestep files in the series\n      initFile:\n        type: string\n        description: Path to the initial-condition VTI file (step = 1)\n      dataFolder:\n        type: string\n        description: Folder containing all VTI files\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#vtiSeries\n  geometry:\n    type: object\n    description: 'GeoJSON geometry of the simulation domain extent. LineString for\n      1D PDE, Polygon for 2D PDE, Point for ODE phase-portrait.\n\n      '\n    properties:\n      type:\n        type: string\n        enum:\n        - Point\n        - LineString\n        - Polygon\n      coordinates: {}\n    x-jsonld-id: http://www.opengis.net/ont/geosparql#hasGeometry\n  crs:\n    type: string\n    description: 'Coordinate reference system. Use ''model-units'' for abstract numerical\n      domains. Use an EPSG URI for real geographic domains.\n\n      '\n    default: model-units\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#coordinateReferenceSystem\n  boundingBox:\n    type: object\n    description: Model-space bounding box\n    properties:\n      min:\n        type: array\n        items:\n          type: number\n        minItems: 3\n        maxItems: 3\n      max:\n        type: array\n        items:\n          type: number\n        minItems: 3\n        maxItems: 3\n    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#boundingBox\nx-jsonld-extra-terms:\n  SimulationDomain: http://www.opengis.net/ont/geosparql#SpatialObject\nx-jsonld-prefixes:\n  geo: http://www.opengis.net/ont/geosparql#\n  rdfs: http://www.w3.org/2000/01/rdf-schema#\n  mwj: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#\n  xsd: http://www.w3.org/2001/XMLSchema#\n",
+  "gitRepository": "https://github.com/MarkusWilhelmJahn/bblocks-pdes-plankton",
+  "gitPath": "_sources/simulation-domain"
+}

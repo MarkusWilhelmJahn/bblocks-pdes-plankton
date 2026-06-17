@@ -3,7 +3,7 @@
 
 `mwj.pdes.observation` *v0.1*
 
-SOSA ObservationCollection providing initial phytoplankton density X1(x,0), zooplankton density X2(x,0), nutrient level N and fish predation rate F for a RDA simulation run.
+SOSA ObservationCollection providing initial phytoplankton density X1(x,0) and zooplankton density X2(x,0) for a plankton RDA simulation run. The featureOfInterest references the SimulationDomain (VTK Image Data grid).
 
 [*Status*](http://www.opengis.net/def/status): Experimental
 
@@ -53,40 +53,38 @@ linked `SimulationRun`, which references this collection via `prov:used`.
 
 ## Examples
 
-### Lake Constance mesocosm — four individual Observations, random IC perturbation
+### Plankton 1D domain — initial observation from Plankton_1.vti
 {
   "type": "ObservationCollection",
   "featureOfInterest": {
     "type": "Feature",
-    "geometry": { "type": "Point", "coordinates": [9.37, 47.65, -5.0] },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [[0.0, 0.0], [100.0, 0.0]]
+    },
     "properties": {
-      "name": "Mesocosm 3 — Lake Constance",
-      "depth_m": 5,
-      "water_body_type": "lake"
+      "name": "Plankton 1D spatial domain",
+      "simulationDomain": "https://mwj.example.org/pdes/domain/plankton-1d-100cm",
+      "initVtiFile": "data/Plankton_1.vti",
+      "crs": "model-units",
+      "domainType": "spatial-pde",
+      "gridDimensions": { "nx": 200, "ny": 1, "nz": 1 },
+      "gridSpacing":    { "dx": 0.5, "dy": 1.0, "dz": 1.0 }
     }
   },
-  "phenomenonTime": "2022-06-28/2022-07-01",
-  "madeBySensor": "https://mwj.example.org/sensor/ctd-003",
+  "phenomenonTime": "2025-01-01T00:00:00Z",
+  "madeBySensor": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+  "usedProcedure": "https://mwj.example.org/pdes/procedure/plankton-euler-1d-turing",
   "hasMember": [
     {
-      "observedProperty": "https://mwj.example.org/plankton/obs/phytoplanktonDensity",
-      "hasResult": { "value": 2.15, "unit": "mg.dw/l" },
-      "resultTime": "2022-07-01T08:00:00Z"
+      "observedProperty": "https://mwj.example.org/pdes/obs/plankton/phytoplankton",
+      "hasResult": { "value": 3.116, "unit": "mg.dw/l" },
+      "resultTime": "2025-01-01T00:00:00Z"
     },
     {
-      "observedProperty": "https://mwj.example.org/plankton/obs/zooplanktonDensity",
-      "hasResult": { "value": 2.92, "unit": "mg.dw/l" },
-      "resultTime": "2022-07-01T08:00:00Z"
-    },
-    {
-      "observedProperty": "https://mwj.example.org/plankton/obs/nutrientLevel",
-      "hasResult": { "value": 2.5, "unit": "relative" },
-      "resultTime": "2022-07-01T08:00:00Z"
-    },
-    {
-      "observedProperty": "https://mwj.example.org/plankton/obs/fishPredationPressure",
-      "hasResult": { "value": 0.4, "unit": "mg.dw/d/l" },
-      "resultTime": "2022-07-01T08:00:00Z"
+      "observedProperty": "https://mwj.example.org/pdes/obs/plankton/zooplankton",
+      "hasResult": { "value": 1.870, "unit": "mg.dw/l" },
+      "resultTime": "2025-01-01T00:00:00Z"
     }
   ],
   "perturbation": {
@@ -96,46 +94,37 @@ linked `SimulationRun`, which references this collection via `prov:used`.
 }
 
 
-### Lake Constance mesocosm — symmetric IC perturbation (Fig. 4.7 left panel)
+### Plankton ODE phase-portrait — initial observation (no spatial domain)
 {
   "type": "ObservationCollection",
   "featureOfInterest": {
     "type": "Feature",
-    "geometry": { "type": "Point", "coordinates": [9.37, 47.65, -5.0] },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [0.0, 0.0]
+    },
     "properties": {
-      "name": "Mesocosm 3 — Lake Constance",
-      "depth_m": 5,
-      "water_body_type": "lake"
+      "name": "Plankton ODE phase portrait",
+      "simulationDomain": "https://mwj.example.org/pdes/domain/plankton-phase-portrait",
+      "crs": "model-units",
+      "domainType": "phase-portrait-ode"
     }
   },
-  "phenomenonTime": "2022-06-28/2022-07-01",
-  "madeBySensor": "https://mwj.example.org/sensor/ctd-003",
+  "phenomenonTime": "2025-01-01T00:00:00Z",
+  "madeBySensor": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
+  "usedProcedure": "https://mwj.example.org/pdes/procedure/plankton-ode-stable-focus",
   "hasMember": [
     {
-      "observedProperty": "https://mwj.example.org/plankton/obs/phytoplanktonDensity",
-      "hasResult": { "value": 2.15, "unit": "mg.dw/l" },
-      "resultTime": "2022-07-01T08:00:00Z"
+      "observedProperty": "https://mwj.example.org/pdes/obs/plankton/phytoplankton",
+      "hasResult": { "value": 3.116, "unit": "mg.dw/l" },
+      "resultTime": "2025-01-01T00:00:00Z"
     },
     {
-      "observedProperty": "https://mwj.example.org/plankton/obs/zooplanktonDensity",
-      "hasResult": { "value": 2.92, "unit": "mg.dw/l" },
-      "resultTime": "2022-07-01T08:00:00Z"
-    },
-    {
-      "observedProperty": "https://mwj.example.org/plankton/obs/nutrientLevel",
-      "hasResult": { "value": 2.5, "unit": "relative" },
-      "resultTime": "2022-07-01T08:00:00Z"
-    },
-    {
-      "observedProperty": "https://mwj.example.org/plankton/obs/fishPredationPressure",
-      "hasResult": { "value": 0.4, "unit": "mg.dw/d/l" },
-      "resultTime": "2022-07-01T08:00:00Z"
+      "observedProperty": "https://mwj.example.org/pdes/obs/plankton/zooplankton",
+      "hasResult": { "value": 1.870, "unit": "mg.dw/l" },
+      "resultTime": "2025-01-01T00:00:00Z"
     }
-  ],
-  "perturbation": {
-    "amplitude": 0.01,
-    "type": "symmetric"
-  }
+  ]
 }
 
 ## Schema
@@ -143,13 +132,10 @@ linked `SimulationRun`, which references this collection via `prov:used`.
 ```yaml
 $schema: https://json-schema.org/draft/2020-12/schema
 title: PlanktonInitialObservation
-description: "A SOSA ObservationCollection providing the initial state of a water
-  body or mesocosm. Per the SSN/SOSA PROV alignment (W3C SSN 2017, \xA76.5):\n  -
-  sosa:ObservationCollection is a container of sosa:Observation instances\n  - each
-  sosa:Observation \u2291 prov:Activity\n  - each sosa:Sensor \u2291 prov:Agent  \u2192
-  sosa:madeBySensor \u2291 prov:wasAssociatedWith\n  - each sosa:Result \u2291 prov:Entity
-  \u2192 sosa:hasResult    \u2291 prov:wasGeneratedBy\n  - sosa:FeatureOfInterest
-  \u2291 prov:Entity\nresultTime of the collection becomes t=0 of the simulation run.\n"
+description: 'A SOSA ObservationCollection providing initial conditions for a plankton
+  RDA simulation run. Referenced by the SimulationProcedure via sosa:usedProcedure.
+
+  '
 type: object
 required:
 - type
@@ -162,8 +148,7 @@ properties:
     const: ObservationCollection
   featureOfInterest:
     type: object
-    description: "The sampled water body or mesocosm (sosa:FeatureOfInterest \u2291
-      prov:Entity). Represented as a GeoJSON Feature.\n"
+    description: The sampled water body or simulation spatial domain
     required:
     - type
     - geometry
@@ -172,39 +157,76 @@ properties:
         const: Feature
       geometry:
         type: object
-        description: GeoJSON geometry of the sampling location
+        description: 'GeoJSON geometry of the domain. LineString for 1D, Polygon for
+          2D, Point for ODE.
+
+          '
+        required:
+        - type
+        - coordinates
+        properties:
+          type:
+            type: string
+            enum:
+            - Point
+            - LineString
+            - Polygon
+          coordinates: {}
       properties:
         type: object
         properties:
           name:
             type: string
-          depth_m:
-            type: number
-            minimum: 0
-          water_body_type:
+          crs:
             type: string
-            description: e.g. lake, mesocosm, coastal_shelf
+            default: model-units
+          domainType:
+            type: string
+            enum:
+            - spatial-pde
+            - phase-portrait-ode
+          gridDimensions:
+            type: object
+            properties:
+              nx:
+                type: integer
+              ny:
+                type: integer
+              nz:
+                type: integer
+          gridSpacing:
+            type: object
+            properties:
+              dx:
+                type: number
+              dy:
+                type: number
+              dz:
+                type: number
+          initVtiFile:
+            type: string
+            description: Path or URI to the initial VTI file (step = 1)
     x-jsonld-id: http://www.w3.org/ns/sosa/hasFeatureOfInterest
   phenomenonTime:
     type: string
-    description: "ISO 8601 time interval of the sampling campaign (e.g. '2022-06-28/2022-07-01').
-      The sosa:phenomenonTime is the time the observed property values apply to the
-      featureOfInterest \u2014 not necessarily when the observation was recorded.\n"
+    description: "ISO 8601 time instant or interval \u2014 t = 0 of the simulation"
     x-jsonld-id: http://www.w3.org/ns/sosa/phenomenonTime
   madeBySensor:
     type: string
-    description: "URI or name of the sensor / observer. sosa:madeBySensor \u2291 prov:wasAssociatedWith.
-      The sensor is a sosa:Sensor \u2291 prov:Agent.\n"
+    description: URI or name of the sensor / instrument
     x-jsonld-id: http://www.w3.org/ns/sosa/madeBySensor
+  usedProcedure:
+    type: string
+    description: URI of the PlanktonSimulationProcedure (sosa:usedProcedure)
+    x-jsonld-id: http://www.w3.org/ns/sosa/usedProcedure
+    x-jsonld-type: '@id'
   hasMember:
     type: array
-    description: 'The individual sosa:Observation instances that form this collection.
-      Each member is itself a prov:Activity that generates one sosa:Result (prov:Entity)
-      for one sosa:ObservableProperty of the featureOfInterest. Per the spec each
-      Observation must have exactly one observedProperty and at least one hasResult.
+    minItems: 2
+    description: 'One sosa:Observation per state variable. Minimum: phytoplankton
+      (X1) and zooplankton (X2).
 
       '
-    minItems: 1
     items:
       type: object
       required:
@@ -214,59 +236,39 @@ properties:
       properties:
         observedProperty:
           type: string
-          description: "URI of the sosa:ObservableProperty being measured. Use one
-            of:\n  https://mwj.example.org/plankton/obs/phytoplanktonDensity\n  https://mwj.example.org/plankton/obs/zooplanktonDensity\n
-            \ https://mwj.example.org/plankton/obs/nutrientLevel\n  https://mwj.example.org/plankton/obs/fishPredationPressure\n"
+          description: "URI of the sosa:ObservableProperty. Use:\n  https://mwj.example.org/pdes/obs/plankton/phytoplankton\n
+            \ https://mwj.example.org/pdes/obs/plankton/zooplankton\n  https://mwj.example.org/pdes/obs/plankton/nutrientLevel\n
+            \ https://mwj.example.org/pdes/obs/plankton/fishPredationPressure\n"
           x-jsonld-id: http://www.w3.org/ns/sosa/observedProperty
           x-jsonld-type: '@id'
         hasResult:
           type: object
-          description: 'The sosa:Result of this individual Observation (prov:Entity
-            wasGeneratedBy this Observation prov:Activity).
-
-            '
           required:
           - value
-          - unit
           properties:
             value:
               type: number
-              description: Numeric measurement value
+              minimum: 0
               x-jsonld-id: http://www.w3.org/ns/sosa/hasSimpleResult
             unit:
               type: string
-              description: "Unit of measure. Expected values:\n  'mg.dw/l'     for
-                X1, X2\n  'relative'    for N\n  'mg.dw/d/l'   for F\n"
+              description: '''mg.dw/l'' for X1, X2; ''relative'' for N; ''mg.dw/d/l''
+                for F'
               x-jsonld-id: http://qudt.org/schema/qudt/unit
           x-jsonld-id: http://www.w3.org/ns/sosa/hasResult
         resultTime:
           type: string
           format: date-time
-          description: 'ISO 8601 timestamp when this individual observation was completed
-            (sosa:resultTime). The resultTime of the first member becomes t=0 of the
-            linked SimulationRun.
-
-            '
           x-jsonld-id: http://www.w3.org/ns/sosa/resultTime
           x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-        usedProcedure:
-          type: string
-          description: "URI of the sosa:Procedure (measurement protocol) used for
-            this individual observation. sosa:usedProcedure \u2291 prov:used. Optional;
-            omit if using a generic field sampling protocol.\n"
-          x-jsonld-id: http://www.w3.org/ns/sosa/usedProcedure
-          x-jsonld-type: '@id'
     x-jsonld-id: http://www.w3.org/ns/sosa/hasMember
   perturbation:
     type: object
-    description: 'Optional spatial perturbation applied to the homogeneous initial
-      condition to seed pattern formation in the PDE simulation.
-
-      '
+    description: Optional spatial perturbation to seed pattern formation
     properties:
       amplitude:
         type: number
-        description: Perturbation amplitude (fraction of steady-state value)
+        description: Fraction of steady-state value
       type:
         type: string
         enum:
@@ -306,6 +308,10 @@ Links to the schema:
     "featureOfInterest": "sosa:hasFeatureOfInterest",
     "phenomenonTime": "sosa:phenomenonTime",
     "madeBySensor": "sosa:madeBySensor",
+    "usedProcedure": {
+      "@id": "sosa:usedProcedure",
+      "@type": "@id"
+    },
     "hasMember": {
       "@context": {
         "observedProperty": {
@@ -322,10 +328,6 @@ Links to the schema:
         "resultTime": {
           "@id": "sosa:resultTime",
           "@type": "xsd:dateTime"
-        },
-        "usedProcedure": {
-          "@id": "sosa:usedProcedure",
-          "@type": "@id"
         }
       },
       "@id": "sosa:hasMember"

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "PlanktonInitialObservation",
-  "description": "A SOSA ObservationCollection providing the initial state of a water body or mesocosm. Per the SSN/SOSA PROV alignment (W3C SSN 2017, \u00a76.5):\n  - sosa:ObservationCollection is a container of sosa:Observation instances\n  - each sosa:Observation \u2291 prov:Activity\n  - each sosa:Sensor \u2291 prov:Agent  \u2192 sosa:madeBySensor \u2291 prov:wasAssociatedWith\n  - each sosa:Result \u2291 prov:Entity \u2192 sosa:hasResult    \u2291 prov:wasGeneratedBy\n  - sosa:FeatureOfInterest \u2291 prov:Entity\nresultTime of the collection becomes t=0 of the simulation run.\n",
+  "description": "A SOSA ObservationCollection providing initial conditions for a plankton RDA simulation run. Referenced by the SimulationProcedure via sosa:usedProcedure.\n",
   "type": "object",
   "required": [
     "type",
@@ -16,7 +16,7 @@
     },
     "featureOfInterest": {
       "type": "object",
-      "description": "The sampled water body or mesocosm (sosa:FeatureOfInterest \u2291 prov:Entity). Represented as a GeoJSON Feature.\n",
+      "description": "The sampled water body or simulation spatial domain",
       "required": [
         "type",
         "geometry"
@@ -27,7 +27,22 @@
         },
         "geometry": {
           "type": "object",
-          "description": "GeoJSON geometry of the sampling location"
+          "description": "GeoJSON geometry of the domain. LineString for 1D, Polygon for 2D, Point for ODE.\n",
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Point",
+                "LineString",
+                "Polygon"
+              ]
+            },
+            "coordinates": {}
+          }
         },
         "properties": {
           "type": "object",
@@ -35,13 +50,48 @@
             "name": {
               "type": "string"
             },
-            "depth_m": {
-              "type": "number",
-              "minimum": 0
-            },
-            "water_body_type": {
+            "crs": {
               "type": "string",
-              "description": "e.g. lake, mesocosm, coastal_shelf"
+              "default": "model-units"
+            },
+            "domainType": {
+              "type": "string",
+              "enum": [
+                "spatial-pde",
+                "phase-portrait-ode"
+              ]
+            },
+            "gridDimensions": {
+              "type": "object",
+              "properties": {
+                "nx": {
+                  "type": "integer"
+                },
+                "ny": {
+                  "type": "integer"
+                },
+                "nz": {
+                  "type": "integer"
+                }
+              }
+            },
+            "gridSpacing": {
+              "type": "object",
+              "properties": {
+                "dx": {
+                  "type": "number"
+                },
+                "dy": {
+                  "type": "number"
+                },
+                "dz": {
+                  "type": "number"
+                }
+              }
+            },
+            "initVtiFile": {
+              "type": "string",
+              "description": "Path or URI to the initial VTI file (step = 1)"
             }
           }
         }
@@ -50,18 +100,24 @@
     },
     "phenomenonTime": {
       "type": "string",
-      "description": "ISO 8601 time interval of the sampling campaign (e.g. '2022-06-28/2022-07-01'). The sosa:phenomenonTime is the time the observed property values apply to the featureOfInterest \u2014 not necessarily when the observation was recorded.\n",
+      "description": "ISO 8601 time instant or interval \u2014 t = 0 of the simulation",
       "x-jsonld-id": "http://www.w3.org/ns/sosa/phenomenonTime"
     },
     "madeBySensor": {
       "type": "string",
-      "description": "URI or name of the sensor / observer. sosa:madeBySensor \u2291 prov:wasAssociatedWith. The sensor is a sosa:Sensor \u2291 prov:Agent.\n",
+      "description": "URI or name of the sensor / instrument",
       "x-jsonld-id": "http://www.w3.org/ns/sosa/madeBySensor"
+    },
+    "usedProcedure": {
+      "type": "string",
+      "description": "URI of the PlanktonSimulationProcedure (sosa:usedProcedure)",
+      "x-jsonld-id": "http://www.w3.org/ns/sosa/usedProcedure",
+      "x-jsonld-type": "@id"
     },
     "hasMember": {
       "type": "array",
-      "description": "The individual sosa:Observation instances that form this collection. Each member is itself a prov:Activity that generates one sosa:Result (prov:Entity) for one sosa:ObservableProperty of the featureOfInterest. Per the spec each Observation must have exactly one observedProperty and at least one hasResult.\n",
-      "minItems": 1,
+      "minItems": 2,
+      "description": "One sosa:Observation per state variable. Minimum: phytoplankton (X1) and zooplankton (X2).\n",
       "items": {
         "type": "object",
         "required": [
@@ -72,26 +128,24 @@
         "properties": {
           "observedProperty": {
             "type": "string",
-            "description": "URI of the sosa:ObservableProperty being measured. Use one of:\n  https://mwj.example.org/plankton/obs/phytoplanktonDensity\n  https://mwj.example.org/plankton/obs/zooplanktonDensity\n  https://mwj.example.org/plankton/obs/nutrientLevel\n  https://mwj.example.org/plankton/obs/fishPredationPressure\n",
+            "description": "URI of the sosa:ObservableProperty. Use:\n  https://mwj.example.org/pdes/obs/plankton/phytoplankton\n  https://mwj.example.org/pdes/obs/plankton/zooplankton\n  https://mwj.example.org/pdes/obs/plankton/nutrientLevel\n  https://mwj.example.org/pdes/obs/plankton/fishPredationPressure\n",
             "x-jsonld-id": "http://www.w3.org/ns/sosa/observedProperty",
             "x-jsonld-type": "@id"
           },
           "hasResult": {
             "type": "object",
-            "description": "The sosa:Result of this individual Observation (prov:Entity wasGeneratedBy this Observation prov:Activity).\n",
             "required": [
-              "value",
-              "unit"
+              "value"
             ],
             "properties": {
               "value": {
                 "type": "number",
-                "description": "Numeric measurement value",
+                "minimum": 0,
                 "x-jsonld-id": "http://www.w3.org/ns/sosa/hasSimpleResult"
               },
               "unit": {
                 "type": "string",
-                "description": "Unit of measure. Expected values:\n  'mg.dw/l'     for X1, X2\n  'relative'    for N\n  'mg.dw/d/l'   for F\n",
+                "description": "'mg.dw/l' for X1, X2; 'relative' for N; 'mg.dw/d/l' for F",
                 "x-jsonld-id": "http://qudt.org/schema/qudt/unit"
               }
             },
@@ -100,15 +154,8 @@
           "resultTime": {
             "type": "string",
             "format": "date-time",
-            "description": "ISO 8601 timestamp when this individual observation was completed (sosa:resultTime). The resultTime of the first member becomes t=0 of the linked SimulationRun.\n",
             "x-jsonld-id": "http://www.w3.org/ns/sosa/resultTime",
             "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
-          },
-          "usedProcedure": {
-            "type": "string",
-            "description": "URI of the sosa:Procedure (measurement protocol) used for this individual observation. sosa:usedProcedure \u2291 prov:used. Optional; omit if using a generic field sampling protocol.\n",
-            "x-jsonld-id": "http://www.w3.org/ns/sosa/usedProcedure",
-            "x-jsonld-type": "@id"
           }
         }
       },
@@ -116,11 +163,11 @@
     },
     "perturbation": {
       "type": "object",
-      "description": "Optional spatial perturbation applied to the homogeneous initial condition to seed pattern formation in the PDE simulation.\n",
+      "description": "Optional spatial perturbation to seed pattern formation",
       "properties": {
         "amplitude": {
           "type": "number",
-          "description": "Perturbation amplitude (fraction of steady-state value)"
+          "description": "Fraction of steady-state value"
         },
         "type": {
           "type": "string",

@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 4,
-    "passed": 4,
+    "total": 5,
+    "passed": 5,
     "failed": 0,
     "result": true
   },
@@ -10,7 +10,21 @@
       "title": "Validation report for mwj.pdes.parameters - Scheffer Phytoplankton-Zooplankton RDA Parameters",
       "bblockName": "Scheffer Phytoplankton-Zooplankton RDA Parameters",
       "bblockId": "mwj.pdes.parameters",
-      "generated": "2026-05-20T14:20:19.104534+00:00",
+      "generated": "2026-06-17T08:25:43.302723+00:00",
+      "result": true,
+      "items": [],
+      "globalErrors": {},
+      "counts": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0
+      }
+    },
+    "mwj.pdes.simulation-domain": {
+      "title": "Validation report for mwj.pdes.simulation-domain - Plankton Simulation Domain (VTK Image Data Grid)",
+      "bblockName": "Plankton Simulation Domain (VTK Image Data Grid)",
+      "bblockId": "mwj.pdes.simulation-domain",
+      "generated": "2026-06-17T08:25:43.315074+00:00",
       "result": true,
       "items": [],
       "globalErrors": {},
@@ -24,7 +38,7 @@
       "title": "Validation report for mwj.pdes.observation - Plankton Initial Observation (SOSA)",
       "bblockName": "Plankton Initial Observation (SOSA)",
       "bblockId": "mwj.pdes.observation",
-      "generated": "2026-05-20T14:20:19.115474+00:00",
+      "generated": "2026-06-17T08:25:43.326945+00:00",
       "result": true,
       "items": [],
       "globalErrors": {},
@@ -35,10 +49,10 @@
       }
     },
     "mwj.pdes.simulation-run": {
-      "title": "Validation report for mwj.pdes.simulation-run - Plankton RDA Simulation Run (PROV)",
-      "bblockName": "Plankton RDA Simulation Run (PROV)",
+      "title": "Validation report for mwj.pdes.simulation-run - Plankton Simulation Procedure (SOSA)",
+      "bblockName": "Plankton Simulation Procedure (SOSA)",
       "bblockId": "mwj.pdes.simulation-run",
-      "generated": "2026-05-20T14:20:19.132780+00:00",
+      "generated": "2026-06-17T08:25:43.337970+00:00",
       "result": true,
       "items": [],
       "globalErrors": {},
@@ -52,7 +66,7 @@
       "title": "Validation report for mwj.pdes.stac-result - Plankton RDA Simulation STAC Item",
       "bblockName": "Plankton RDA Simulation STAC Item",
       "bblockId": "mwj.pdes.stac-result",
-      "generated": "2026-05-20T14:20:19.147521+00:00",
+      "generated": "2026-06-17T08:25:43.351359+00:00",
       "result": true,
       "items": [],
       "globalErrors": {},

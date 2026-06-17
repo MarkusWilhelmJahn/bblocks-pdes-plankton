@@ -53,42 +53,41 @@ GET /search?filter=plankton-rda:D_ratio>=100
 
 ## Examples
 
-### STAC Item S001 — 1D Turing standing pattern
+### STAC Item — 1D Turing standing pattern (run S001)
 {
   "type": "Feature",
   "stac_version": "1.0.0",
   "stac_extensions": ["https://mwj.example.org/plankton-rda/v0.1/schema.json"],
   "id": "S001",
-  "geometry": { "type": "Point", "coordinates": [9.37, 47.65] },
-  "bbox": [9.35, 47.63, 9.39, 47.67],
+  "geometry": { "type": "LineString", "coordinates": [[0.0, 0.0], [100.0, 0.0]] },
+  "bbox": [0.0, 0.0, 100.0, 0.0],
   "properties": {
-    "datetime":                          "2022-07-01T00:00:00Z",
-    "start_datetime":                    "2022-07-01T00:00:00Z",
-    "end_datetime":                      "2027-01-06T00:00:00Z",
-    "plankton-rda:model":                "Scheffer1991-RDA",
+    "datetime":                          "2025-01-01T00:00:00Z",
+    "mwj-pdes:model":                    "Scheffer1991-RDA",
+    "mwj-pdes:modelClass":               "model.lokal.o2.Plankton",
+    "mwj-pdes:solver":                   "jEuler",
+    "mwj-pdes:dimensions":               1,
+    "mwj-pdes:scenario":                 "1D-Turing-standing-pattern",
+    "mwj-pdes:provenance":               "https://mwj.example.org/pdes/procedure/plankton-euler-1d-turing",
+    "mwj-pdes:observation":              "https://mwj.example.org/pdes/obs/plankton-1d-random",
     "plankton-rda:scenario":             "1D-Turing-standing-pattern",
-    "plankton-rda:spatial_dimensions":   1,
     "plankton-rda:D1":                   1.0e-5,
     "plankton-rda:D2":                   2.0e-3,
     "plankton-rda:D_ratio":              200,
     "plankton-rda:v_rel":                0.0,
     "plankton-rda:delta":                0.175,
     "plankton-rda:boundary_condition":   "zero-flux",
-    "plankton-rda:domain_length_x_cm":   100,
-    "plankton-rda:t_end_d":              1600,
-    "plankton-rda:numerical_scheme":     "explicit-euler",
-    "plankton-rda:provenance":           "https://mwj.example.org/runs/S001",
-    "plankton-rda:observation":          "https://mwj.example.org/obs/LC-2022-07-01-random"
+    "plankton-rda:domain_length_x_cm":   100
   },
   "links": [
     {
-      "href":  "https://mwj.example.org/runs/S001",
+      "href":  "https://mwj.example.org/pdes/procedure/plankton-euler-1d-turing",
       "rel":   "derived_from",
       "type":  "application/json",
-      "title": "PROV simulation run"
+      "title": "SOSA SimulationProcedure"
     },
     {
-      "href":  "https://mwj.example.org/obs/LC-2022-07-01-random",
+      "href":  "https://mwj.example.org/pdes/obs/plankton-1d-random",
       "rel":   "related",
       "type":  "application/json",
       "title": "SOSA initial observation"
@@ -101,49 +100,34 @@ GET /search?filter=plankton-rda:D_ratio>=100
     }
   ],
   "assets": {
-    "X1_field": {
-      "href":  "https://mwj.example.org/data/S001/X1_field.csv",
-      "type":  "text/csv",
-      "title": "Phytoplankton spatial field X1(x,t)",
+    "vti_series": {
+      "href":  "data/Plankton_1.vti",
+      "type":  "application/vnd.vtk+xml",
+      "title": "VTK Image Data time series (Plankton_1.vti … Plankton_N.vti)",
       "roles": ["data"]
-    },
-    "X2_field": {
-      "href":  "https://mwj.example.org/data/S001/X2_field.csv",
-      "type":  "text/csv",
-      "title": "Zooplankton spatial field X2(x,t)",
-      "roles": ["data"]
-    },
-    "PHY_profile": {
-      "href":  "https://mwj.example.org/data/S001/PHY_profile_t1600.png",
-      "type":  "image/png",
-      "title": "Phytoplankton 1D profile at t=1600d (cf. Fig. 4.4 right)",
-      "roles": ["overview"]
-    },
-    "wave_number": {
-      "href":  "https://mwj.example.org/data/S001/wave_number_analysis.png",
-      "type":  "image/png",
-      "title": "G(k²) polynomial — critical wave numbers",
-      "roles": ["overview"]
     }
   }
 }
 
 
-### STAC Item S003 — 2D DIFICI travelling wave
+### STAC Item — 2D DIFICI travelling wave (run S003)
 {
   "type": "Feature",
   "stac_version": "1.0.0",
   "stac_extensions": ["https://mwj.example.org/plankton-rda/v0.1/schema.json"],
   "id": "S003",
-  "geometry": { "type": "Point", "coordinates": [9.37, 47.65] },
-  "bbox": [9.35, 47.63, 9.39, 47.67],
+  "geometry": { "type": "Polygon", "coordinates": [[[0,0],[100,0],[100,100],[0,100],[0,0]]] },
+  "bbox": [0.0, 0.0, 100.0, 100.0],
   "properties": {
-    "datetime":                          "2022-07-01T00:00:00Z",
-    "start_datetime":                    "2022-07-01T00:00:00Z",
-    "end_datetime":                      "2027-01-06T00:00:00Z",
-    "plankton-rda:model":                "Scheffer1991-RDA",
+    "datetime":                          "2025-01-01T00:00:00Z",
+    "mwj-pdes:model":                    "Scheffer1991-RDA",
+    "mwj-pdes:modelClass":               "model.lokal.o2.Plankton",
+    "mwj-pdes:solver":                   "jEuler",
+    "mwj-pdes:dimensions":               2,
+    "mwj-pdes:scenario":                 "2D-DIFICI-travelling-wave",
+    "mwj-pdes:provenance":               "https://mwj.example.org/pdes/procedure/plankton-euler-2d-difici",
+    "mwj-pdes:observation":              "https://mwj.example.org/pdes/obs/plankton-2d-random",
     "plankton-rda:scenario":             "2D-DIFICI-travelling-wave",
-    "plankton-rda:spatial_dimensions":   2,
     "plankton-rda:D1":                   1.0e-5,
     "plankton-rda:D2":                   1.0e-5,
     "plankton-rda:D_ratio":              1,
@@ -151,44 +135,22 @@ GET /search?filter=plankton-rda:D_ratio>=100
     "plankton-rda:delta":                0.175,
     "plankton-rda:boundary_condition":   "periodic",
     "plankton-rda:domain_length_x_cm":   100,
-    "plankton-rda:domain_length_y_cm":   100,
-    "plankton-rda:t_end_d":              1600,
-    "plankton-rda:numerical_scheme":     "explicit-euler",
-    "plankton-rda:provenance":           "https://mwj.example.org/runs/S003",
-    "plankton-rda:observation":          "https://mwj.example.org/obs/LC-2022-07-01-random"
+    "plankton-rda:domain_length_y_cm":   100
   },
   "links": [
     {
-      "href":  "https://mwj.example.org/runs/S003",
+      "href":  "https://mwj.example.org/pdes/procedure/plankton-euler-2d-difici",
       "rel":   "derived_from",
       "type":  "application/json",
-      "title": "PROV simulation run"
-    },
-    {
-      "href":  "https://mwj.example.org/obs/LC-2022-07-01-random",
-      "rel":   "related",
-      "type":  "application/json",
-      "title": "SOSA initial observation"
-    },
-    {
-      "href":  "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES",
-      "rel":   "software",
-      "type":  "text/html",
-      "title": "FiniteDifferenceMethod4PDES"
+      "title": "SOSA SimulationProcedure"
     }
   ],
   "assets": {
-    "PHY_t1500": {
-      "href":  "https://mwj.example.org/data/S003/PHY_surface_t1500.png",
-      "type":  "image/png",
-      "title": "Phytoplankton 2D wave front at t=1500d (cf. Fig. 4.8)",
-      "roles": ["overview"]
-    },
-    "PHY_t1600": {
-      "href":  "https://mwj.example.org/data/S003/PHY_surface_t1600.png",
-      "type":  "image/png",
-      "title": "Phytoplankton 2D wave front at t=1600d",
-      "roles": ["overview"]
+    "vti_series": {
+      "href":  "data/Plankton_1.vti",
+      "type":  "application/vnd.vtk+xml",
+      "title": "VTK Image Data time series",
+      "roles": ["data"]
     }
   }
 }
@@ -198,9 +160,9 @@ GET /search?filter=plankton-rda:D_ratio>=100
 ```yaml
 $schema: https://json-schema.org/draft/2020-12/schema
 title: PlanktonRDASTACItem
-description: 'A STAC 1.0 Item cataloguing the spatial field outputs of one plankton
-  RDA simulation run. Uses the ''plankton-rda'' extension namespace for model-specific
-  searchable properties.
+description: 'A STAC 1.0 Item cataloguing outputs of a plankton RDA simulation run,
+  with plankton-rda extension properties for scenario, diffusion ratio and advection
+  velocity.
 
   '
 type: object
@@ -217,6 +179,7 @@ properties:
   type:
     const: Feature
   stac_version:
+    type: string
     const: 1.0.0
   stac_extensions:
     type: array
@@ -224,37 +187,65 @@ properties:
       type: string
   id:
     type: string
-    description: Unique run identifier matching SimulationRun.id suffix
+    description: Unique run identifier, e.g. 'S001'
   geometry:
     type: object
-    description: GeoJSON geometry of the simulation spatial domain or observation
-      site
+    description: 'GeoJSON geometry of the simulation domain. Point for ODE, LineString
+      for 1D PDE, Polygon for 2D PDE.
+
+      '
+    required:
+    - type
+    - coordinates
+    properties:
+      type:
+        type: string
+        enum:
+        - Point
+        - LineString
+        - Polygon
+      coordinates: {}
   bbox:
     type: array
+    minItems: 4
     items:
       type: number
-    minItems: 4
   properties:
     type: object
     required:
     - datetime
-    - plankton-rda:model
+    - mwj-pdes:model
     - plankton-rda:scenario
-    - plankton-rda:spatial_dimensions
     properties:
       datetime:
         type: string
         format: date-time
-      start_datetime:
-        type: string
-        format: date-time
-      end_datetime:
-        type: string
-        format: date-time
-      plankton-rda:model:
+        description: Simulation start time (ISO 8601)
+      mwj-pdes:model:
         type: string
         const: Scheffer1991-RDA
-        x-jsonld-id: https://mwj.example.org/plankton/stac/model
+      mwj-pdes:modelClass:
+        type: string
+        const: model.lokal.o2.Plankton
+      mwj-pdes:solver:
+        type: string
+        enum:
+        - jEuler
+        - jRungeKutta
+        - jButcher
+      mwj-pdes:dimensions:
+        type: integer
+        enum:
+        - 0
+        - 1
+        - 2
+        description: 0 = ODE only, 1 = 1D PDE, 2 = 2D PDE
+      mwj-pdes:provenance:
+        type: string
+        description: URI of the PlanktonSimulationProcedure
+      mwj-pdes:observation:
+        type: string
+        description: URI of the initial ObservationCollection
       plankton-rda:scenario:
         type: string
         enum:
@@ -266,32 +257,27 @@ properties:
         - 1D-DIFICI-travelling-wave
         - 2D-DIFICI-travelling-wave
         x-jsonld-id: https://mwj.example.org/plankton/stac/scenario
-      plankton-rda:spatial_dimensions:
-        type: integer
-        enum:
-        - 1
-        - 2
-        x-jsonld-id: https://mwj.example.org/plankton/stac/spatial_dimensions
       plankton-rda:D1:
         type: number
-        description: Phytoplankton diffusivity [cm^2 d^-1]
+        description: Phytoplankton diffusivity D1 [cm^2 d^-1]
         x-jsonld-id: https://mwj.example.org/plankton/stac/D1
       plankton-rda:D2:
         type: number
-        description: Zooplankton diffusivity [cm^2 d^-1]
+        description: Zooplankton diffusivity D2 [cm^2 d^-1]
         x-jsonld-id: https://mwj.example.org/plankton/stac/D2
       plankton-rda:D_ratio:
         type: number
-        description: "D2/D1 ratio \u2014 >~100 triggers Turing instability"
+        description: "D2/D1 ratio \u2014 ratio > ~100 triggers Turing instability"
         x-jsonld-id: https://mwj.example.org/plankton/stac/D_ratio
       plankton-rda:v_rel:
         type: number
-        description: "Differential advection speed |v1x - v2x| [cm d^-1] \u2014 >0
-          triggers DIFICI"
+        description: "|v1x - v2x| [cm d^-1] \u2014 > 0 triggers DIFICI travelling
+          waves"
         x-jsonld-id: https://mwj.example.org/plankton/stac/v_rel
       plankton-rda:delta:
         type: number
-        description: "Zooplankton mortality rate [d^-1] \u2014 bifurcation parameter"
+        description: "Zooplankton mortality rate delta [d^-1] \u2014 primary bifurcation
+          parameter"
         x-jsonld-id: https://mwj.example.org/plankton/stac/delta
       plankton-rda:boundary_condition:
         type: string
@@ -302,27 +288,12 @@ properties:
         x-jsonld-id: https://mwj.example.org/plankton/stac/boundary_condition
       plankton-rda:domain_length_x_cm:
         type: number
+        description: Domain length in x [cm]
         x-jsonld-id: https://mwj.example.org/plankton/stac/domain_length_x_cm
       plankton-rda:domain_length_y_cm:
         type: number
+        description: "Domain length in y [cm] \u2014 2D only"
         x-jsonld-id: https://mwj.example.org/plankton/stac/domain_length_y_cm
-      plankton-rda:t_end_d:
-        type: number
-        description: Simulation end time [d]
-        x-jsonld-id: https://mwj.example.org/plankton/stac/t_end_d
-      plankton-rda:numerical_scheme:
-        type: string
-        x-jsonld-id: https://mwj.example.org/plankton/stac/numerical_scheme
-      plankton-rda:provenance:
-        type: string
-        description: URI of the PROV SimulationRun Activity
-        x-jsonld-type: '@id'
-        x-jsonld-id: https://mwj.example.org/plankton/stac/provenance
-      plankton-rda:observation:
-        type: string
-        description: URI of the SOSA ObservationCollection used as IC
-        x-jsonld-type: '@id'
-        x-jsonld-id: https://mwj.example.org/plankton/stac/observation
   links:
     type: array
     items:
@@ -335,37 +306,32 @@ properties:
           type: string
         rel:
           type: string
-          description: "'derived_from' \u2192 PROV SimulationRun; 'related'      \u2192
-            SOSA ObservationCollection; 'software'     \u2192 FiniteDifferenceMethod4PDES
-            repo.\n"
         type:
           type: string
         title:
           type: string
   assets:
     type: object
-    description: Named output files
-    additionalProperties:
-      type: object
-      required:
-      - href
-      - type
-      properties:
-        href:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-        roles:
-          type: array
-          items:
+    description: "STAC assets \u2014 at minimum the VTI time-series"
+    properties:
+      vti_series:
+        type: object
+        properties:
+          href:
             type: string
-            enum:
-            - data
-            - overview
-            - thumbnail
-            - metadata
+          type:
+            type: string
+          title:
+            type: string
+          roles:
+            type: array
+            items:
+              type: string
+x-jsonld-extra-terms:
+  plankton-rda:provenance:
+    x-jsonld-type: '@id'
+  plankton-rda:observation:
+    x-jsonld-type: '@id'
 x-jsonld-prefixes:
   prov: http://www.w3.org/ns/prov#
   sosa: http://www.w3.org/ns/sosa/

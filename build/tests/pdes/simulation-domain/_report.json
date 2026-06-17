@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for mwj.pdes.simulation-domain - Plankton Simulation Domain (VTK Image Data Grid)",
+  "bblockName": "Plankton Simulation Domain (VTK Image Data Grid)",
+  "bblockId": "mwj.pdes.simulation-domain",
+  "generated": "2026-06-17T08:25:43.315074+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

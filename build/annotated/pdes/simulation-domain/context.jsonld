@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "SimulationDomain": "geo:SpatialObject",
+    "id": "@id",
+    "label": "rdfs:label",
+    "domainType": "mwj:domainType",
+    "dimensions": "mwj:gridDimensions",
+    "spacing": "mwj:gridSpacing",
+    "origin": "mwj:gridOrigin",
+    "arrayNames": "mwj:stateVariableArrays",
+    "vtiSeries": "mwj:vtiSeries",
+    "geometry": "geo:hasGeometry",
+    "crs": "mwj:coordinateReferenceSystem",
+    "boundingBox": "mwj:boundingBox",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "mwj": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "@version": 1.1
+  }
+}

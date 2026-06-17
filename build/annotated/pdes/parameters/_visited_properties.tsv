@@ -23,3 +23,5 @@ path	@id	schema
 /t_end	https://mwj.example.org/plankton/model/simulationEndTime	/github/workspace/build/annotated/pdes/parameters/schema.yaml
 /boundary_condition	https://mwj.example.org/plankton/model/boundaryConditionType	/github/workspace/build/annotated/pdes/parameters/schema.yaml
 /spatial_dimensions	https://mwj.example.org/plankton/model/spatialDimensions	/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/X1_0		/github/workspace/build/annotated/pdes/parameters/schema.yaml
+/X2_0		/github/workspace/build/annotated/pdes/parameters/schema.yaml

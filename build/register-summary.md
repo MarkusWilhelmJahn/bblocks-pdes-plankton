@@ -1,27 +1,29 @@
-# Partial Differential Equation Systems OGC Blocks
+# Plankton RDA OGC Building Block Example
 
-OGC Blocks implementation which uses the OGC standards SOSA, PROV and STAC combined to generate an interface for publishing the simulation results from a pytho-plankton and zoo-plankton interaction described by partial differential equations and numerically solved by using the Runge-Kutta method.
+A self-contained OGC Building Block example illustrating how SOSA, PROV-O
+and STAC can be combined to describe a simulation model, its initial
+conditions, parameter sets and result cataloguing — using the Scheffer (1991)
+phytoplankton/zooplankton RDA model as a concrete case.
 
 
-## About this Register:
+## About this Register
 
-### **Who is this register for?**
+This register is an **example** showing how to apply OGC standards to
+equation-based ecological simulation models. It is intentionally
+self-contained and does not depend on any other building block register.
 
-### **What does this register contain?**
+### What does this register contain?
 
-### **When should this register be used?**
+- **simulation-run**: A `sosa:Procedure` describing how to execute the
+  Scheffer RDA model in FiniteDifferenceMethod4PDES
+- **observation**: A `sosa:ObservationCollection` providing initial
+  phytoplankton and zooplankton conditions
+- **parameters**: Typed Scheffer RDA parameter set
+- **stac-result**: STAC Item cataloguing simulation outputs
 
-### **Where does this register fit?**
-
-### **Why does this register exist?**
-
-### **How is this register structured and implemented?**
-
-### **For Developers**
-*   **[GitHub Repository](https://github.com/ogcincubator/bblocks-SOSAPROVSTAC)**
-*   **[OGC Blocks Documentation](https://ogcincubator.github.io/bblocks-docs/)**
-*   **[OGC Blocks Tutorials](https://ogcincubator.github.io/bblocks-tutorial/)**
-*   **[OGC Blocks Examples](https://ogcincubator.github.io/bblocks-examples/)**
+### For Developers
+* **[GitHub Repository](https://github.com/MarkusWilhelmJahn/bblocks-pdes-plankton)**
+* **[OGC Blocks Documentation](https://ogcincubator.github.io/bblocks-docs/)**
 
 
 ## Building Blocks
@@ -30,19 +32,25 @@ OGC Blocks implementation which uses the OGC standards SOSA, PROV and STAC combi
 
 **Type:** schema
 
-Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model (Malchow, GlgbasModII WS2010, eqs. 4.64/4.65). Covers reaction parameters, diffusion coefficients and advection velocities.
+Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model. Covers reaction parameters, diffusion coefficients and advection velocities.
+
+### `mwj.pdes.simulation-domain` — Plankton Simulation Domain (VTK Image Data Grid)
+
+**Type:** schema
+
+OGC spatial description of the VTK Image Data (vtkImageData) grid used as the plankton RDA simulation domain in FiniteDifferenceMethod4PDES. The first VTI timestep file (Plankton_1.vti) provides initial conditions for the sosa:ObservationCollection.
 
 ### `mwj.pdes.observation` — Plankton Initial Observation (SOSA)
 
 **Type:** schema
 
-SOSA ObservationCollection providing initial phytoplankton density X1(x,0), zooplankton density X2(x,0), nutrient level N and fish predation rate F for a RDA simulation run.
+SOSA ObservationCollection providing initial phytoplankton density X1(x,0) and zooplankton density X2(x,0) for a plankton RDA simulation run. The featureOfInterest references the SimulationDomain (VTK Image Data grid).
 
-### `mwj.pdes.simulation-run` — Plankton RDA Simulation Run (PROV)
+### `mwj.pdes.simulation-run` — Plankton Simulation Procedure (SOSA)
 
 **Type:** schema
 
-PROV-O Activity capturing a single FDM simulation of the Scheffer phytoplankton/zooplankton RDA model, linking SOSA initial observations and parameters to output spatial fields and time series.
+A sosa:Procedure describing how to execute the Scheffer (1991) phytoplankton/zooplankton RDA model in FiniteDifferenceMethod4PDES, specifying the model class, numerical solver, spatial domain and time discretisation.
 
 ### `mwj.pdes.stac-result` — Plankton RDA Simulation STAC Item
 

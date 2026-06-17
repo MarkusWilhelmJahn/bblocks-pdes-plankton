@@ -1,42 +1,35 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: PlanktonSimulationRun
-description: 'A PROV Activity representing one FDM execution of the Scheffer phytoplankton/zooplankton
-  RDA model using FiniteDifferenceMethod4PDES.
+title: PlanktonSimulationProcedure
+description: 'A sosa:Procedure describing how to execute the Scheffer (1991) phytoplankton/zooplankton
+  RDA model in FiniteDifferenceMethod4PDES. Referenced from a sosa:ObservationCollection
+  via sosa:usedProcedure.
 
   '
 type: object
 required:
 - type
-- startedAtTime
-- endedAtTime
-- wasAssociatedWith
-- used
-- parameters
-- generated
+- modelClass
+- software
+- numericalSolver
+- dt
+- t_end
 properties:
   type:
-    const: SimulationRun
+    const: SimulationProcedure
   id:
     type: string
-    description: URI identifying this run
+    description: URI identifying this procedure
     x-jsonld-id: '@id'
   label:
     type: string
-    description: Human-readable label, e.g. 'Turing-1D-D2_2e-3'
+    description: Human-readable label, e.g. 'Plankton-Euler-1D-Turing'
     x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#label
-  startedAtTime:
-    type: string
-    format: date-time
-    x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  endedAtTime:
-    type: string
-    format: date-time
-    x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  wasAssociatedWith:
+  modelClass:
+    const: model.lokal.o2.Plankton
+    description: Java class implementing the Scheffer RDA model
+    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#modelClass
+  software:
     type: object
-    description: Software agent that executed the simulation (prov:wasAssociatedWith)
     required:
     - id
     - label
@@ -52,138 +45,38 @@ properties:
         x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#label
       version:
         type: string
-        description: Git tag or commit SHA
-      localPath:
-        type: string
-        const: /Users/markusjahn/Documents/GitHub/FiniteDifferenceMethod4PDES
-    x-jsonld-id: http://www.w3.org/ns/prov#wasAssociatedWith
-  numericalScheme:
+    x-jsonld-id: http://www.w3.org/ns/sosa/implementedBy
+  numericalSolver:
     type: string
-    description: FDM time-integration scheme
     enum:
-    - explicit-euler
-    - implicit-euler
-    - crank-nicolson
-    - runge-kutta-4
-    x-jsonld-id: https://mwj.example.org/plankton/sim/numericalScheme
-  spatialDiscretisation:
+    - jEuler
+    - jRungeKutta
+    - jButcher
+    description: Time-integration solver class (model.numerik.*)
+    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#numericalSolver
+  dt:
+    type: number
+    minimum: 0
+    exclusiveMinimum: 0
+    description: Time step [d]
+    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#timeStep
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+  t_end:
+    type: number
+    minimum: 0
+    description: Simulation end time [d]
+    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#endTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+  simulationDomain:
     type: string
-    description: FDM spatial discretisation scheme
-    enum:
-    - central-difference
-    - upwind
-    - lax-wendroff
-    x-jsonld-id: https://mwj.example.org/plankton/sim/spatialDiscretisation
-  used:
-    type: object
-    description: Input resources consumed (prov:used)
-    required:
-    - observation
-    properties:
-      observation:
-        type: string
-        description: URI of the SOSA ObservationCollection (initial conditions)
-      parametersId:
-        type: string
-        description: URI of the parameter set entity
-    x-jsonld-id: http://www.w3.org/ns/prov#used
+    description: URI of the PlanktonSimulationDomain (mwj.pdes.simulation-domain)
+      defining the VTK Image Data grid
+    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#simulationDomain
+    x-jsonld-type: '@id'
   parameters:
-    description: "Exact parameter values used \u2014 inline copy for full reproducibility"
-    type: object
-    required:
-    - alpha
-    - c
-    - gamma
-    - H1
-    - H2
-    - HN
-    - e
-    - delta
-    - F
-    - N
-    - D1
-    - D2
-    properties:
-      alpha:
-        type: number
-      c:
-        type: number
-      gamma:
-        type: number
-      H1:
-        type: number
-      H2:
-        type: number
-      HN:
-        type: number
-      e:
-        type: number
-      delta:
-        type: number
-      F:
-        type: number
-      N:
-        type: number
-      D1:
-        type: number
-      D2:
-        type: number
-      v1x:
-        type: number
-      v2x:
-        type: number
-      v1y:
-        type: number
-      v2y:
-        type: number
-      dt:
-        type: number
-      t_end:
-        type: number
-      domain_length_x_cm:
-        type: number
-      domain_length_y_cm:
-        type: number
-      grid_points_x:
-        type: integer
-      grid_points_y:
-        type: integer
-      boundary_condition:
-        type: string
-      spatial_dimensions:
-        type: integer
-    x-jsonld-id: http://www.w3.org/ns/prov#used
-  generated:
-    type: array
-    minItems: 1
-    description: Output assets generated by this run (prov:wasGeneratedBy)
-    items:
-      type: object
-      required:
-      - id
-      - type
-      - format
-      properties:
-        id:
-          type: string
-          description: Relative path or URI to the output file
-          x-jsonld-id: '@id'
-        type:
-          type: string
-          enum:
-          - timeseries-csv
-          - spatial-field-csv
-          - spatial-field-netcdf
-          - phytoplankton-surface-png
-          - zooplankton-surface-png
-          - phase-portrait-png
-          - wave-number-plot-png
-          - bifurcation-diagram-png
-        format:
-          type: string
-        description:
-          type: string
-    x-jsonld-reverse: prov:wasGeneratedBy
+    description: Plankton RDA parameter set
+    $ref: https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/parameters/schema.yaml
+    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#parameters
   scenario:
     type: string
     description: Qualitative scenario label
@@ -196,18 +89,47 @@ properties:
     - 1D-DIFICI-travelling-wave
     - 2D-DIFICI-travelling-wave
     x-jsonld-id: https://mwj.example.org/plankton/sim/scenario
-  stacItem:
-    type: string
-    description: URI of the STAC Item cataloguing this run's outputs
-    x-jsonld-id: http://www.w3.org/ns/dcat#landingPage
+  spatialSetup:
+    type: object
+    description: "PDE spatial configuration \u2014 omit for pure ODE runs"
+    properties:
+      dimensions:
+        type: integer
+        enum:
+        - 1
+        - 2
+      domain_length_x:
+        type: number
+        minimum: 0
+        description: Domain length in x [cm]
+      domain_length_y:
+        type: number
+        minimum: 0
+        description: "Domain length in y [cm] \u2014 2D only"
+      grid_points_x:
+        type: integer
+        minimum: 2
+      grid_points_y:
+        type: integer
+        minimum: 2
+        description: 2D only
+      boundary_condition:
+        type: string
+        enum:
+        - zero-flux
+        - periodic
+        - dirichlet
+      diffusion:
+        type: boolean
+      advection:
+        type: boolean
+    x-jsonld-id: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#spatialSetup
 x-jsonld-extra-terms:
-  SimulationRun:
-    x-jsonld-id: http://www.w3.org/ns/prov#Activity
+  PlanktonSimulationProcedure: http://www.w3.org/ns/sosa/Procedure
+  visualisation: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#visualisation
 x-jsonld-prefixes:
-  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  mwj: https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#
   xsd: http://www.w3.org/2001/XMLSchema#
   plksim: https://mwj.example.org/plankton/sim/
-  dcat: http://www.w3.org/ns/dcat#
-  sosa: http://www.w3.org/ns/sosa/
-  ssn: http://www.w3.org/ns/ssn/

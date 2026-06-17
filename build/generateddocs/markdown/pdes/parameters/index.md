@@ -3,7 +3,7 @@
 
 `mwj.pdes.parameters` *v0.1*
 
-Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model (Malchow, GlgbasModII WS2010, eqs. 4.64/4.65). Covers reaction parameters, diffusion coefficients and advection velocities.
+Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model. Covers reaction parameters, diffusion coefficients and advection velocities.
 
 [*Status*](http://www.opengis.net/def/status): Experimental
 
@@ -12,43 +12,54 @@ Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-d
 # Scheffer Phytoplankton-Zooplankton RDA Parameters
 
 Parameter schema for the two-species **reaction-diffusion-advection** model
-from Malchow, *Gleichungsbasierte Modelle II* (WS 2010/11), equations 4.64/4.65.
+from Malchow, *Equation-Based Models II* (WS 2010/11), equations 4.64/4.65.
 Original local kinetics from Scheffer (1991).
 
 ## Governing equations
 
 ```
-∂X1/∂t = α·N/(HN+N)·X1 − c·X1² − γ·X1/(H1+X1)·X2 − v1·∇X1 + D1·∇²X1
-∂X2/∂t = e·γ·X1/(H1+X1)·X2 − δ·X2 − F·X2²/(H2²+X2²) − v2·∇X2 + D2·∇²X2
+dX₁/dt = α · N/(Hₙ+N) · X₁  −  c · X₁²  −  γ · X₁/(H₁+X₁) · X₂
+          − v₁ · ∇X₁  +  D₁ · ∇²X₁
+
+dX₂/dt = e · γ · X₁/(H₁+X₁) · X₂  −  δ · X₂
+          − F · X₂²/(H₂²+X₂²)
+          − v₂ · ∇X₂  +  D₂ · ∇²X₂
 ```
 
-- **X1** = phytoplankton density [mg.dw l⁻¹]
-- **X2** = zooplankton density [mg.dw l⁻¹]
-- Holling Type II functional response for zooplankton grazing
-- Holling Type III for fish predation on zooplankton
+where:
+- X₁ = phytoplankton density [mg dw l⁻¹]
+- X₂ = zooplankton density [mg dw l⁻¹]
+- X₁/(H₁+X₁) — Holling Type II functional response (zooplankton grazing)
+- X₂²/(H₂²+X₂²) — Holling Type III functional response (fish predation)
 
 ## Default parameter values (Malchow 2000 / Scheffer 1991)
 
 | Parameter | Value | Unit | Description |
 |-----------|-------|------|-------------|
 | α | 0.5 | d⁻¹ | Max phytoplankton growth rate |
-| c | 0.05 | mg.dw⁻¹ l d⁻¹ | Intraspecific competition |
-| γ | 0.4 | d⁻¹ | Max grazing rate |
-| H1 | 0.6 | mg.dw l⁻¹ | Half-sat grazing (Holling II) |
-| H2 | 5.0 | mg.dw l⁻¹ | Half-sat fish predation (Holling III) |
-| HN | 1.0 | rel. | Half-sat nutrient uptake |
-| e | 0.6 | — | Assimilation efficiency |
-| **δ** | **0.175** | **d⁻¹** | **Zooplankton mortality (bifurcation param)** |
-| N | 2.5 | rel. | Nutrient level (control) |
-| F | 0.4 | mg.dw d⁻¹ l⁻¹ | Fish predation (control) |
+| c | 0.05 | mg dw⁻¹ l d⁻¹ | Intraspecific competition |
+| γ | 0.4 | d⁻¹ | Max zooplankton grazing rate |
+| H₁ | 0.6 | mg dw l⁻¹ | Half-saturation constant — grazing (Holling II) |
+| H₂ | 5.0 | mg dw l⁻¹ | Half-saturation constant — fish predation (Holling III) |
+| Hₙ | 1.0 | rel. | Half-saturation constant — nutrient uptake |
+| e | 0.6 | — | Zooplankton assimilation efficiency |
+| **δ** | **0.175** | d⁻¹ | Zooplankton mortality rate (primary bifurcation parameter) |
+| N | 2.5 | rel. | Nutrient level (external control) |
+| F | 0.4 | mg dw d⁻¹ l⁻¹ | Fish predation pressure (external control) |
+| D₁ | 10⁻⁵ | cm² d⁻¹ | Phytoplankton diffusivity |
+| D₂ | 10⁻⁵ | cm² d⁻¹ | Zooplankton diffusivity |
 
-## Spatial scenarios (from Figs. 4.4–4.8 of script)
+## Spatial scenarios (Figs. 4.4–4.8)
 
-| Scenario | D1 | D2 | v1x−v2x | Outcome |
-|----------|----|----|---------|---------|
+| Scenario | D₁ | D₂ | v₁ₓ − v₂ₓ | Outcome |
+|----------|----|----|------------|---------|
+| ODE only | 0 | 0 | 0 | Local oscillations / fixed points |
 | Turing structures | 10⁻⁵ | 2×10⁻³ | 0 | Standing spatial patterns |
 | Travelling waves (DIFICI) | 10⁻⁵ | 10⁻⁵ | 0.01 | Propagating population waves |
-| ODE only | 0 | 0 | 0 | Local oscillations / fixed points |
+
+Turing instability condition: D₂/D₁ ≳ 100
+
+DIFICI condition: |v₁ₓ − v₂ₓ| > 0 with D₁ = D₂
 
 ## Implemented in
 
@@ -142,12 +153,12 @@ and periodic boundary conditions.
 $schema: https://json-schema.org/draft/2020-12/schema
 title: PlanktonRDAParameters
 description: "Parameters for the Scheffer phytoplankton (X1) / zooplankton (X2) reaction-diffusion-advection
-  model (Malchow GlgbasModII WS2010, eqs. 4.64/4.65):\n\n  dX1/dt = alpha * N/(HN+N)
-  * X1  -  c*X1^2  -  gamma * X1/(H1+X1) * X2\n           - v1 \xB7 grad(X1)  +  D1
-  \xB7 lap(X1)\n\n  dX2/dt = e*gamma * X1/(H1+X1) * X2  -  delta*X2\n           -
-  F * X2^2/(H2^2+X2^2)\n           - v2 \xB7 grad(X2)  +  D2 \xB7 lap(X2)\n\nN (nutrients)
-  and F (fish predation) are external control parameters. Default values from Malchow
-  (2000) / Scheffer (1991): p. 4275 of script.\n"
+  model (Malchow, Equation-Based Models II WS2010, eqs. 4.64/4.65):\n\n  dX1/dt =
+  alpha * N/(HN+N) * X1  -  c*X1^2  -  gamma * X1/(H1+X1) * X2\n           - v1 \xB7
+  grad(X1)  +  D1 \xB7 lap(X1)\n\n  dX2/dt = e*gamma * X1/(H1+X1) * X2  -  delta*X2\n
+  \          - F * X2^2/(H2^2+X2^2)\n           - v2 \xB7 grad(X2)  +  D2 \xB7 lap(X2)\n\nN
+  (nutrients) and F (fish predation) are external control parameters. Default values
+  from Malchow (2000) / Scheffer (1991): p. 4275 of script.\n"
 type: object
 required:
 - alpha
@@ -162,6 +173,8 @@ required:
 - N
 - D1
 - D2
+- X1_0
+- X2_0
 properties:
   alpha:
     type: number
@@ -340,6 +353,16 @@ properties:
     - 2
     description: Number of spatial dimensions (1D or 2D).
     x-jsonld-id: https://mwj.example.org/plankton/model/spatialDimensions
+  X1_0:
+    type: number
+    minimum: 0
+    description: 'Initial phytoplankton density [mg.dw/l]. Default: 3.116'
+    default: 3.116
+  X2_0:
+    type: number
+    minimum: 0
+    description: 'Initial zooplankton density [mg.dw/l]. Default: 1.870'
+    default: 1.87
 x-jsonld-prefixes:
   plk: https://mwj.example.org/plankton/model/
   qudt: http://qudt.org/schema/qudt/
@@ -444,8 +467,8 @@ You can find the full JSON-LD context here:
 ## Sources
 
 * [Scheffer (1991) Oikos 62:271-282](https://doi.org/10.2307/3545491)
-* [Malchow — Gleichungsbasierte Modelle II, Kap. 4.6 (WS 2010/11)](https://www.usf.uos.de/~malchow)
-* [Simulation software — FiniteDifferenceMethod4PDES](https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES)
+* [Malchow — Equation-Based Models II, Ch. 4.6 (WS 2010/11)](https://www.usf.uos.de/~malchow)
+* [FiniteDifferenceMethod4PDES](https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES)
 
 # For developers
 

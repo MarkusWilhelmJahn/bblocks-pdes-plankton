@@ -1,0 +1,30 @@
+path	@id	schema
+/type		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/id	@id	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/label	http://www.w3.org/2000/01/rdf-schema#label	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/domainType	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#domainType	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/dimensions	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#gridDimensions	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/dimensions/nx		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/dimensions/ny		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/dimensions/nz		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/spacing	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#gridSpacing	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/spacing/dx		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/spacing/dy		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/spacing/dz		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/origin	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#gridOrigin	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/origin/x		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/origin/y		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/origin/z		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/arrayNames	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#stateVariableArrays	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/vtiSeries	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#vtiSeries	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/vtiSeries/runName		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/vtiSeries/stepCount		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/vtiSeries/initFile		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/vtiSeries/dataFolder		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/geometry	http://www.opengis.net/ont/geosparql#hasGeometry	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/geometry/type		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/geometry/coordinates		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/crs	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#coordinateReferenceSystem	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/boundingBox	https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES/ont#boundingBox	/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/boundingBox/min		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml
+/boundingBox/max		/github/workspace/build/annotated/pdes/simulation-domain/schema.yaml

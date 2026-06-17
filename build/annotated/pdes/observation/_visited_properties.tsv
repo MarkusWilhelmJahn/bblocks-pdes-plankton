@@ -3,19 +3,30 @@ path	@id	schema
 /featureOfInterest	http://www.w3.org/ns/sosa/hasFeatureOfInterest	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /featureOfInterest/type		/github/workspace/build/annotated/pdes/observation/schema.yaml
 /featureOfInterest/geometry		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/geometry/type		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/geometry/coordinates		/github/workspace/build/annotated/pdes/observation/schema.yaml
 /featureOfInterest/properties		/github/workspace/build/annotated/pdes/observation/schema.yaml
 /featureOfInterest/properties/name		/github/workspace/build/annotated/pdes/observation/schema.yaml
-/featureOfInterest/properties/depth_m		/github/workspace/build/annotated/pdes/observation/schema.yaml
-/featureOfInterest/properties/water_body_type		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/crs		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/domainType		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridDimensions		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridDimensions/nx		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridDimensions/ny		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridDimensions/nz		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridSpacing		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridSpacing/dx		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridSpacing/dy		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/gridSpacing/dz		/github/workspace/build/annotated/pdes/observation/schema.yaml
+/featureOfInterest/properties/initVtiFile		/github/workspace/build/annotated/pdes/observation/schema.yaml
 /phenomenonTime	http://www.w3.org/ns/sosa/phenomenonTime	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /madeBySensor	http://www.w3.org/ns/sosa/madeBySensor	/github/workspace/build/annotated/pdes/observation/schema.yaml
+/usedProcedure	http://www.w3.org/ns/sosa/usedProcedure	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /hasMember	http://www.w3.org/ns/sosa/hasMember	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /hasMember/observedProperty	http://www.w3.org/ns/sosa/observedProperty	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /hasMember/hasResult	http://www.w3.org/ns/sosa/hasResult	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /hasMember/hasResult/value	http://www.w3.org/ns/sosa/hasSimpleResult	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /hasMember/hasResult/unit	http://qudt.org/schema/qudt/unit	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /hasMember/resultTime	http://www.w3.org/ns/sosa/resultTime	/github/workspace/build/annotated/pdes/observation/schema.yaml
-/hasMember/usedProcedure	http://www.w3.org/ns/sosa/usedProcedure	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /perturbation	https://mwj.example.org/plankton/sim/perturbation	/github/workspace/build/annotated/pdes/observation/schema.yaml
 /perturbation/amplitude		/github/workspace/build/annotated/pdes/observation/schema.yaml
 /perturbation/type		/github/workspace/build/annotated/pdes/observation/schema.yaml

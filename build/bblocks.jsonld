@@ -191,16 +191,16 @@
       }
     }
   ],
-  "name": "Building Blocks - Partial Differential Equation Systems OGC Blocks",
-  "abstract": "OGC Blocks implementation which uses the OGC standards SOSA, PROV and STAC combined to generate an interface for publishing the simulation results from a pytho-plankton and zoo-plankton interaction described by partial differential equations and numerically solved by using the Runge-Kutta method.\n",
-  "description": "## About this Register:\n\n### **Who is this register for?**\n\n### **What does this register contain?**\n\n### **When should this register be used?**\n\n### **Where does this register fit?**\n\n### **Why does this register exist?**\n\n### **How is this register structured and implemented?**\n\n### **For Developers**\n*   **[GitHub Repository](https://github.com/ogcincubator/bblocks-SOSAPROVSTAC)**\n*   **[OGC Blocks Documentation](https://ogcincubator.github.io/bblocks-docs/)**\n*   **[OGC Blocks Tutorials](https://ogcincubator.github.io/bblocks-tutorial/)**\n*   **[OGC Blocks Examples](https://ogcincubator.github.io/bblocks-examples/)**\n",
+  "name": "Building Blocks - Plankton RDA OGC Building Block Example",
+  "abstract": "A self-contained OGC Building Block example illustrating how SOSA, PROV-O\nand STAC can be combined to describe a simulation model, its initial\nconditions, parameter sets and result cataloguing \u2014 using the Scheffer (1991)\nphytoplankton/zooplankton RDA model as a concrete case.\n",
+  "description": "## About this Register\n\nThis register is an **example** showing how to apply OGC standards to\nequation-based ecological simulation models. It is intentionally\nself-contained and does not depend on any other building block register.\n\n### What does this register contain?\n\n- **simulation-run**: A `sosa:Procedure` describing how to execute the\n  Scheffer RDA model in FiniteDifferenceMethod4PDES\n- **observation**: A `sosa:ObservationCollection` providing initial\n  phytoplankton and zooplankton conditions\n- **parameters**: Typed Scheffer RDA parameter set\n- **stac-result**: STAC Item cataloguing simulation outputs\n\n### For Developers\n* **[GitHub Repository](https://github.com/MarkusWilhelmJahn/bblocks-pdes-plankton)**\n* **[OGC Blocks Documentation](https://ogcincubator.github.io/bblocks-docs/)**\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-20T14:20:17.828007",
+  "modified": "2026-06-17T08:25:41.815417",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"1c38e230d79a22d5b242ea63ec3c6d6a95af173d",
-      "shortCommitId": "\"1c38e2",
-      "date": "2026-05-20T11:46:31+00:00\""
+      "commitId": "\"89c04825320d476cbe210a33c6f4a1b40078df17",
+      "shortCommitId": "\"89c048",
+      "date": "2026-06-16T13:37:40+00:00\""
     }
   },
   "gitRepository": "https://github.com/MarkusWilhelmJahn/bblocks-pdes-plankton",
@@ -238,12 +238,12 @@
     "dcat:Catalog",
     "bblocks:BBlocksRegister"
   ],
-  "skos:prefLabel": "Building Blocks - Partial Differential Equation Systems OGC Blocks",
+  "skos:prefLabel": "Building Blocks - Plankton RDA OGC Building Block Example",
   "hasConcepts": [
     {
       "itemIdentifier": "mwj.pdes.parameters",
       "name": "Scheffer Phytoplankton-Zooplankton RDA Parameters",
-      "abstract": "Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model (Malchow, GlgbasModII WS2010, eqs. 4.64/4.65). Covers reaction parameters, diffusion coefficients and advection velocities.",
+      "abstract": "Typed parameter set for the Scheffer (1991) phytoplankton/zooplankton reaction-diffusion-advection model. Covers reaction parameters, diffusion coefficients and advection velocities.",
       "status": "experimental",
       "dateTimeAddition": "2025-01-01T00:00:00Z",
       "itemClass": "schema",
@@ -262,11 +262,11 @@
           "link": "https://doi.org/10.2307/3545491"
         },
         {
-          "title": "Malchow \u2014 Gleichungsbasierte Modelle II, Kap. 4.6 (WS 2010/11)",
+          "title": "Malchow \u2014 Equation-Based Models II, Ch. 4.6 (WS 2010/11)",
           "link": "https://www.usf.uos.de/~malchow"
         },
         {
-          "title": "Simulation software \u2014 FiniteDifferenceMethod4PDES",
+          "title": "FiniteDifferenceMethod4PDES",
           "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES"
         }
       ],
@@ -301,13 +301,13 @@
       "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/parameters/",
       "validationPassed": true,
       "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/parameters/index.json"
-        },
         "markdown": {
           "mediatype": "text/markdown",
           "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/parameters/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/parameters/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -332,15 +332,104 @@
       }
     },
     {
+      "itemIdentifier": "mwj.pdes.simulation-domain",
+      "name": "Plankton Simulation Domain (VTK Image Data Grid)",
+      "abstract": "OGC spatial description of the VTK Image Data (vtkImageData) grid used as the plankton RDA simulation domain in FiniteDifferenceMethod4PDES. The first VTI timestep file (Plankton_1.vti) provides initial conditions for the sosa:ObservationCollection.",
+      "status": "experimental",
+      "dateTimeAddition": "2025-01-01T00:00:00Z",
+      "itemClass": "schema",
+      "version": "0.1",
+      "tags": [
+        "spatial",
+        "grid",
+        "VTK",
+        "coverage",
+        "domain",
+        "FDM",
+        "plankton"
+      ],
+      "sources": [
+        {
+          "title": "VTK Image Data format",
+          "link": "https://vtk.org/wp-content/uploads/2015/04/file-formats.pdf"
+        },
+        {
+          "title": "FiniteDifferenceMethod4PDES",
+          "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES"
+        }
+      ],
+      "rdfType": [
+        "http://www.opengis.net/ont/geosparql#SpatialObject"
+      ],
+      "shaclShapes": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "dateOfLastChange": "2025-01-01",
+      "schema": [
+        {
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-domain/schema.yaml",
+      "sourceLdContext": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-domain/context.jsonld",
+      "resolvedSchemaProperties": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/annotated/pdes/simulation-domain/resolvedProperties.json",
+      "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-domain/",
+      "validationPassed": true,
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/simulation-domain/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/simulation-domain/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/bblock/mwj.pdes.simulation-domain"
+        }
+      },
+      "@id": "bblocks://mwj.pdes.simulation-domain",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "Plankton Simulation Domain (VTK Image Data Grid)",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "dependsOn": null,
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/"
+      }
+    },
+    {
       "itemIdentifier": "mwj.pdes.observation",
       "name": "Plankton Initial Observation (SOSA)",
-      "abstract": "SOSA ObservationCollection providing initial phytoplankton density X1(x,0), zooplankton density X2(x,0), nutrient level N and fish predation rate F for a RDA simulation run.",
+      "abstract": "SOSA ObservationCollection providing initial phytoplankton density X1(x,0) and zooplankton density X2(x,0) for a plankton RDA simulation run. The featureOfInterest references the SimulationDomain (VTK Image Data grid).",
       "status": "experimental",
       "dateTimeAddition": "2025-01-01T00:00:00Z",
       "itemClass": "schema",
       "version": "0.1",
       "dependsOn": [
-        "bblocks://mwj.pdes.parameters"
+        "bblocks://mwj.pdes.parameters",
+        "bblocks://mwj.pdes.simulation-domain"
       ],
       "tags": [
         "SOSA",
@@ -385,13 +474,13 @@
       "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/observation/",
       "validationPassed": true,
       "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/observation/index.json"
-        },
         "markdown": {
           "mediatype": "text/markdown",
           "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/observation/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/observation/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -416,35 +505,42 @@
     },
     {
       "itemIdentifier": "mwj.pdes.simulation-run",
-      "name": "Plankton RDA Simulation Run (PROV)",
-      "abstract": "PROV-O Activity capturing a single FDM simulation of the Scheffer phytoplankton/zooplankton RDA model, linking SOSA initial observations and parameters to output spatial fields and time series.",
+      "name": "Plankton Simulation Procedure (SOSA)",
+      "abstract": "A sosa:Procedure describing how to execute the Scheffer (1991) phytoplankton/zooplankton RDA model in FiniteDifferenceMethod4PDES, specifying the model class, numerical solver, spatial domain and time discretisation.",
       "status": "experimental",
       "dateTimeAddition": "2025-01-01T00:00:00Z",
       "itemClass": "schema",
       "version": "0.1",
       "dependsOn": [
         "bblocks://mwj.pdes.parameters",
+        "bblocks://mwj.pdes.simulation-domain",
         "bblocks://mwj.pdes.observation"
       ],
       "tags": [
-        "PROV",
+        "SOSA",
+        "procedure",
         "simulation",
         "FDM",
         "plankton",
-        "lineage"
+        "Turing",
+        "DIFICI"
       ],
       "sources": [
         {
-          "title": "W3C PROV-O",
-          "link": "https://www.w3.org/TR/prov-o/"
+          "title": "W3C SOSA/SSN Ontology",
+          "link": "https://www.w3.org/TR/vocab-ssn/"
         },
         {
-          "title": "Simulation software \u2014 FiniteDifferenceMethod4PDES",
+          "title": "Scheffer (1991) Oikos 62:271-282",
+          "link": "https://doi.org/10.2307/3545491"
+        },
+        {
+          "title": "FiniteDifferenceMethod4PDES",
           "link": "https://github.com/MarkusWilhelmJahn/FiniteDifferenceMethod4PDES"
         }
       ],
       "rdfType": [
-        "http://www.w3.org/ns/prov#Activity"
+        "http://www.w3.org/ns/sosa/Procedure"
       ],
       "shaclShapes": null,
       "ldContext": {
@@ -474,13 +570,13 @@
       "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/simulation-run/",
       "validationPassed": true,
       "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/simulation-run/index.json"
-        },
         "markdown": {
           "mediatype": "text/markdown",
           "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/simulation-run/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/simulation-run/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -494,7 +590,7 @@
         "dcat:Dataset",
         "bblocks:BBlock"
       ],
-      "skos:prefLabel": "Plankton RDA Simulation Run (PROV)",
+      "skos:prefLabel": "Plankton Simulation Procedure (SOSA)",
       "openAPIDocument": null,
       "ontology": null,
       "rdfData": [],
@@ -512,6 +608,7 @@
       "itemClass": "schema",
       "version": "0.1",
       "dependsOn": [
+        "bblocks://mwj.pdes.simulation-domain",
         "bblocks://mwj.pdes.observation",
         "bblocks://mwj.pdes.simulation-run"
       ],
@@ -557,13 +654,13 @@
       "sourceFiles": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/_sources/stac-result/",
       "validationPassed": true,
       "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/stac-result/index.json"
-        },
         "markdown": {
           "mediatype": "text/markdown",
           "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/markdown/pdes/stac-result/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://markuswilhelmjahn.github.io/bblocks-pdes-plankton/build/generateddocs/json-full/pdes/stac-result/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -590,6 +687,9 @@
   "skos:hasTopConcept": [
     {
       "@id": "bblocks://mwj.pdes.parameters"
+    },
+    {
+      "@id": "bblocks://mwj.pdes.simulation-domain"
     },
     {
       "@id": "bblocks://mwj.pdes.observation"
